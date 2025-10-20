@@ -14,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 642,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeToolTip": "PRN_Project\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABrAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-20T03:40:08.7Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
@@ -40,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\appsettings.json",
+              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\appsettings.json",
+              "RelativeToolTip": "PRN_Project\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-20T03:40:08.7Z",
+              "EditorCaption": ""
             }
           ]
         },
