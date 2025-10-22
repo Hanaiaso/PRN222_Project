@@ -22,6 +22,6 @@ namespace PRN_Project.Models
         // Navigation
         public ICollection<Answer>? Answers { get; set; }
         public ICollection<Submit>? Submits { get; set; }
-        public ICollection<Rank>? Ranks { get; set; }
+        public ICollection<ExamRank>? ExamRanks { get; set; }
     }
 }

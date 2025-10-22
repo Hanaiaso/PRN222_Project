@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PRN_Project.Models;
 
@@ -11,9 +12,11 @@ using PRN_Project.Models;
 namespace PRN_Project.Migrations
 {
     [DbContext(typeof(LmsDbContext))]
-    partial class LmsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251022155137_UpdateData3")]
+    partial class UpdateData3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,9 +140,6 @@ namespace PRN_Project.Migrations
                     b.Property<int>("EId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExamEId")
-                        .HasColumnType("int");
-
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
@@ -148,7 +148,7 @@ namespace PRN_Project.Migrations
 
                     b.HasKey("AwId");
 
-                    b.HasIndex("ExamEId");
+                    b.HasIndex("EId");
 
                     b.HasIndex("StudentSId");
 
@@ -158,16 +158,16 @@ namespace PRN_Project.Migrations
                         new
                         {
                             AwId = 1,
-                            AnswerContent = "[\r\n                        { \"Question\": \"What is 2 + 2?\", \"Options\": [\"3\", \"4\", \"5\", \"6\"], \"CorrectAnswer\": \"4\" },\r\n                        { \"Question\": \"What is 10 / 2?\", \"Options\": [\"2\", \"5\", \"10\", \"20\"], \"CorrectAnswer\": \"5\" }\r\n                    ]",
-                            CreatedAt = new DateTime(2025, 1, 3, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            AnswerContent = "[\r\n                        {\r\n                            \"Question\": \"What is 2 + 2?\",\r\n                            \"Options\": [\"3\", \"4\", \"5\", \"6\"],\r\n                            \"CorrectAnswer\": \"4\"\r\n                        },\r\n                        {\r\n                            \"Question\": \"What is 10 / 2?\",\r\n                            \"Options\": [\"2\", \"5\", \"10\", \"20\"],\r\n                            \"CorrectAnswer\": \"5\"\r\n                        }\r\n                    ]",
+                            CreatedAt = new DateTime(2025, 10, 22, 22, 51, 36, 931, DateTimeKind.Local).AddTicks(7780),
                             EId = 1,
                             Status = true
                         },
                         new
                         {
                             AwId = 2,
-                            AnswerContent = "[\r\n                        { \"Question\": \"He ___ to school every day.\", \"Options\": [\"go\", \"goes\", \"going\", \"gone\"], \"CorrectAnswer\": \"goes\" },\r\n                        { \"Question\": \"Which word is a noun?\", \"Options\": [\"run\", \"beautiful\", \"happiness\", \"quickly\"], \"CorrectAnswer\": \"happiness\" }\r\n                    ]",
-                            CreatedAt = new DateTime(2025, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            AnswerContent = "[\r\n                        {\r\n                            \"Question\": \"Choose the correct form: He ___ to school every day.\",\r\n                            \"Options\": [\"go\", \"goes\", \"going\", \"gone\"],\r\n                            \"CorrectAnswer\": \"goes\"\r\n                        },\r\n                        {\r\n                            \"Question\": \"Which word is a noun?\",\r\n                            \"Options\": [\"run\", \"beautiful\", \"happiness\", \"quickly\"],\r\n                            \"CorrectAnswer\": \"happiness\"\r\n                        }\r\n                    ]",
+                            CreatedAt = new DateTime(2025, 10, 22, 22, 51, 36, 931, DateTimeKind.Local).AddTicks(8281),
                             EId = 2,
                             Status = true
                         });
@@ -219,22 +219,22 @@ namespace PRN_Project.Migrations
                         new
                         {
                             EId = 1,
-                            CreatedAt = new DateTime(2025, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 10, 22, 22, 51, 36, 930, DateTimeKind.Local).AddTicks(3489),
                             EName = "Math Midterm Exam",
-                            EndTime = new DateTime(2025, 1, 2, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            ExamContent = "[\r\n                        { \"Question\": \"What is 2 + 2?\", \"Options\": [\"3\", \"4\", \"5\", \"6\"], \"CorrectAnswer\": \"4\" },\r\n                        { \"Question\": \"What is 10 / 2?\", \"Options\": [\"2\", \"5\", \"10\", \"20\"], \"CorrectAnswer\": \"5\" }\r\n                    ]",
-                            StartTime = new DateTime(2025, 1, 2, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 10, 24, 0, 51, 36, 931, DateTimeKind.Local).AddTicks(5305),
+                            ExamContent = "[\r\n                        {\r\n                            \"Question\": \"What is 2 + 2?\",\r\n                            \"Options\": [\"3\", \"4\", \"5\", \"6\"],\r\n                            \"CorrectAnswer\": \"4\"\r\n                        },\r\n                        {\r\n                            \"Question\": \"What is 10 / 2?\",\r\n                            \"Options\": [\"2\", \"5\", \"10\", \"20\"],\r\n                            \"CorrectAnswer\": \"5\"\r\n                        }\r\n                    ]",
+                            StartTime = new DateTime(2025, 10, 23, 22, 51, 36, 931, DateTimeKind.Local).AddTicks(4978),
                             Status = true,
                             SuId = 1
                         },
                         new
                         {
                             EId = 2,
-                            CreatedAt = new DateTime(2025, 1, 3, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 10, 22, 22, 51, 36, 931, DateTimeKind.Local).AddTicks(5799),
                             EName = "English Grammar Test",
-                            EndTime = new DateTime(2025, 1, 4, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            ExamContent = "[\r\n                        { \"Question\": \"He ___ to school every day.\", \"Options\": [\"go\", \"goes\", \"going\", \"gone\"], \"CorrectAnswer\": \"goes\" },\r\n                        { \"Question\": \"Which word is a noun?\", \"Options\": [\"run\", \"beautiful\", \"happiness\", \"quickly\"], \"CorrectAnswer\": \"happiness\" }\r\n                    ]",
-                            StartTime = new DateTime(2025, 1, 4, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 10, 25, 23, 51, 36, 931, DateTimeKind.Local).AddTicks(5802),
+                            ExamContent = "[\r\n                        {\r\n                            \"Question\": \"Choose the correct form: He ___ to school every day.\",\r\n                            \"Options\": [\"go\", \"goes\", \"going\", \"gone\"],\r\n                            \"CorrectAnswer\": \"goes\"\r\n                        },\r\n                        {\r\n                            \"Question\": \"Which word is a noun?\",\r\n                            \"Options\": [\"run\", \"beautiful\", \"happiness\", \"quickly\"],\r\n                            \"CorrectAnswer\": \"happiness\"\r\n                        }\r\n                    ]",
+                            StartTime = new DateTime(2025, 10, 25, 22, 51, 36, 931, DateTimeKind.Local).AddTicks(5800),
                             Status = true,
                             SuId = 2
                         });
@@ -251,28 +251,19 @@ namespace PRN_Project.Migrations
                     b.Property<int>("EId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExamEId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RaId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RankRaId")
                         .HasColumnType("int");
 
                     b.Property<int>("SId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentSId")
-                        .HasColumnType("int");
-
                     b.HasKey("ErId");
 
-                    b.HasIndex("ExamEId");
+                    b.HasIndex("EId");
 
-                    b.HasIndex("RankRaId");
+                    b.HasIndex("RaId");
 
-                    b.HasIndex("StudentSId");
+                    b.HasIndex("SId");
 
                     b.ToTable("ExamRanks");
 
@@ -326,25 +317,25 @@ namespace PRN_Project.Migrations
                         new
                         {
                             NtId = 1,
-                            Content = "We’re excited to have you here!",
+                            Content = "We’re excited to have you here! Start exploring the exam system and check your profile for details.",
                             SenderId = 1,
-                            SentTime = new DateTime(2025, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            SentTime = new DateTime(2025, 10, 17, 22, 51, 36, 932, DateTimeKind.Local).AddTicks(1727),
                             Title = "Welcome to the LMS System"
                         },
                         new
                         {
                             NtId = 2,
-                            Content = "Don't forget your math exam this Friday at 8:00 AM.",
+                            Content = "Don't forget! The Math midterm exam will take place this Friday at 8:00 AM.",
                             SenderId = 2,
-                            SentTime = new DateTime(2025, 1, 7, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            SentTime = new DateTime(2025, 10, 20, 22, 51, 36, 932, DateTimeKind.Local).AddTicks(1998),
                             Title = "Upcoming Math Exam Reminder"
                         },
                         new
                         {
                             NtId = 3,
-                            Content = "LMS will be under maintenance this weekend.",
+                            Content = "The LMS system will be under maintenance this weekend. Please save your progress beforehand.",
                             SenderId = 1,
-                            SentTime = new DateTime(2025, 1, 8, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            SentTime = new DateTime(2025, 10, 21, 22, 51, 36, 932, DateTimeKind.Local).AddTicks(2000),
                             Title = "System Maintenance"
                         });
                 });
@@ -360,9 +351,6 @@ namespace PRN_Project.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("NotificationNtId")
-                        .HasColumnType("int");
-
                     b.Property<int>("NtId")
                         .HasColumnType("int");
 
@@ -371,7 +359,7 @@ namespace PRN_Project.Migrations
 
                     b.HasKey("NrId");
 
-                    b.HasIndex("NotificationNtId");
+                    b.HasIndex("NtId");
 
                     b.HasIndex("ReceiverId");
 
@@ -557,17 +545,11 @@ namespace PRN_Project.Migrations
                     b.Property<int>("EId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExamEId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SId")
                         .HasColumnType("int");
 
                     b.Property<double?>("Score")
                         .HasColumnType("float");
-
-                    b.Property<int?>("StudentSId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("SubmitTime")
                         .ValueGeneratedOnAdd()
@@ -576,9 +558,9 @@ namespace PRN_Project.Migrations
 
                     b.HasKey("SbId");
 
-                    b.HasIndex("ExamEId");
+                    b.HasIndex("EId");
 
-                    b.HasIndex("StudentSId");
+                    b.HasIndex("SId");
 
                     b.ToTable("Submits");
 
@@ -586,22 +568,22 @@ namespace PRN_Project.Migrations
                         new
                         {
                             SbId = 1,
-                            Comment = "Good performance",
-                            Content = "[{\"QuestionIndex\":1,\"ChosenAnswer\":\"4\"},{\"QuestionIndex\":2,\"ChosenAnswer\":\"5\"}]",
+                            Comment = "Good performance, minor mistakes.",
+                            Content = "[\r\n                        {\r\n                            \"QuestionIndex\": 1,\r\n                            \"ChosenAnswer\": \"4\"\r\n                        },\r\n                        {\r\n                            \"QuestionIndex\": 2,\r\n                            \"ChosenAnswer\": \"5\"\r\n                        }\r\n                    ]",
                             EId = 1,
                             SId = 1,
                             Score = 9.0,
-                            SubmitTime = new DateTime(2025, 1, 4, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                            SubmitTime = new DateTime(2025, 10, 21, 22, 51, 36, 931, DateTimeKind.Local).AddTicks(9782)
                         },
                         new
                         {
                             SbId = 2,
-                            Comment = "Needs to improve grammar",
-                            Content = "[{\"QuestionIndex\":1,\"ChosenAnswer\":\"goes\"},{\"QuestionIndex\":2,\"ChosenAnswer\":\"run\"}]",
+                            Comment = "Needs to improve grammar.",
+                            Content = "[\r\n                        {\r\n                            \"QuestionIndex\": 1,\r\n                            \"ChosenAnswer\": \"goes\"\r\n                        },\r\n                        {\r\n                            \"QuestionIndex\": 2,\r\n                            \"ChosenAnswer\": \"run\"\r\n                        }\r\n                    ]",
                             EId = 2,
                             SId = 2,
                             Score = 7.5,
-                            SubmitTime = new DateTime(2025, 1, 6, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                            SubmitTime = new DateTime(2025, 10, 20, 22, 51, 36, 932, DateTimeKind.Local).AddTicks(211)
                         });
                 });
 
@@ -653,20 +635,12 @@ namespace PRN_Project.Migrations
                     b.Property<int>("SuId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SubjectSuId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeacherTId")
                         .HasColumnType("int");
 
                     b.HasKey("TsId");
 
-                    b.HasIndex("SubjectSuId");
-
-                    b.HasIndex("TeacherTId");
+                    b.HasIndex("SuId");
 
                     b.HasIndex("TId", "SuId")
                         .IsUnique();
@@ -703,7 +677,9 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Exam", "Exam")
                         .WithMany("Answers")
-                        .HasForeignKey("ExamEId");
+                        .HasForeignKey("EId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Student", null)
                         .WithMany("Answers")
@@ -725,15 +701,21 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Exam", "Exam")
                         .WithMany("ExamRanks")
-                        .HasForeignKey("ExamEId");
+                        .HasForeignKey("EId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Rank", "Rank")
                         .WithMany("ExamRanks")
-                        .HasForeignKey("RankRaId");
+                        .HasForeignKey("RaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Student", "Student")
                         .WithMany("ExamRanks")
-                        .HasForeignKey("StudentSId");
+                        .HasForeignKey("SId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Exam");
 
@@ -746,7 +728,8 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Account", "Sender")
                         .WithMany("SentNotifications")
-                        .HasForeignKey("SenderId");
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Sender");
                 });
@@ -755,7 +738,9 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Notification", "Notification")
                         .WithMany("Receivers")
-                        .HasForeignKey("NotificationNtId");
+                        .HasForeignKey("NtId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Account", "Receiver")
                         .WithMany("NotificationReceivers")
@@ -783,11 +768,15 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Exam", "Exam")
                         .WithMany("Submits")
-                        .HasForeignKey("ExamEId");
+                        .HasForeignKey("EId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Student", "Student")
                         .WithMany("Submits")
-                        .HasForeignKey("StudentSId");
+                        .HasForeignKey("SId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Exam");
 
@@ -809,11 +798,15 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Subject", "Subject")
                         .WithMany("TeacherSubjects")
-                        .HasForeignKey("SubjectSuId");
+                        .HasForeignKey("SuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Teacher", "Teacher")
                         .WithMany("TeacherSubjects")
-                        .HasForeignKey("TeacherTId");
+                        .HasForeignKey("TId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Subject");
 

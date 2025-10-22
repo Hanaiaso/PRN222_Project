@@ -3,36 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\lmsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\lmsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\examrank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\examrank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\notificationreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\notificationreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\submit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\submit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\jsonmodels\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\jsonmodels\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\legion\\onedrive\\desktop\\prn222\\prn_project\\prn_project\\prn_project\\models\\jsonmodels\\studentanswermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\jsonmodels\\studentanswermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,45 +38,45 @@
       "DocumentGroups": [
         {
           "DockedHeight": 642,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "StudentAnswerModel.cs",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "NotificationReceiver.cs",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\NotificationReceiver.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Models\\NotificationReceiver.cs",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\NotificationReceiver.cs",
+              "RelativeToolTip": "PRN_Project\\Models\\NotificationReceiver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T10:02:10.06Z",
+              "WhenOpened": "2025-10-22T15:49:32.72Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "QuestionModel.cs",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABBAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Notification.cs",
+              "RelativeToolTip": "PRN_Project\\Models\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T10:01:56.09Z",
+              "WhenOpened": "2025-10-22T15:49:24.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Submit.cs",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Submit.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Submit.cs",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Submit.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Submit.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCMAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ExamRank.cs",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\ExamRank.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Models\\ExamRank.cs",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\ExamRank.cs",
+              "RelativeToolTip": "PRN_Project\\Models\\ExamRank.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T03:50:23.978Z",
+              "WhenOpened": "2025-10-22T15:45:34.423Z",
               "EditorCaption": ""
             },
             {
@@ -91,61 +87,9 @@
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Answer.cs",
               "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Answer.cs",
               "RelativeToolTip": "PRN_Project\\Models\\Answer.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwB0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T03:49:43.906Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Exam.cs",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Exam.cs",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Exam.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAwwBsAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T03:48:45.362Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LmsDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\LmsDbContext.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\LmsDbContext.cs",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\LmsDbContext.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\LmsDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T00:36:15.352Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Program.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Program.cs",
-              "RelativeToolTip": "PRN_Project\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T00:34:34.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
-              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeToolTip": "PRN_Project\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-20T03:40:08.7Z",
+              "WhenOpened": "2025-10-22T15:33:14.989Z",
               "EditorCaption": ""
             },
             {
@@ -154,11 +98,50 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:12:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "Name": "ST:13:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:7:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Submit.cs",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Submit.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Models\\Submit.cs",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Submit.cs",
+              "RelativeToolTip": "PRN_Project\\Models\\Submit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T15:38:10.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Exam.cs",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Models\\Exam.cs",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
+              "RelativeToolTip": "PRN_Project\\Models\\Exam.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T15:36:10.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LmsDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\LmsDbContext.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Models\\LmsDbContext.cs",
+              "ToolTip": "C:\\Users\\LEGION\\OneDrive\\Desktop\\PRN222\\PRN_Project\\PRN_Project\\PRN_Project\\Models\\LmsDbContext.cs",
+              "RelativeToolTip": "PRN_Project\\Models\\LmsDbContext.cs",
+              "ViewState": "AgIAANUAAAAAAAAAAAAgwPEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T00:36:15.352Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
