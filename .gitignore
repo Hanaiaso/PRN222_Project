@@ -178,3 +178,4 @@ secrets.json
 bin/
 obj/
 publish/
+.vs/
