@@ -1,0 +1,10 @@
+﻿@{
+    var layout = "~/Views/Shared/_LayoutStudent.cshtml"; // default
+
+    if (User.IsInRole("Admin"))
+        layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    else if (User.IsInRole("Teacher"))
+        layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+
+    Layout = layout;
+}
