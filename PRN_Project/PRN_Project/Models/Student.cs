@@ -8,7 +8,7 @@ namespace PRN_Project.Models
         public int SId { get; set; }
 
         [Required]
-        public int AId { get; set; }                     // FK -> Account
+        public int AId { get; set; }                     
         public Account? Account { get; set; }
 
         [Required, MaxLength(100)]
