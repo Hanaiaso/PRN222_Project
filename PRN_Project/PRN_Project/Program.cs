@@ -28,8 +28,10 @@ app.UseSession();
 
 app.Use(async (context, next) =>
 {
-    context.Session.SetInt32("AId", 1);
-    context.Session.SetString("Role", "Student");
+    //context.Session.SetInt32("AId", 1);
+    context.Session.SetInt32("AId", 2); // lấy id
+    context.Session.SetString("Role", "Student"); // giả lập role để đi đến trang cần thiết
+    //context.Session.SetInt32("Role", 1);
     await next();
 });
 
