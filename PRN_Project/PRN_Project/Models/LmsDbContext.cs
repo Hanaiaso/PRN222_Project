@@ -59,21 +59,94 @@ namespace PRN_Project.Models
                 .HasForeignKey<Admin>(ad => ad.AId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // TeacherSubject: composite uniqueness (tId, suId)
             modelBuilder.Entity<TeacherSubject>()
                 .HasIndex(ts => new { ts.TId, ts.SuId })
                 .IsUnique();
+            modelBuilder.Entity<TeacherSubject>()
+                .HasOne(ts => ts.Teacher)
+                .WithMany(t => t.TeacherSubjects)
+                .HasForeignKey(ts => ts.TId)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<TeacherSubject>()
+                .HasOne(ts => ts.Subject)
+                .WithMany(s => s.TeacherSubjects)
+                .HasForeignKey(ts => ts.SuId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Exam defaults
             modelBuilder.Entity<Exam>()
                 .Property(e => e.CreatedAt)
                 .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Exam>()
+                .HasOne(ts => ts.Subject)
+                .WithMany(s => s.Exams)
+                .HasForeignKey(ts => ts.SuId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ExamRank>()
+                .HasIndex(exr => new { exr.SuId, exr.RaId})
+                .IsUnique();
+            modelBuilder.Entity<ExamRank>()
+                .HasOne(ts => ts.Rank)
+                .WithMany(t => t.ExamRanks)
+                .HasForeignKey(ts => ts.RaId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ExamRank>()
+                .HasOne(ts => ts.Submit)
+                .WithMany(s => s.ExamRank)
+                .HasForeignKey(ts => ts.SuId)
+                .OnDelete(DeleteBehavior.Cascade);
+   
+            // Answer: relation to Question and Student
+            modelBuilder.Entity<Answer>()
+                .HasOne(a => a.Exam)
+                .WithMany(q => q.Answers)
+                .HasForeignKey(a => a.EId)
+                .OnDelete(DeleteBehavior.Cascade);
+       
+            // Submit -> Student, Exam
+            modelBuilder.Entity<Submit>()
+                .HasOne(s => s.Student)
+                .WithMany(st => st.Submits)
+                .HasForeignKey(s => s.SId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Submit>()
+                .HasOne(s => s.Exam)
+                .WithMany(e => e.Submits)
+                .HasForeignKey(s => s.EId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Submit>()
                 .Property(s => s.SubmitTime)
                 .HasDefaultValueSql("GETDATE()");
 
+            
+            // Notification & NotificationReceiver
             modelBuilder.Entity<Notification>()
                 .Property(n => n.SentTime)
                 .HasDefaultValueSql("GETDATE()");
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.Sender)
+                .WithMany(a => a.SentNotifications)
+                .HasForeignKey(n => n.SenderId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<NotificationReceiver>()
+                .HasOne(nr => nr.Notification)
+                .WithMany(n => n.Receivers)
+                .HasForeignKey(nr => nr.NtId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<NotificationReceiver>()
+                .HasOne(nr => nr.Receiver)
+                .WithMany(a => a.NotificationReceivers)
+                .HasForeignKey(nr => nr.ReceiverId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             // === SEED DỮ LIỆU TĨNH ===
 
@@ -198,8 +271,8 @@ namespace PRN_Project.Models
             );
 
             modelBuilder.Entity<ExamRank>().HasData(
-                new ExamRank { ErId = 1, SId = 1, EId = 1, RaId = 1 },
-                new ExamRank { ErId = 2, SId = 2, EId = 2, RaId = 2 }
+                new ExamRank { ErId = 1, SuId = 1, RaId = 1 },
+                new ExamRank { ErId = 2, SuId = 2, RaId = 2 }
             );
 
             // ===== Notification + Receiver =====

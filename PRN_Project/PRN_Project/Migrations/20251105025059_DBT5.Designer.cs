@@ -12,8 +12,8 @@ using PRN_Project.Models;
 namespace PRN_Project.Migrations
 {
     [DbContext(typeof(LmsDbContext))]
-    [Migration("20251022041107_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251105025059_DBT5")]
+    partial class DBT5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,40 @@ namespace PRN_Project.Migrations
                         .IsUnique();
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            AId = 1,
+                            Email = "admin@example.com",
+                            Password = "Admin@123",
+                            Role = 0,
+                            Status = true
+                        },
+                        new
+                        {
+                            AId = 2,
+                            Email = "teacher@example.com",
+                            Password = "Teacher@123",
+                            Role = 1,
+                            Status = true
+                        },
+                        new
+                        {
+                            AId = 3,
+                            Email = "student@example.com",
+                            Password = "Student@123",
+                            Role = 2,
+                            Status = true
+                        },
+                        new
+                        {
+                            AId = 4,
+                            Email = "student2@example.com",
+                            Password = "Student@123",
+                            Role = 2,
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Admin", b =>
@@ -79,6 +113,14 @@ namespace PRN_Project.Migrations
                         .IsUnique();
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            AdId = 1,
+                            AId = 1,
+                            AdName = "Super Admin"
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Answer", b =>
@@ -95,22 +137,35 @@ namespace PRN_Project.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("IsCorrect")
+                    b.Property<int>("EId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<int>("QId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SId")
-                        .HasColumnType("int");
 
                     b.HasKey("AwId");
 
-                    b.HasIndex("QId");
-
-                    b.HasIndex("SId");
+                    b.HasIndex("EId");
 
                     b.ToTable("Answers");
+
+                    b.HasData(
+                        new
+                        {
+                            AwId = 1,
+                            AnswerContent = "[\r\n                        { \"Question\": \"What is 2 + 2?\", \"Options\": [\"3\", \"4\", \"5\", \"6\"], \"CorrectAnswer\": \"4\" },\r\n                        { \"Question\": \"What is 10 / 2?\", \"Options\": [\"2\", \"5\", \"10\", \"20\"], \"CorrectAnswer\": \"5\" }\r\n                    ]",
+                            CreatedAt = new DateTime(2025, 1, 3, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EId = 1,
+                            Status = true
+                        },
+                        new
+                        {
+                            AwId = 2,
+                            AnswerContent = "[\r\n                        { \"Question\": \"He ___ to school every day.\", \"Options\": [\"go\", \"goes\", \"going\", \"gone\"], \"CorrectAnswer\": \"goes\" },\r\n                        { \"Question\": \"Which word is a noun?\", \"Options\": [\"run\", \"beautiful\", \"happiness\", \"quickly\"], \"CorrectAnswer\": \"happiness\" }\r\n                    ]",
+                            CreatedAt = new DateTime(2025, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EId = 2,
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
@@ -134,6 +189,9 @@ namespace PRN_Project.Migrations
                     b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ExamContent")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -143,14 +201,73 @@ namespace PRN_Project.Migrations
                     b.Property<int?>("SuId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SubjectSuId")
-                        .HasColumnType("int");
-
                     b.HasKey("EId");
 
-                    b.HasIndex("SubjectSuId");
+                    b.HasIndex("SuId");
 
                     b.ToTable("Exams");
+
+                    b.HasData(
+                        new
+                        {
+                            EId = 1,
+                            CreatedAt = new DateTime(2025, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EName = "Math Midterm Exam",
+                            EndTime = new DateTime(2025, 1, 2, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExamContent = "[\r\n                        { \"Question\": \"What is 2 + 2?\", \"Options\": [\"3\", \"4\", \"5\", \"6\"], \"CorrectAnswer\": \"4\" },\r\n                        { \"Question\": \"What is 10 / 2?\", \"Options\": [\"2\", \"5\", \"10\", \"20\"], \"CorrectAnswer\": \"5\" }\r\n                    ]",
+                            StartTime = new DateTime(2025, 1, 2, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            SuId = 1
+                        },
+                        new
+                        {
+                            EId = 2,
+                            CreatedAt = new DateTime(2025, 1, 3, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            EName = "English Grammar Test",
+                            EndTime = new DateTime(2025, 1, 4, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExamContent = "[\r\n                        { \"Question\": \"He ___ to school every day.\", \"Options\": [\"go\", \"goes\", \"going\", \"gone\"], \"CorrectAnswer\": \"goes\" },\r\n                        { \"Question\": \"Which word is a noun?\", \"Options\": [\"run\", \"beautiful\", \"happiness\", \"quickly\"], \"CorrectAnswer\": \"happiness\" }\r\n                    ]",
+                            StartTime = new DateTime(2025, 1, 4, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = true,
+                            SuId = 2
+                        });
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.ExamRank", b =>
+                {
+                    b.Property<int>("ErId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ErId"));
+
+                    b.Property<int>("RaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SuId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ErId");
+
+                    b.HasIndex("RaId");
+
+                    b.HasIndex("SuId", "RaId")
+                        .IsUnique();
+
+                    b.ToTable("ExamRanks");
+
+                    b.HasData(
+                        new
+                        {
+                            ErId = 1,
+                            RaId = 1,
+                            SuId = 1
+                        },
+                        new
+                        {
+                            ErId = 2,
+                            RaId = 2,
+                            SuId = 2
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Notification", b =>
@@ -181,6 +298,32 @@ namespace PRN_Project.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("Notifications");
+
+                    b.HasData(
+                        new
+                        {
+                            NtId = 1,
+                            Content = "We’re excited to have you here!",
+                            SenderId = 1,
+                            SentTime = new DateTime(2025, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Welcome to the LMS System"
+                        },
+                        new
+                        {
+                            NtId = 2,
+                            Content = "Don't forget your math exam this Friday at 8:00 AM.",
+                            SenderId = 2,
+                            SentTime = new DateTime(2025, 1, 7, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Upcoming Math Exam Reminder"
+                        },
+                        new
+                        {
+                            NtId = 3,
+                            Content = "LMS will be under maintenance this weekend.",
+                            SenderId = 1,
+                            SentTime = new DateTime(2025, 1, 8, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "System Maintenance"
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.NotificationReceiver", b =>
@@ -207,30 +350,36 @@ namespace PRN_Project.Migrations
                     b.HasIndex("ReceiverId");
 
                     b.ToTable("NotificationReceivers");
-                });
 
-            modelBuilder.Entity("PRN_Project.Models.Question", b =>
-                {
-                    b.Property<int>("QId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QId"));
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CorrectAnswer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EId")
-                        .HasColumnType("int");
-
-                    b.HasKey("QId");
-
-                    b.HasIndex("EId");
-
-                    b.ToTable("Questions");
+                    b.HasData(
+                        new
+                        {
+                            NrId = 1,
+                            IsRead = true,
+                            NtId = 1,
+                            ReceiverId = 3
+                        },
+                        new
+                        {
+                            NrId = 2,
+                            IsRead = false,
+                            NtId = 1,
+                            ReceiverId = 4
+                        },
+                        new
+                        {
+                            NrId = 3,
+                            IsRead = false,
+                            NtId = 2,
+                            ReceiverId = 3
+                        },
+                        new
+                        {
+                            NrId = 4,
+                            IsRead = true,
+                            NtId = 3,
+                            ReceiverId = 2
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Rank", b =>
@@ -241,26 +390,49 @@ namespace PRN_Project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RaId"));
 
-                    b.Property<int>("EId")
-                        .HasColumnType("int");
+                    b.Property<float?>("MaxScore")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("MinScore")
+                        .HasColumnType("real");
 
                     b.Property<string>("RankName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("RankOrder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SId")
-                        .HasColumnType("int");
-
                     b.HasKey("RaId");
 
-                    b.HasIndex("EId");
-
-                    b.HasIndex("SId");
-
                     b.ToTable("Ranks");
+
+                    b.HasData(
+                        new
+                        {
+                            RaId = 1,
+                            MaxScore = 10f,
+                            MinScore = 8.5f,
+                            RankName = "A"
+                        },
+                        new
+                        {
+                            RaId = 2,
+                            MaxScore = 8.4f,
+                            MinScore = 6.5f,
+                            RankName = "B"
+                        },
+                        new
+                        {
+                            RaId = 3,
+                            MaxScore = 6.4f,
+                            MinScore = 4.5f,
+                            RankName = "C"
+                        },
+                        new
+                        {
+                            RaId = 4,
+                            MaxScore = 4.4f,
+                            MinScore = 0f,
+                            RankName = "D"
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Student", b =>
@@ -292,6 +464,24 @@ namespace PRN_Project.Migrations
                         .IsUnique();
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            SId = 1,
+                            AId = 3,
+                            Dob = new DateTime(2008, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Gender = "Female",
+                            SName = "Tran Thi C"
+                        },
+                        new
+                        {
+                            SId = 2,
+                            AId = 4,
+                            Dob = new DateTime(2008, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Gender = "Male",
+                            SName = "Le Van D"
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Subject", b =>
@@ -310,6 +500,18 @@ namespace PRN_Project.Migrations
                     b.HasKey("SuId");
 
                     b.ToTable("Subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            SuId = 1,
+                            SuName = "Mathematics"
+                        },
+                        new
+                        {
+                            SuId = 2,
+                            SuName = "English"
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Submit", b =>
@@ -347,6 +549,28 @@ namespace PRN_Project.Migrations
                     b.HasIndex("SId");
 
                     b.ToTable("Submits");
+
+                    b.HasData(
+                        new
+                        {
+                            SbId = 1,
+                            Comment = "Good performance",
+                            Content = "[{\"QuestionIndex\":1,\"ChosenAnswer\":\"4\"},{\"QuestionIndex\":2,\"ChosenAnswer\":\"5\"}]",
+                            EId = 1,
+                            SId = 1,
+                            Score = 9.0,
+                            SubmitTime = new DateTime(2025, 1, 4, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            SbId = 2,
+                            Comment = "Needs to improve grammar",
+                            Content = "[{\"QuestionIndex\":1,\"ChosenAnswer\":\"goes\"},{\"QuestionIndex\":2,\"ChosenAnswer\":\"run\"}]",
+                            EId = 2,
+                            SId = 2,
+                            Score = 7.5,
+                            SubmitTime = new DateTime(2025, 1, 6, 8, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Teacher", b =>
@@ -375,6 +599,15 @@ namespace PRN_Project.Migrations
                         .IsUnique();
 
                     b.ToTable("Teachers");
+
+                    b.HasData(
+                        new
+                        {
+                            TId = 1,
+                            AId = 2,
+                            Qualification = "Master of Mathematics",
+                            TName = "Nguyen Van B"
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.TeacherSubject", b =>
@@ -399,6 +632,20 @@ namespace PRN_Project.Migrations
                         .IsUnique();
 
                     b.ToTable("TeacherSubjects");
+
+                    b.HasData(
+                        new
+                        {
+                            TsId = 1,
+                            SuId = 1,
+                            TId = 1
+                        },
+                        new
+                        {
+                            TsId = 2,
+                            SuId = 2,
+                            TId = 1
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Admin", b =>
@@ -414,30 +661,42 @@ namespace PRN_Project.Migrations
 
             modelBuilder.Entity("PRN_Project.Models.Answer", b =>
                 {
-                    b.HasOne("PRN_Project.Models.Question", "Question")
+                    b.HasOne("PRN_Project.Models.Exam", "Exam")
                         .WithMany("Answers")
-                        .HasForeignKey("QId")
+                        .HasForeignKey("EId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PRN_Project.Models.Student", "Student")
-                        .WithMany("Answers")
-                        .HasForeignKey("SId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-
-                    b.Navigation("Student");
+                    b.Navigation("Exam");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
                 {
                     b.HasOne("PRN_Project.Models.Subject", "Subject")
                         .WithMany("Exams")
-                        .HasForeignKey("SubjectSuId");
+                        .HasForeignKey("SuId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.ExamRank", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Rank", "Rank")
+                        .WithMany("ExamRanks")
+                        .HasForeignKey("RaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.Submit", "Submit")
+                        .WithMany("ExamRank")
+                        .HasForeignKey("SuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rank");
+
+                    b.Navigation("Submit");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Notification", b =>
@@ -467,36 +726,6 @@ namespace PRN_Project.Migrations
                     b.Navigation("Notification");
 
                     b.Navigation("Receiver");
-                });
-
-            modelBuilder.Entity("PRN_Project.Models.Question", b =>
-                {
-                    b.HasOne("PRN_Project.Models.Exam", "Exam")
-                        .WithMany("Questions")
-                        .HasForeignKey("EId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Exam");
-                });
-
-            modelBuilder.Entity("PRN_Project.Models.Rank", b =>
-                {
-                    b.HasOne("PRN_Project.Models.Exam", "Exam")
-                        .WithMany("Ranks")
-                        .HasForeignKey("EId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PRN_Project.Models.Student", "Student")
-                        .WithMany("Ranks")
-                        .HasForeignKey("SId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Exam");
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Student", b =>
@@ -574,9 +803,7 @@ namespace PRN_Project.Migrations
 
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
                 {
-                    b.Navigation("Questions");
-
-                    b.Navigation("Ranks");
+                    b.Navigation("Answers");
 
                     b.Navigation("Submits");
                 });
@@ -586,17 +813,13 @@ namespace PRN_Project.Migrations
                     b.Navigation("Receivers");
                 });
 
-            modelBuilder.Entity("PRN_Project.Models.Question", b =>
+            modelBuilder.Entity("PRN_Project.Models.Rank", b =>
                 {
-                    b.Navigation("Answers");
+                    b.Navigation("ExamRanks");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Student", b =>
                 {
-                    b.Navigation("Answers");
-
-                    b.Navigation("Ranks");
-
                     b.Navigation("Submits");
                 });
 
@@ -605,6 +828,11 @@ namespace PRN_Project.Migrations
                     b.Navigation("Exams");
 
                     b.Navigation("TeacherSubjects");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Submit", b =>
+                {
+                    b.Navigation("ExamRank");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Teacher", b =>

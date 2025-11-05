@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PRN_Project.Models.Exam>
+@{
+    var subject = ViewBag.Subject as PRN_Project.Models.Subject;
+}
+
+<h2>📘 Các bài thi trong môn: @subject.SuName</h2>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Tên bài thi</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Kết thúc</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exam in Model)
+        {
+            bool isActive = exam.StartTime <= DateTime.Now && exam.EndTime >= DateTime.Now;
+            <tr>
+                <td>@exam.EName</td>
+                <td>@exam.StartTime?.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@exam.EndTime?.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    @if (isActive)
+                    {
+                        <a href="/MockExam/TakeExam?examId=@exam.EId" class="btn btn-success">Làm bài</a>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Chưa đến giờ / Hết hạn</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
