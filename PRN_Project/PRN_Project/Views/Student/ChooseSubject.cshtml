@@ -1,0 +1,12 @@
+﻿@model IEnumerable<PRN_Project.Models.Subject>
+
+<h2>🎯 Chọn môn thi</h2>
+<ul class="list-group mt-3">
+    @foreach (var s in Model)
+    {
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>@s.SuName</span>
+            <a href="/MockExam/ChooseExam?subjectId=@s.SuId" class="btn btn-primary">Chọn</a>
+        </li>
+    }
+</ul>
