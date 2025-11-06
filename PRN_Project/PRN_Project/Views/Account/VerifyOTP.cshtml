@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xác minh OTP - LMS</title>
+    <link rel="stylesheet" href="~/css/auth-styles.css" />
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Xác minh mã OTP</h2>
+
+        @if (TempData["Message"] != null)
+        {
+            <p class="success-message">@TempData["Message"]</p>
+        }
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="error-message">@ViewBag.Error</p>
+        }
+
+        @if (ViewBag.Message != null)
+        {
+            <p class="success-message">@ViewBag.Message</p>
+        }
+
+        <form method="post">
+            <div>
+                <input type="text" name="otp" placeholder="Nhập mã OTP" maxlength="6" required />
+            </div>
+
+            <div class="otp-buttons">
+                <button type="submit" name="actionType" value="verify">Xác minh</button>
+                <button type="submit" name="actionType" value="resend">Gửi lại mã OTP</button>
+            </div>
+        </form>
+
+        <div class="auth-links back-link">
+            <a href="/Account/ForgotPassword">Quay lại</a>
+        </div>
+    </div>
+</body>
+</html>
