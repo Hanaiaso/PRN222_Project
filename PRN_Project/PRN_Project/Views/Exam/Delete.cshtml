@@ -1,0 +1,43 @@
+﻿@model PRN_Project.Models.Exam
+
+@{
+    ViewData["Title"] = "Xóa bài thi";
+
+    var role = Context.Session.GetString("Role");
+    if (role == "Admin")
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (role == "Teacher")
+    {
+        Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    }
+}
+
+<h2 class="mt-3 mb-4 text-danger">Xóa bài thi</h2>
+
+<h4>Bạn có chắc chắn muốn xóa bài thi này?</h4>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Tên bài thi</dt>
+    <dd class="col-sm-9">@Model.EName</dd>
+
+    <dt class="col-sm-3">Môn học</dt>
+    <dd class="col-sm-9">@Model.Subject?.SuName</dd>
+
+    <dt class="col-sm-3">Thời gian bắt đầu</dt>
+    <dd class="col-sm-9">@Model.StartTime</dd>
+
+    <dt class="col-sm-3">Thời gian kết thúc</dt>
+    <dd class="col-sm-9">@Model.EndTime</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.Status ? "Hoạt động" : "Ẩn")</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="EId" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
