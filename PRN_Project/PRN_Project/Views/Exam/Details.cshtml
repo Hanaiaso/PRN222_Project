@@ -1,0 +1,90 @@
+﻿@model PRN_Project.Models.Exam
+@using PRN_Project.Models.JsonModels
+
+@{
+    ViewData["Title"] = "Chi tiết bài thi";
+
+    var role = Context.Session.GetString("Role");
+    if (role == "Admin")
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (role == "Teacher")
+    {
+        Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    }
+    var questions = Model.Questions ?? new List<QuestionModel>();
+}
+
+<h2 class="text-center mb-4">Chi tiết bài thi</h2>
+
+<div class="card shadow p-4 mb-4">
+    <dl class="row">
+        <dt class="col-sm-3">Mã bài thi:</dt>
+        <dd class="col-sm-9">@Model.EId</dd>
+
+        <dt class="col-sm-3">Tên bài thi:</dt>
+        <dd class="col-sm-9">@Model.EName</dd>
+
+        <dt class="col-sm-3">Môn học:</dt>
+        <dd class="col-sm-9">@Model.Subject?.SuName</dd>
+
+        <dt class="col-sm-3">Ngày tạo:</dt>
+        <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-3">Thời gian bắt đầu:</dt>
+        <dd class="col-sm-9">@Model.StartTime?.ToString("HH:mm dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-3">Thời gian kết thúc:</dt>
+        <dd class="col-sm-9">@Model.EndTime?.ToString("HH:mm dd/MM/yyyy")</dd>
+
+        <dt class="col-sm-3">Trạng thái:</dt>
+        <dd class="col-sm-9">
+            @if (Model.Status)
+            {
+                <span class="badge bg-success">Hiển thị</span>
+            }
+            else
+            {
+                <span class="badge bg-secondary">Ẩn</span>
+            }
+        </dd>
+    </dl>
+</div>
+
+@if (questions.Any())
+{
+    <div class="card shadow p-4">
+        <h4 class="mb-3">Nội dung bài thi</h4>
+        <ol class="list-group list-group-numbered">
+            @foreach (var q in questions)
+            {
+                <li class="list-group-item mb-3">
+                    <strong>@q.Question</strong>
+                    <ul class="mt-2">
+                        @foreach (var opt in q.Options)
+                        {
+                            if (opt == q.CorrectAnswer)
+                            {
+                                <li><span class="text-success fw-bold">@opt ✅</span></li>
+                            }
+                            else
+                            {
+                                <li>@opt</li>
+                            }
+                        }
+                    </ul>
+                </li>
+            }
+        </ol>
+    </div>
+}
+else
+{
+    <p class="text-muted fst-italic">Chưa có nội dung bài thi.</p>
+}
+
+<div class="mt-4 text-center">
+    <a asp-action="Edit" asp-route-id="@Model.EId" class="btn btn-warning me-2">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>
