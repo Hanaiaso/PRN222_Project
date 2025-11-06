@@ -1,0 +1,273 @@
+﻿/* ===== LMS Authentication Pages Styles ===== */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Auth Container */
+.auth-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading */
+.auth-container h2 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Form Styles */
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+    /* Form Group */
+    .auth-container form > div {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+/* Labels */
+.auth-container label {
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.auth-container input[type="email"],
+.auth-container input[type="password"],
+.auth-container input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+    .auth-container input[type="email"]:focus,
+    .auth-container input[type="password"]:focus,
+    .auth-container input[type="text"]:focus {
+        outline: none;
+        border-color: #667eea;
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+/* Buttons */
+.auth-container button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+    .auth-container button[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .auth-container button[type="submit"]:active {
+        transform: translateY(0);
+    }
+
+/* Secondary Buttons (for OTP page) */
+.auth-container button[name="actionType"] {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .auth-container button[name="actionType"]:hover {
+        background: #667eea;
+        color: white;
+    }
+
+    .auth-container button[name="actionType"][value="verify"] {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+    }
+
+/* Links */
+.auth-container a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+    .auth-container a:hover {
+        color: #764ba2;
+        text-decoration: underline;
+    }
+
+/* Links Container */
+.auth-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Messages */
+.text-success,
+.success-message,
+p[style*="color:green"],
+div[style*="color:green"] {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.text-danger,
+.error-message,
+p[style*="color:red"],
+div[style*="color:red"] {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #dc3545;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+/* Validation Messages */
+.auth-container span[style*="color: red"],
+.auth-container span[style*="color:red"] {
+    color: #dc3545 !important;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* OTP Page Specific Styles */
+.otp-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 30px 25px;
+        max-width: 100%;
+    }
+
+        .auth-container h2 {
+            font-size: 24px;
+        }
+
+        .auth-container input[type="email"],
+        .auth-container input[type="password"],
+        .auth-container input[type="text"] {
+            padding: 12px 14px;
+            font-size: 14px;
+        }
+
+        .auth-container button[type="submit"] {
+            padding: 12px 20px;
+            font-size: 15px;
+        }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .auth-container {
+        padding: 25px 20px;
+    }
+
+        .auth-container h2 {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+    .auth-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+/* Loading State */
+.auth-container button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Focus Visible for Accessibility */
+.auth-container button:focus-visible,
+.auth-container input:focus-visible,
+.auth-container a:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
