@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PRN_Project.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,17 +19,25 @@ namespace PRN_Project.Controllers
             _context = context;
         }
 
-        // ===== Kiểm tra quyền =====
-        private bool IsAdmin()
+        // ===== Kiểm tra quyền truy cập =====
+        private bool IsAdminOrTeacher()
         {
-            var role = HttpContext.Session.GetString("Role");
-            return role == "Teacher" || role == "Admin";
+            var role = HttpContext.Session.GetString("role");
+            return role == RoleType.Admin.ToString() || role == RoleType.Teacher.ToString();
+        }
+
+        private IActionResult CheckPermission()
+        {
+            if (!IsAdminOrTeacher())
+                return RedirectToAction("Login", "Account");
+            return null!;
         }
 
         // ===== Danh sách bài thi =====
         public async Task<IActionResult> Index()
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
 
             var exams = await _context.Exams
                 .Include(e => e.Subject)
@@ -38,10 +47,11 @@ namespace PRN_Project.Controllers
             return View(exams);
         }
 
-        // ===== Chi tiết bài thi =====
+        // ===== Xem chi tiết =====
         public async Task<IActionResult> Details(int? id)
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
             if (id == null) return NotFound();
 
             var exam = await _context.Exams
@@ -49,14 +59,15 @@ namespace PRN_Project.Controllers
                 .FirstOrDefaultAsync(e => e.EId == id);
 
             if (exam == null) return NotFound();
-
             return View(exam);
         }
 
         // ===== Tạo mới =====
+        [HttpGet]
         public IActionResult Create()
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
 
             ViewBag.SubjectId = new SelectList(_context.Subjects, "SuId", "SuName");
             return View();
@@ -66,13 +77,15 @@ namespace PRN_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Exam exam)
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
 
             if (ModelState.IsValid)
             {
                 exam.CreatedAt = DateTime.Now;
                 _context.Add(exam);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Tạo bài thi thành công!";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -80,70 +93,63 @@ namespace PRN_Project.Controllers
             return View(exam);
         }
 
-        // ===== Sửa bài thi =====
+        // ===== Sửa =====
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var exam = await _context.Exams
-                .Include(e => e.Subject)
-                .FirstOrDefaultAsync(e => e.EId == id);
-            if (exam == null)
-            {
-                return NotFound();
-            }
-            var subjects = await _context.Subjects.ToListAsync();
-            if (subjects == null || subjects.Count == 0)
-            {
-                subjects = new List<Subject>();
-            }
+            var permission = CheckPermission();
+            if (permission != null) return permission;
+            if (id == null) return NotFound();
+
+            var exam = await _context.Exams.FindAsync(id);
+            if (exam == null) return NotFound();
+
             ViewBag.SubjectId = new SelectList(_context.Subjects, "SuId", "SuName", exam.SuId);
             return View(exam);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Exam exam, string questionData)
+        public async Task<IActionResult> Edit(int id, Exam exam)
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
             if (id != exam.EId) return NotFound();
 
-            try
+            if (ModelState.IsValid)
             {
-                if (!string.IsNullOrEmpty(questionData))
+                try
                 {
-                    exam.ExamContent = questionData;
+                    _context.Update(exam);
+                    await _context.SaveChangesAsync();
+                    TempData["Success"] = "Cập nhật bài thi thành công!";
+                    return RedirectToAction(nameof(Index));
                 }
-
-                _context.Update(exam);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Exams.Any(e => e.EId == exam.EId))
-                    return NotFound();
-                else
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Exams.Any(e => e.EId == exam.EId))
+                        return NotFound();
                     throw;
+                }
             }
 
-            ViewBag.Subjects = new SelectList(_context.Subjects, "SuId", "SubjectName", exam.SuId);
+            ViewBag.SubjectId = new SelectList(_context.Subjects, "SuId", "SuName", exam.SuId);
             return View(exam);
         }
 
         // ===== Xóa =====
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
             if (id == null) return NotFound();
 
             var exam = await _context.Exams
                 .Include(e => e.Subject)
                 .FirstOrDefaultAsync(e => e.EId == id);
-            if (exam == null) return NotFound();
 
+            if (exam == null) return NotFound();
             return View(exam);
         }
 
@@ -151,13 +157,15 @@ namespace PRN_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (!IsAdmin()) return RedirectToAction("AccessDenied", "Home");
+            var permission = CheckPermission();
+            if (permission != null) return permission;
 
             var exam = await _context.Exams.FindAsync(id);
             if (exam != null)
             {
                 _context.Exams.Remove(exam);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Xóa bài thi thành công!";
             }
 
             return RedirectToAction(nameof(Index));
