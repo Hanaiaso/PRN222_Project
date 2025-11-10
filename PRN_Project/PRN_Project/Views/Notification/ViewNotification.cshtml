@@ -1,0 +1,21 @@
+﻿@model PRN_Project.Models.Notification
+
+@{
+    ViewData["Title"] = "Chi tiết thông báo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Tiêu đề:</strong> @Model.Title
+    </div>
+    <div class="card-body">
+        <p><strong>Người gửi:</strong> @Model.Sender?.Email</p>
+        <p><strong>Thời gian gửi:</strong> @Model.SentTime.ToString("dd/MM/yyyy HH:mm")</p>
+        <p><strong>Nội dung:</strong></p>
+        <p>@Model.Content</p>
+    </div>
+</div>
+
+<a asp-action="MyNotifications" class="btn btn-secondary">Quay lại</a>
