@@ -8,5 +8,9 @@ namespace PRN_Project.Controllers
         {
             return View();
         }
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

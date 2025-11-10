@@ -8,12 +8,8 @@ namespace PRN_Project.Models
         public int ErId { get; set; }
 
         [Required]
-        public int SId { get; set; }
-        public Student? Student { get; set; }
-
-        [Required]
-        public int EId { get; set; }
-        public Exam? Exam { get; set; }
+        public int SuId { get; set; }
+        public Submit? Submit { get; set; }
 
         [Required]
         public int RaId { get; set; }

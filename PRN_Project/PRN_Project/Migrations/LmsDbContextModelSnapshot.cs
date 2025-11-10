@@ -137,20 +137,12 @@ namespace PRN_Project.Migrations
                     b.Property<int>("EId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExamEId")
-                        .HasColumnType("int");
-
                     b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("StudentSId")
-                        .HasColumnType("int");
-
                     b.HasKey("AwId");
 
-                    b.HasIndex("ExamEId");
-
-                    b.HasIndex("StudentSId");
+                    b.HasIndex("EId");
 
                     b.ToTable("Answers");
 
@@ -206,12 +198,9 @@ namespace PRN_Project.Migrations
                     b.Property<int?>("SuId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SubjectSuId")
-                        .HasColumnType("int");
-
                     b.HasKey("EId");
 
-                    b.HasIndex("SubjectSuId");
+                    b.HasIndex("SuId");
 
                     b.ToTable("Exams");
 
@@ -248,31 +237,18 @@ namespace PRN_Project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ErId"));
 
-                    b.Property<int>("EId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ExamEId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RankRaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StudentSId")
+                    b.Property<int>("SuId")
                         .HasColumnType("int");
 
                     b.HasKey("ErId");
 
-                    b.HasIndex("ExamEId");
+                    b.HasIndex("RaId");
 
-                    b.HasIndex("RankRaId");
-
-                    b.HasIndex("StudentSId");
+                    b.HasIndex("SuId", "RaId")
+                        .IsUnique();
 
                     b.ToTable("ExamRanks");
 
@@ -280,16 +256,14 @@ namespace PRN_Project.Migrations
                         new
                         {
                             ErId = 1,
-                            EId = 1,
                             RaId = 1,
-                            SId = 1
+                            SuId = 1
                         },
                         new
                         {
                             ErId = 2,
-                            EId = 2,
                             RaId = 2,
-                            SId = 2
+                            SuId = 2
                         });
                 });
 
@@ -360,9 +334,6 @@ namespace PRN_Project.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("NotificationNtId")
-                        .HasColumnType("int");
-
                     b.Property<int>("NtId")
                         .HasColumnType("int");
 
@@ -371,7 +342,7 @@ namespace PRN_Project.Migrations
 
                     b.HasKey("NrId");
 
-                    b.HasIndex("NotificationNtId");
+                    b.HasIndex("NtId");
 
                     b.HasIndex("ReceiverId");
 
@@ -557,17 +528,11 @@ namespace PRN_Project.Migrations
                     b.Property<int>("EId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExamEId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SId")
                         .HasColumnType("int");
 
                     b.Property<double?>("Score")
                         .HasColumnType("float");
-
-                    b.Property<int?>("StudentSId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("SubmitTime")
                         .ValueGeneratedOnAdd()
@@ -576,9 +541,9 @@ namespace PRN_Project.Migrations
 
                     b.HasKey("SbId");
 
-                    b.HasIndex("ExamEId");
+                    b.HasIndex("EId");
 
-                    b.HasIndex("StudentSId");
+                    b.HasIndex("SId");
 
                     b.ToTable("Submits");
 
@@ -653,20 +618,12 @@ namespace PRN_Project.Migrations
                     b.Property<int>("SuId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SubjectSuId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeacherTId")
                         .HasColumnType("int");
 
                     b.HasKey("TsId");
 
-                    b.HasIndex("SubjectSuId");
-
-                    b.HasIndex("TeacherTId");
+                    b.HasIndex("SuId");
 
                     b.HasIndex("TId", "SuId")
                         .IsUnique();
@@ -703,11 +660,9 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Exam", "Exam")
                         .WithMany("Answers")
-                        .HasForeignKey("ExamEId");
-
-                    b.HasOne("PRN_Project.Models.Student", null)
-                        .WithMany("Answers")
-                        .HasForeignKey("StudentSId");
+                        .HasForeignKey("EId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Exam");
                 });
@@ -716,37 +671,37 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Subject", "Subject")
                         .WithMany("Exams")
-                        .HasForeignKey("SubjectSuId");
+                        .HasForeignKey("SuId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.ExamRank", b =>
                 {
-                    b.HasOne("PRN_Project.Models.Exam", "Exam")
-                        .WithMany("ExamRanks")
-                        .HasForeignKey("ExamEId");
-
                     b.HasOne("PRN_Project.Models.Rank", "Rank")
                         .WithMany("ExamRanks")
-                        .HasForeignKey("RankRaId");
+                        .HasForeignKey("RaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("PRN_Project.Models.Student", "Student")
-                        .WithMany("ExamRanks")
-                        .HasForeignKey("StudentSId");
-
-                    b.Navigation("Exam");
+                    b.HasOne("PRN_Project.Models.Submit", "Submit")
+                        .WithMany("ExamRank")
+                        .HasForeignKey("SuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Rank");
 
-                    b.Navigation("Student");
+                    b.Navigation("Submit");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Notification", b =>
                 {
                     b.HasOne("PRN_Project.Models.Account", "Sender")
                         .WithMany("SentNotifications")
-                        .HasForeignKey("SenderId");
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Sender");
                 });
@@ -755,7 +710,9 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Notification", "Notification")
                         .WithMany("Receivers")
-                        .HasForeignKey("NotificationNtId");
+                        .HasForeignKey("NtId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Account", "Receiver")
                         .WithMany("NotificationReceivers")
@@ -783,11 +740,15 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Exam", "Exam")
                         .WithMany("Submits")
-                        .HasForeignKey("ExamEId");
+                        .HasForeignKey("EId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Student", "Student")
                         .WithMany("Submits")
-                        .HasForeignKey("StudentSId");
+                        .HasForeignKey("SId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Exam");
 
@@ -809,11 +770,15 @@ namespace PRN_Project.Migrations
                 {
                     b.HasOne("PRN_Project.Models.Subject", "Subject")
                         .WithMany("TeacherSubjects")
-                        .HasForeignKey("SubjectSuId");
+                        .HasForeignKey("SuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PRN_Project.Models.Teacher", "Teacher")
                         .WithMany("TeacherSubjects")
-                        .HasForeignKey("TeacherTId");
+                        .HasForeignKey("TId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Subject");
 
@@ -837,8 +802,6 @@ namespace PRN_Project.Migrations
                 {
                     b.Navigation("Answers");
 
-                    b.Navigation("ExamRanks");
-
                     b.Navigation("Submits");
                 });
 
@@ -854,10 +817,6 @@ namespace PRN_Project.Migrations
 
             modelBuilder.Entity("PRN_Project.Models.Student", b =>
                 {
-                    b.Navigation("Answers");
-
-                    b.Navigation("ExamRanks");
-
                     b.Navigation("Submits");
                 });
 
@@ -866,6 +825,11 @@ namespace PRN_Project.Migrations
                     b.Navigation("Exams");
 
                     b.Navigation("TeacherSubjects");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Submit", b =>
+                {
+                    b.Navigation("ExamRank");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Teacher", b =>

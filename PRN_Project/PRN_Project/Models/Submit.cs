@@ -34,5 +34,7 @@ namespace PRN_Project.Models
                 : JsonSerializer.Deserialize<List<StudentAnswerModel>>(Content);
             set => Content = JsonSerializer.Serialize(value);
         }
+
+        public ICollection<ExamRank>? ExamRank { get; set; }
     }
 }

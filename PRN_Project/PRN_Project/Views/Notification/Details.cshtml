@@ -1,0 +1,37 @@
+﻿@model PRN_Project.Models.Notification
+
+@{
+    ViewData["Title"] = "Chi tiết thông báo";
+}
+
+<h2>@Model.Title</h2>
+
+<div class="card p-3 mt-3">
+    <p><strong>Người gửi:</strong> @Model.Sender?.Email (@Model.Sender?.Role)</p>
+    <p><strong>Ngày gửi:</strong> @Model.SentTime.ToString("dd/MM/yyyy HH:mm")</p>
+    <p><strong>Nội dung:</strong></p>
+    <p>@Model.Content</p>
+</div>
+
+<h4 class="mt-4">Danh sách người nhận</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Trạng thái</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model.Receivers)
+        {
+                <tr>
+                    <td>@r.Receiver?.Email</td>
+                    <td>@(r.IsRead ? "✅ Đã đọc" : "📩 Chưa đọc")</td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</p>

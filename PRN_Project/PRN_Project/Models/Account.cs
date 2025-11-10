@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PRN_Project.Models
 {
@@ -13,11 +14,18 @@ namespace PRN_Project.Models
         [Key]
         public int AId { get; set; }
 
-        [Required, MaxLength(100)]
+        [Required(ErrorMessage = "Email không được bỏ trống"), MaxLength(100)]
         public string Email { get; set; } = null!;
 
-        [Required, MaxLength(255)]
+        [Required(ErrorMessage = "Password không được bỏ trống"), MaxLength(255)]
         public string Password { get; set; } = null!;
+
+        // Thêm RePassword nhưng KHÔNG lưu vào database
+        [NotMapped] // dòng này rất quan trọng
+        [Compare("Password", ErrorMessage = "Password và Repassword không trùng khớp.")]
+        [Required(ErrorMessage = "Repassword không được bỏ trống"), MaxLength(255)]
+        [DataType(DataType.Password)]
+        public string RePassword { get; set; } = null!;
 
         [Required]
         public RoleType Role { get; set; }
