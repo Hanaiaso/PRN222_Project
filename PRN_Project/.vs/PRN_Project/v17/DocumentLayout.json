@@ -1,174 +1,14 @@
 {
   "Version": 1,
-<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\",
   "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
     {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\migrations\\20251022155814_fixseed_staticdates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\migrations\\20251022155814_fixseed_staticdates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\views\\profile\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\profile\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\profile\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\viewmodels\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\views\\student\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\student\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\notificationreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\notificationreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\examrank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\examrank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\jsonmodels\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\jsonmodels\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\jsonmodels\\studentanswermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\jsonmodels\\studentanswermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\lmsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\lmsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\prn_project.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\prn_project.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\migrations\\lmsdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\migrations\\lmsdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\teachersubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\teachersubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\submit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\submit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-  "WorkspaceRootPath": "D:\\PRU213\\PRN222_Project\\PRN_Project\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\exam\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\exam\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebaradmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebaradmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\shared\\_layoutstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_layoutstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\shared\\_layoutteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_layoutteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|d:\\pru213\\prn222_project\\prn_project\\prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
->>>>>>> main
     }
   ],
   "DocumentGroupContainers": [
@@ -178,8 +18,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 642,
-<<<<<<< HEAD
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -223,304 +62,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_SidebarTeacher.cshtml",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAB+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-05T01:53:57.588Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ChangePassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Profile\\ChangePassword.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Profile\\ChangePassword.cshtml",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Profile\\ChangePassword.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Profile\\ChangePassword.cshtml",
-              "ViewState": "AgIAABYAAAAAAAAAAAAUwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-04T20:09:54.252Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Profile\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Profile\\Index.cshtml",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Profile\\Index.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Profile\\Index.cshtml",
-              "ViewState": "AgIAADEAAAAAAAAAAAAUwFoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-04T20:09:43.471Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProfileController.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ProfileController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\ProfileController.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ProfileController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\ProfileController.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAowBgAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:08:23.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Account.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Account.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Account.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwCIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T18:26:57.783Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
+              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json*",
+              "RelativeToolTip": "PRN_Project\\appsettings.json*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-10T03:45:54.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
               "RelativeToolTip": "PRN_Project\\Program.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAADwvx8AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-25T14:45:58.444Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeToolTip": "PRN_Project\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABpAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-25T14:45:49.687Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_SidebarStudent.cshtml",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-04T20:13:30.481Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ChangePasswordViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ChangePasswordViewModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\ChangePasswordViewModel.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ChangePasswordViewModel.cs",
-              "RelativeToolTip": "PRN_Project\\ViewModels\\ChangePasswordViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:11:01.615Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "20251022155814_FixSeed_StaticDates.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Migrations\\20251022155814_FixSeed_StaticDates.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Migrations\\20251022155814_FixSeed_StaticDates.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Migrations\\20251022155814_FixSeed_StaticDates.cs",
-              "RelativeToolTip": "PRN_Project\\Migrations\\20251022155814_FixSeed_StaticDates.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwGUAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:23:11.881Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProfileViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ProfileViewModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\ProfileViewModel.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ProfileViewModel.cs",
-              "RelativeToolTip": "PRN_Project\\ViewModels\\ProfileViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:11:12.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ExamRank.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\ExamRank.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\ExamRank.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\ExamRank.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\ExamRank.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:45:34.423Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Answer.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Answer.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Answer.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Answer.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Answer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:33:14.989Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Exam.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Exam.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Exam.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:36:10.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-04T18:22:39.141Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "QuestionModel.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\JsonModels\\QuestionModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T03:02:07.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Notification.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Notification.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Notification.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Notification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:49:24.892Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "NotificationReceiver.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\NotificationReceiver.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\NotificationReceiver.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\NotificationReceiver.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\NotificationReceiver.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:49:32.72Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Student.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Student.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Student.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T18:12:56.806Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "LmsDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\LmsDbContext.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\LmsDbContext.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\LmsDbContext.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\LmsDbContext.cs",
-              "ViewState": "AgIAANIAAAAAAAAAAAAcwPIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T00:36:15.352Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Submit.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Submit.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Submit.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Submit.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Submit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:38:10.659Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "StudentAnswerModel.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\JsonModels\\StudentAnswerModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T03:02:08.155Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "PRN_Project.csproj",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\PRN_Project.csproj",
-              "RelativeDocumentMoniker": "PRN_Project\\PRN_Project.csproj",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\PRN_Project.csproj",
-              "RelativeToolTip": "PRN_Project\\PRN_Project.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-29T02:36:05.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "LmsDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "RelativeToolTip": "PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T16:48:59.418Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "TeacherSubject.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\TeacherSubject.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\TeacherSubject.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\TeacherSubject.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\TeacherSubject.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T14:46:03.391Z"
             }
           ]
         },
@@ -531,205 +95,22 @@
             {
               "$type": "Bookmark",
               "Name": "ST:4:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-=======
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\_ViewStart.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T18:17:08.674Z",
-              "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Exam\\Index.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Index.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Exam\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T18:16:55.926Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T18:16:41.184Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T17:51:53.226Z"
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_SidebarTeacher.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:50:42.594Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_SidebarStudent.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABrAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:49:38.317Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_LayoutStudent.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:49:26.483Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "_LayoutTeacher.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:49:17.735Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_SidebarAdmin.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:47:34.467Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\_ViewImports.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:47:27.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AccessDenied.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\AccessDenied.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Home\\AccessDenied.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\AccessDenied.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Home\\AccessDenied.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:43:22.789Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAkwF8AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T17:18:58.495Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
-              "RelativeToolTip": "PRN_Project\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T17:18:45.37Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Account.cs",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Account.cs",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Account.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T17:18:18.397Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NotificationController.cs",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\NotificationController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\NotificationController.cs",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\NotificationController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\NotificationController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAArwBsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T16:59:05.629Z",
-              "EditorCaption": ""
->>>>>>> main
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeToolTip": "PRN_Project\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-09T16:01:40.298Z"
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             }
           ]
         }
