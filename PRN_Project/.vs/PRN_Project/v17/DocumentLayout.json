@@ -162,8 +162,7 @@
               "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-05T01:53:57.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T01:53:57.588Z"
             },
             {
               "$type": "Document",
@@ -199,8 +198,7 @@
               "RelativeToolTip": "PRN_Project\\Controllers\\ProfileController.cs",
               "ViewState": "AgIAAG8AAAAAAAAAAAAowBgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:08:23.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T20:08:23.527Z"
             },
             {
               "$type": "Document",
@@ -220,9 +218,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs*",
-              "RelativeToolTip": "PRN_Project\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAnAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
+              "RelativeToolTip": "PRN_Project\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvx8AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-25T14:45:58.444Z",
               "EditorCaption": ""
@@ -237,8 +235,7 @@
               "RelativeToolTip": "PRN_Project\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-25T14:45:49.687Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T14:45:49.687Z"
             },
             {
               "$type": "Document",
@@ -250,8 +247,7 @@
               "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-04T20:13:30.481Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T20:13:30.481Z"
             },
             {
               "$type": "Document",
@@ -275,8 +271,7 @@
               "RelativeToolTip": "PRN_Project\\Migrations\\20251022155814_FixSeed_StaticDates.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwGUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T20:23:11.881Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T20:23:11.881Z"
             },
             {
               "$type": "Document",
