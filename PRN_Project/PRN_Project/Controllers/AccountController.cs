@@ -98,7 +98,9 @@ namespace PRN_Project.Controllers
                     HttpContext.Session.SetInt32("accountId", acc.AId);
                     HttpContext.Session.SetString("userEmail", acc.Email);
                     HttpContext.Session.SetString("role", acc.Role.ToString());
-                    return RedirectToAction("Index", "Home");
+                    if (acc.Role.ToString() == "Teacher") { return RedirectToAction("Dashboard", "Teacher"); }
+                    else if(acc.Role.ToString() == "Student") { return RedirectToAction("Dashboard", "Student"); }
+                    else if (acc.Role.ToString() == "Admin") { return RedirectToAction("Dashboard", "Admin"); }
                 }
             }
 
