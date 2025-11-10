@@ -95,6 +95,7 @@ namespace PRN_Project.Controllers
 
                 if (isMatch)
                 {
+                    HttpContext.Session.SetInt32("accountId", acc.AId);
                     HttpContext.Session.SetString("userEmail", acc.Email);
                     HttpContext.Session.SetString("role", acc.Role.ToString());
                     return RedirectToAction("Index", "Home");
