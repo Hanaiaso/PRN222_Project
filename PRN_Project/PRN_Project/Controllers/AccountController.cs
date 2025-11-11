@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using PRN_Project.Models;
-using System;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Claims;
+using System.Text;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using PRN_Project.Models;
 
 namespace PRN_Project.Controllers
 {
@@ -58,54 +62,70 @@ namespace PRN_Project.Controllers
             return View();
         }
 
+        // ================= LOGIN (JWT) =================
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
             var acc = _context.Accounts.FirstOrDefault(a => a.Email == email && a.Status);
 
-            if (acc != null && !string.IsNullOrEmpty(acc.Password))
+            if (acc == null)
             {
-                bool isMatch = false;
-
-                try
-                {
-                    // Nếu mật khẩu trong DB là dạng hash BCrypt
-                    if (acc.Password.StartsWith("$2a$") || acc.Password.StartsWith("$2b$") || acc.Password.StartsWith("$2y$"))
-                    {
-                        isMatch = BCrypt.Net.BCrypt.Verify(password, acc.Password);
-                    }
-                    else
-                    {
-                        // Nếu chưa mã hóa → so sánh trực tiếp
-                        isMatch = password == acc.Password;
-
-                        // Và tự động mã hóa lại (chỉ làm 1 lần)
-                        if (isMatch)
-                        {
-                            acc.Password = BCrypt.Net.BCrypt.HashPassword(password);
-                            _context.SaveChanges();
-                        }
-                    }
-                }
-                catch
-                {
-                    ViewBag.Error = "Đã xảy ra lỗi khi kiểm tra mật khẩu.";
-                    return View();
-                }
-
-                if (isMatch)
-                {
-                    HttpContext.Session.SetInt32("accountId", acc.AId);
-                    HttpContext.Session.SetString("userEmail", acc.Email);
-                    HttpContext.Session.SetString("role", acc.Role.ToString());
-                    if (acc.Role.ToString() == "Teacher") { return RedirectToAction("Dashboard", "Teacher"); }
-                    else if(acc.Role.ToString() == "Student") { return RedirectToAction("Dashboard", "Student"); }
-                    else if (acc.Role.ToString() == "Admin") { return RedirectToAction("Dashboard", "Admin"); }
-                }
+                ViewBag.Error = "Email hoặc mật khẩu không đúng!";
+                return View();
             }
 
-            ViewBag.Error = "Email hoặc mật khẩu không đúng!";
+            bool isMatch = BCrypt.Net.BCrypt.Verify(password, acc.Password);
+            if (!isMatch)
+            {
+                ViewBag.Error = "Email hoặc mật khẩu không đúng!";
+                return View();
+            }
+
+            // Sinh JWT Token
+            var token = GenerateJwtToken(acc);
+
+            // Có thể lưu vào cookie (để gửi tự động mỗi request)
+            Response.Cookies.Append("jwt", token, new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.Now.AddMinutes(60)
+            });
+
+            //return RedirectToAction("Index", "Home");
+
+            if (acc.Role.ToString() == "Teacher")
+                return RedirectToAction("Dashboard", "Teacher");
+            else if (acc.Role.ToString() == "Student")
+                return RedirectToAction("Dashboard", "Student");
+            else if (acc.Role.ToString() == "Admin")
+                return RedirectToAction("Dashboard", "Admin");
+
             return View();
+        }
+
+        // ================= Sinh JWT Token =================
+        private string GenerateJwtToken(Account acc)
+        {
+            var jwtSettings = _config.GetSection("Jwt");
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+        new Claim(ClaimTypes.NameIdentifier, acc.AId.ToString()),
+        new Claim(ClaimTypes.Email, acc.Email),
+        new Claim(ClaimTypes.Role, acc.Role.ToString())
+    };
+
+            var token = new JwtSecurityToken(
+                issuer: jwtSettings["Issuer"],
+                audience: jwtSettings["Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(double.Parse(jwtSettings["ExpireMinutes"])),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
 
@@ -231,10 +251,9 @@ namespace PRN_Project.Controllers
         // ========== ĐĂNG XUẤT ==========
         public IActionResult Logout()
         {
-            HttpContext.Session.Clear();
+            Response.Cookies.Delete("jwt");
             return RedirectToAction("Login");
         }
-
         // ========== GỬI EMAIL OTP ==========
         private void SendOTPEmail(string toEmail, string otp)
         {

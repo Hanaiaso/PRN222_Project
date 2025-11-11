@@ -1,17 +1,31 @@
-﻿@{
-    var role = Context.Session.GetString("role");
-    var userEmail = Context.Session.GetString("userEmail");
-    string displayName = string.Empty;
+﻿@using System.IdentityModel.Tokens.Jwt
+@using System.Security.Claims
+@{
+    string displayName = "Guest";
+    var jwtCookie = Context.Request.Cookies["jwt"];
 
-    if (!string.IsNullOrEmpty(role) && !string.IsNullOrEmpty(userEmail))
+    if (!string.IsNullOrEmpty(jwtCookie))
     {
-        displayName = $"{role} - {userEmail}";
-    }
-    else
-    {
-        displayName = "Guest";
+        try
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(jwtCookie);
+
+            var role = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            var email = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+            if (!string.IsNullOrEmpty(role) && !string.IsNullOrEmpty(email))
+            {
+                displayName = $"{role} - {email}";
+            }
+        }
+        catch
+        {
+            displayName = "Guest";
+        }
     }
 }
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
     <div class="container-fluid">
