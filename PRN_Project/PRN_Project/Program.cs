@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using PRN_Project.Hubs;
 using PRN_Project.Models;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // ======= 1️⃣ Cấu hình MVC và DBContext =======
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddSession(opt =>
 {
     opt.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -17,7 +20,7 @@ builder.Services.AddSession(opt =>
 builder.Services.AddDbContext<LmsDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
 );
-
+builder.Services.AddSignalR();
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
@@ -56,7 +59,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddAuthorization();
-
+builder.Services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
 var app = builder.Build();
 
 // ======= 3️⃣ Middleware pipeline =======
@@ -72,6 +75,10 @@ app.UseSession();
 // Bắt buộc theo thứ tự này
 app.UseAuthentication();
 app.UseAuthorization();
+
+// 🔹 Thêm MapHub trước khi MapControllerRoute
+app.MapHub<ChatHub>("/chathub");
+
 
 app.MapControllerRoute(
     name: "default",

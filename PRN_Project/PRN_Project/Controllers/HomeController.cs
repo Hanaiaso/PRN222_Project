@@ -15,5 +15,10 @@ namespace PRN_Project.Controllers
             ViewBag.Role = role;
             return View();
         }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
