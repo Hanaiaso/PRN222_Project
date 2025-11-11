@@ -6,8 +6,9 @@ using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using BCrypt.Net;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PRN_Project.Models;
 
@@ -73,7 +74,7 @@ namespace PRN_Project.Controllers
                 ViewBag.Error = "Email hoặc mật khẩu không đúng!";
                 return View();
             }
-
+           
             bool isMatch = BCrypt.Net.BCrypt.Verify(password, acc.Password);
             if (!isMatch)
             {
@@ -92,7 +93,10 @@ namespace PRN_Project.Controllers
             });
 
             //return RedirectToAction("Index", "Home");
-
+             HttpContext.Session.SetInt32("accountId", acc.AId);
+             HttpContext.Session.SetString("userEmail", acc.Email);
+             HttpContext.Session.SetString("role", acc.Role.ToString());
+                    
             if (acc.Role.ToString() == "Teacher")
                 return RedirectToAction("Dashboard", "Teacher");
             else if (acc.Role.ToString() == "Student")
