@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using PRN_Project.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using PRN_Project.Models;
 
 namespace PRN_Project.Controllers
 {
@@ -98,6 +99,7 @@ namespace PRN_Project.Controllers
                     HttpContext.Session.SetInt32("accountId", acc.AId);
                     HttpContext.Session.SetString("userEmail", acc.Email);
                     HttpContext.Session.SetString("role", acc.Role.ToString());
+                                     
                     if (acc.Role.ToString() == "Teacher") { return RedirectToAction("Dashboard", "Teacher"); }
                     else if(acc.Role.ToString() == "Student") { return RedirectToAction("Dashboard", "Student"); }
                     else if (acc.Role.ToString() == "Admin") { return RedirectToAction("Dashboard", "Admin"); }
