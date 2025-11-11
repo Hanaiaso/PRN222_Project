@@ -8,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ======= 1️⃣ Cấu hình MVC và DBContext =======
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession(opt =>
+{
+    opt.IdleTimeout = TimeSpan.FromMinutes(30);
+    opt.Cookie.HttpOnly = true;
+    opt.Cookie.IsEssential = true;
+});
 builder.Services.AddDbContext<LmsDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
 );
@@ -62,7 +68,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseSession();
 // Bắt buộc theo thứ tự này
 app.UseAuthentication();
 app.UseAuthorization();

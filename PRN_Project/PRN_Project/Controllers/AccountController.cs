@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PRN_Project.Models;
+using PRN_Project.Models.JsonModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace PRN_Project.Controllers
 {
