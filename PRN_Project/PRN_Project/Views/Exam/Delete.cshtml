@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Xóa bài thi";
 
-    var role = Context.Session.GetString("Role");
+    var role = Context.Session.GetString("role");
     if (role == "Admin")
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";

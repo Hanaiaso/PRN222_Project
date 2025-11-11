@@ -82,7 +82,7 @@ namespace PRN_Project.Controllers
 
             if (ModelState.IsValid)
             {
-                exam.CreatedAt = DateTime.Now;
+                //exam.CreatedAt = DateTime.Now; //khong can do da dat mac dinh trong model
                 _context.Add(exam);
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "Tạo bài thi thành công!";
@@ -110,7 +110,7 @@ namespace PRN_Project.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Exam exam)
+        public async Task<IActionResult> Edit(int id, Exam exam, string questionData)
         {
             var permission = CheckPermission();
             if (permission != null) return permission;
@@ -120,6 +120,21 @@ namespace PRN_Project.Controllers
             {
                 try
                 {
+                    // Giữ lại dữ liệu cũ nếu không có questionData
+                    if (!string.IsNullOrEmpty(questionData))
+                    {
+                        exam.ExamContent = questionData;
+                    }
+                    else
+                    {
+                        // Nếu người dùng không chỉnh sửa phần câu hỏi, giữ nguyên dữ liệu cũ
+                        var oldExam = await _context.Exams.AsNoTracking().FirstOrDefaultAsync(e => e.EId == id);
+                        if (oldExam != null)
+                        {
+                            exam.ExamContent = oldExam.ExamContent;
+                        }
+                    }
+
                     _context.Update(exam);
                     await _context.SaveChangesAsync();
                     TempData["Success"] = "Cập nhật bài thi thành công!";
@@ -136,6 +151,7 @@ namespace PRN_Project.Controllers
             ViewBag.SubjectId = new SelectList(_context.Subjects, "SuId", "SuName", exam.SuId);
             return View(exam);
         }
+
 
         // ===== Xóa =====
         [HttpGet]

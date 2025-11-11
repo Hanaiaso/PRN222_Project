@@ -51,7 +51,7 @@
     </tbody>
 </table>
 @{
-    var role = Context.Session.GetString("Role");
+    var role = Context.Session.GetString("role");
     if (role == "Admin")
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -59,9 +59,5 @@
     else if (role == "Teacher")
     {
         Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
-    }
-    else
-    {
-        Layout = "~/Views/Shared/_LayoutStudent.cshtml";
     }
 }
