@@ -1,5 +1,7 @@
-﻿@{
-    var role = Context.Session.GetString("role");
+﻿@using System.Security.Claims
+@{
+    // Lấy role từ claim
+    var role = User.FindFirstValue(ClaimTypes.Role);
 
     if (role == "Admin")
     {

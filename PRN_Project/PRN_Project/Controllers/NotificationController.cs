@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
-
+using System.Security.Claims;
 
 namespace PRN_Project.Controllers
 {
-    
+    [Authorize] // Bắt buộc có JWT token
     public class NotificationController : Controller
     {
-        
         private readonly LmsDbContext _context;
 
         public NotificationController(LmsDbContext context)
@@ -16,31 +16,35 @@ namespace PRN_Project.Controllers
             _context = context;
         }
 
-        private int? CurrentAccountId => HttpContext.Session.GetInt32("accountId");
-        private string? CurrentRole => HttpContext.Session.GetString("role");
+        // Lấy thông tin người dùng hiện tại từ JWT Claims
+        private int CurrentAccountId =>
+            int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+
+        private string CurrentRole =>
+            User.FindFirstValue(ClaimTypes.Role) ?? string.Empty;
+
         private bool IsAdmin() => CurrentRole == "Admin";
         private bool IsTeacher() => CurrentRole == "Teacher";
         private bool IsStudent() => CurrentRole == "Student";
 
-
-        //danh sach tat ca thong bao
+        // ===== Danh sách tất cả thông báo (Admin-only) =====
+        [Authorize(Roles = "Admin,Teacher")]
         public IActionResult Index()
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
             var notifications = _context.Notifications
                 .Include(n => n.Sender)
                 .Include(n => n.Receivers)
                     .ThenInclude(r => r.Receiver)
                 .OrderByDescending(n => n.SentTime)
                 .ToList();
+
             return View(notifications);
         }
-        //chi tiet thong bao
+
+        // ===== Xem chi tiết =====
+        [Authorize(Roles = "Admin,Teacher")]
         public IActionResult Details(int id)
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
             var notification = _context.Notifications
                 .Include(n => n.Sender)
                 .Include(n => n.Receivers)
@@ -48,117 +52,115 @@ namespace PRN_Project.Controllers
                 .FirstOrDefault(n => n.NtId == id);
 
             if (notification == null)
-            {
                 return NotFound();
-            }
 
             return View(notification);
         }
-        //Tao thong bao moi
+
+        // ===== Tạo thông báo mới =====
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Create()
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
             ViewBag.Receivers = _context.Accounts
                 .Where(a => a.Role == RoleType.Student && a.Status)
                 .ToList();
+
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Notification notification, int[] selectedReceivers)
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                notification.SentTime = DateTime.Now;
-                notification.SenderId = 1;
-                _context.Notifications.Add(notification);
-                _context.SaveChanges();
-                foreach (var receiverId in selectedReceivers)
-                {
-                    var nr = new NotificationReceiver
-                    {
-                        NtId = notification.NtId,
-                        ReceiverId = receiverId,
-                        IsRead = false
-                    };                 
-                    _context.NotificationReceivers.Add(nr);
-                }
-                    _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                ViewBag.Receivers = _context.Accounts
+                    .Where(a => a.Role == RoleType.Student && a.Status)
+                    .ToList();
+                return View(notification);
             }
-            ViewBag.Receivers = _context.Accounts
-                .Where(a => a.Role == RoleType.Student && a.Status)
-                .ToList();
-            return View(notification);
+
+            notification.SentTime = DateTime.Now;
+            notification.SenderId = CurrentAccountId;
+
+            _context.Notifications.Add(notification);
+            _context.SaveChanges();
+
+            foreach (var receiverId in selectedReceivers)
+            {
+                var nr = new NotificationReceiver
+                {
+                    NtId = notification.NtId,
+                    ReceiverId = receiverId,
+                    IsRead = false
+                };
+                _context.NotificationReceivers.Add(nr);
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
-        //Chinh sua thong bao
+
+        // ===== Chỉnh sửa =====
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
             var notification = _context.Notifications.Find(id);
             if (notification == null)
-            {
                 return NotFound();
-            }
+
             return View(notification);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Notification notification)
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
-            if (ModelState.IsValid)
-            {
-                var existing = _context.Notifications.AsNoTracking().FirstOrDefault(n => n.NtId == notification.NtId);
-                if (existing == null)
-                {
-                    return NotFound();
-                }
-                notification.SenderId = existing.SenderId;
-                notification.SentTime = existing.SentTime;
+            if (!ModelState.IsValid)
+                return View(notification);
 
-                _context.Update(notification);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(notification);
+            var existing = _context.Notifications.AsNoTracking().FirstOrDefault(n => n.NtId == notification.NtId);
+            if (existing == null)
+                return NotFound();
+
+            notification.SenderId = existing.SenderId;
+            notification.SentTime = existing.SentTime;
+
+            _context.Update(notification);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
-        //Xoa thong bao
+
+        // ===== Xóa =====
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
             var notification = _context.Notifications
-            .Include(n => n.Sender)
-            .FirstOrDefault(n => n.NtId == id);
+                .Include(n => n.Sender)
+                .FirstOrDefault(n => n.NtId == id);
+
             if (notification == null)
-            {
                 return NotFound();
-            }
+
             return View(notification);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int NtId)
         {
-            if (!IsAdmin())
-                return RedirectToAction("AccessDenied", "Home");
             var notification = _context.Notifications
-            .Include(n => n.Receivers)
-            .FirstOrDefault(n => n.NtId == NtId);
+                .Include(n => n.Receivers)
+                .FirstOrDefault(n => n.NtId == NtId);
 
             if (notification == null)
-            {
                 return NotFound();
-            }
 
             if (notification.Receivers != null)
                 _context.NotificationReceivers.RemoveRange(notification.Receivers);
@@ -168,10 +170,12 @@ namespace PRN_Project.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        //Danh sach thong bao cho nguoi nhan
+
+        // ===== Danh sách thông báo cho người nhận =====
+        [Authorize(Roles = "Student,Teacher,Admin")]
         public IActionResult MyNotifications()
         {
-            int accountId = CurrentAccountId ?? 0; 
+            var accountId = CurrentAccountId;
 
             var notifications = _context.NotificationReceivers
                 .Include(nr => nr.Notification)
@@ -182,20 +186,23 @@ namespace PRN_Project.Controllers
 
             return View(notifications);
         }
-        //danh dau da doc thong bao
+
+        // ===== Đánh dấu đã đọc =====
+        [Authorize(Roles = "Student,Teacher,Admin")]
         public IActionResult MarkAsRead(int id)
         {
             var receiver = _context.NotificationReceivers.Find(id);
             if (receiver == null)
-            {
                 return NotFound();
-            }
+
             receiver.IsRead = true;
             _context.SaveChanges();
 
-            return RedirectToAction(nameof(MyNotifications), new { accountId = receiver.ReceiverId });
+            return RedirectToAction(nameof(MyNotifications));
         }
 
+        // ===== Xem chi tiết thông báo =====
+        [Authorize(Roles = "Student,Teacher,Admin")]
         public IActionResult ViewNotification(int id)
         {
             var notification = _context.Notifications
@@ -205,11 +212,9 @@ namespace PRN_Project.Controllers
                 .FirstOrDefault(n => n.NtId == id);
 
             if (notification == null)
-            {
                 return NotFound();
-            }
 
-            int accountId = CurrentAccountId ?? 0; 
+            var accountId = CurrentAccountId;
             var receiver = _context.NotificationReceivers
                 .FirstOrDefault(r => r.NtId == id && r.ReceiverId == accountId);
 
