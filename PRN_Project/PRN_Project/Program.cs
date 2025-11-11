@@ -1,29 +1,71 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using PRN_Project.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<LmsDbContext>(opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon")));
 
-builder.Services.AddSession(opt =>
+// ======= 1️⃣ Cấu hình MVC và DBContext =======
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<LmsDbContext>(opts =>
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
+);
+
+// ======= 2️⃣ Cấu hình JWT Authentication =======
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
+
+builder.Services.AddAuthentication(options =>
 {
-    opt.IdleTimeout = TimeSpan.FromMinutes(30);
-    opt.Cookie.HttpOnly = true;
-    opt.Cookie.IsEssential = true;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+
+    // Cho phép đọc token từ cookie nếu bạn lưu token trong cookie
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var token = context.Request.Cookies["jwt"];
+            if (!string.IsNullOrEmpty(token))
+            {
+                context.Token = token;
+            }
+            return Task.CompletedTask;
+        }
+    };
 });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+// ======= 3️⃣ Middleware pipeline =======
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-
-
 }
+
 app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
-app.UseStaticFiles(); //cho phép truy cập đến wwwroot
-app.UseRouting(); //cho phép định tuyến các requests từ clinent
-app.UseSession();
+app.UseStaticFiles();
+app.UseRouting();
+
+// Bắt buộc theo thứ tự này
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
