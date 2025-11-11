@@ -18,13 +18,13 @@ namespace PRN_Project.Controllers
         // Hàm helper lấy AId từ Session
         private int? GetCurrentAccountId()
         {
-            return HttpContext.Session.GetInt32("AId");
+            return HttpContext.Session.GetInt32("accountId");
         }
 
         // Hàm helper lấy Role từ Session
         private string? GetCurrentRole()
         {
-            return HttpContext.Session.GetString("Role");
+            return HttpContext.Session.GetString("role");
         }
 
         // [GET] /Profile/Index
