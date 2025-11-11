@@ -1,9 +1,38 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+﻿@using System.IdentityModel.Tokens.Jwt
+@using System.Security.Claims
+@{
+    string displayName = "Guest";
+    var jwtCookie = Context.Request.Cookies["jwt"];
+
+    if (!string.IsNullOrEmpty(jwtCookie))
+    {
+        try
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(jwtCookie);
+
+            var role = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            var email = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+            if (!string.IsNullOrEmpty(role) && !string.IsNullOrEmpty(email))
+            {
+                displayName = $"{role} - {email}";
+            }
+        }
+        catch
+        {
+            displayName = "Guest";
+        }
+    }
+}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold text-white" href="/">MyLMS</a>
         <div class="ms-auto d-flex align-items-center">
-            <img src="~/images/avatar.png" class="rounded-circle me-2" width="35" height="35" alt="Avatar" />
-            <span class="text-white fw-semibold">@User.Identity?.Name ?? "Guest"</span>
+            <img src="~/img/Avatar.png" class="rounded-circle me-2" width="35" height="35" alt="Avatar" />
+            <span class="text-white fw-semibold">@displayName</span>
         </div>
     </div>
 </nav>

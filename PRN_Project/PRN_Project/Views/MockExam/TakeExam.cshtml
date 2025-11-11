@@ -49,4 +49,8 @@
         }
     }
     updateTimer();
+
+        window.addEventListener("beforeunload", function (e) {
+        navigator.sendBeacon('/MockExam/AutoSubmit'); // gửi request nền khi đóng tab
+    });
 </script>

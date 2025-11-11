@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PRN_Project.Models.NotificationReceiver>
+
+@{
+    ViewData["Title"] = "Thông báo của tôi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Người gửi</th>
+            <th>Thời gian</th>
+            <th>Trạng thái</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nr in Model)
+        {
+                <tr class="@(nr.IsRead ? "" : "fw-bold")">
+                    <td>@nr.Notification?.Title</td>
+                    <td>@nr.Notification?.Sender?.Email</td>
+                    <td>@nr.Notification?.SentTime.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@(nr.IsRead ? "Đã đọc" : "Chưa đọc")</td>
+                    <td>
+                        <a asp-action="ViewNotification" asp-route-id="@nr.Notification?.NtId" class="btn btn-sm btn-info">Xem</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

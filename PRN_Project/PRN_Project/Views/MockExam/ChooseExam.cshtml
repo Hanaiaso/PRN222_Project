@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<PRN_Project.Models.Exam>
 @{
     var subject = ViewBag.Subject as PRN_Project.Models.Subject;
+    var doneExams = ViewBag.DoneExams as List<int> ?? new List<int>();
 }
 
 <h2>📘 Các bài thi trong môn: @subject.SuName</h2>
@@ -18,12 +19,18 @@
         @foreach (var exam in Model)
         {
             bool isActive = exam.StartTime <= DateTime.Now && exam.EndTime >= DateTime.Now;
+            bool isDone = doneExams.Contains(exam.EId);
+
             <tr>
                 <td>@exam.EName</td>
                 <td>@exam.StartTime?.ToString("dd/MM/yyyy HH:mm")</td>
                 <td>@exam.EndTime?.ToString("dd/MM/yyyy HH:mm")</td>
                 <td>
-                    @if (isActive)
+                    @if (isDone)
+                    {
+                        <span class="text-success fw-bold">✅ Đã nộp bài</span>
+                    }
+                    else if (isActive)
                     {
                         <a href="/MockExam/TakeExam?examId=@exam.EId" class="btn btn-success">Làm bài</a>
                     }

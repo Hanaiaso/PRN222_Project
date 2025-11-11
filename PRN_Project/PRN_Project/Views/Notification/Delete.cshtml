@@ -1,0 +1,17 @@
+﻿@model PRN_Project.Models.Notification
+
+@{
+    ViewData["Title"] = "Xóa thông báo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="alert alert-warning">
+    <p>Bạn có chắc chắn muốn xóa thông báo "<strong>@Model.Title</strong>" không?</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="NtId" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

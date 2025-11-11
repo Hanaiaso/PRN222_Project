@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Chat";
+    var receiverId = ViewBag.ReceiverId;
+}
+
+<div class="container mt-4">
+    <h3>Chat với người dùng: @receiverId</h3>
+    <p>Receiver ID: @ViewBag.ReceiverId</p>
+    <div id="chatWindow" style="height:300px; overflow-y:auto; border:1px solid #ccc; padding:10px;"></div>
+
+    <div class="mt-2">
+        <input type="text" id="messageInput" class="form-control" placeholder="Nhập tin nhắn..." />
+        <button id="sendButton" class="btn btn-primary mt-2">Gửi</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chathub")
+            .build();
+
+        const receiverId = "@ViewBag.ReceiverId";  // ✅ Sửa chỗ này
+        const chatWindow = document.getElementById("chatWindow");
+
+        connection.on("ReceiveMessage", (sender, message) => {
+            const msg = document.createElement("div");
+            msg.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatWindow.appendChild(msg);
+        });
+
+        document.getElementById("sendButton").addEventListener("click", async () => {
+            const message = document.getElementById("messageInput").value;
+            await connection.invoke("SendPrivateMessage", receiverId, message);
+            document.getElementById("messageInput").value = "";
+        });
+
+        connection.start();
+    </script>
+}
+

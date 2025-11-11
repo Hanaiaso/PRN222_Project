@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PRN_Project.Models;
 using System;
@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace PRN_Project.Controllers
 {
+    [Authorize] // Chỉ người đăng nhập có JWT hợp lệ mới truy cập được
     public class ExamController : Controller
     {
         private readonly LmsDbContext _context;
@@ -19,26 +20,10 @@ namespace PRN_Project.Controllers
             _context = context;
         }
 
-        // ===== Kiểm tra quyền truy cập =====
-        private bool IsAdminOrTeacher()
-        {
-            var role = HttpContext.Session.GetString("role");
-            return role == RoleType.Admin.ToString() || role == RoleType.Teacher.ToString();
-        }
-
-        private IActionResult CheckPermission()
-        {
-            if (!IsAdminOrTeacher())
-                return RedirectToAction("Login", "Account");
-            return null!;
-        }
-
         // ===== Danh sách bài thi =====
+        [Authorize(Roles = "Admin,Teacher")]
         public async Task<IActionResult> Index()
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
-
             var exams = await _context.Exams
                 .Include(e => e.Subject)
                 .OrderByDescending(e => e.CreatedAt)
@@ -48,10 +33,9 @@ namespace PRN_Project.Controllers
         }
 
         // ===== Xem chi tiết =====
+        [Authorize(Roles = "Admin,Teacher,Student")]
         public async Task<IActionResult> Details(int? id)
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
             if (id == null) return NotFound();
 
             var exam = await _context.Exams
@@ -63,23 +47,19 @@ namespace PRN_Project.Controllers
         }
 
         // ===== Tạo mới =====
+        [Authorize(Roles = "Admin,Teacher")]
         [HttpGet]
         public IActionResult Create()
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
-
             ViewBag.SubjectId = new SelectList(_context.Subjects, "SuId", "SuName");
             return View();
         }
 
+        [Authorize(Roles = "Admin,Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Exam exam)
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
-
             if (ModelState.IsValid)
             {
                 //exam.CreatedAt = DateTime.Now; //khong can do da dat mac dinh trong model
@@ -94,11 +74,10 @@ namespace PRN_Project.Controllers
         }
 
         // ===== Sửa =====
+        [Authorize(Roles = "Admin,Teacher")]
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
             if (id == null) return NotFound();
 
             var exam = await _context.Exams.FindAsync(id);
@@ -108,12 +87,11 @@ namespace PRN_Project.Controllers
             return View(exam);
         }
 
+        [Authorize(Roles = "Admin,Teacher")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Exam exam, string questionData)
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
             if (id != exam.EId) return NotFound();
 
             if (ModelState.IsValid)
@@ -154,11 +132,10 @@ namespace PRN_Project.Controllers
 
 
         // ===== Xóa =====
+        [Authorize(Roles = "Admin,Teacher")]
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
             if (id == null) return NotFound();
 
             var exam = await _context.Exams
@@ -169,13 +146,11 @@ namespace PRN_Project.Controllers
             return View(exam);
         }
 
+        [Authorize(Roles = "Admin,Teacher")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var permission = CheckPermission();
-            if (permission != null) return permission;
-
             var exam = await _context.Exams.FindAsync(id);
             if (exam != null)
             {

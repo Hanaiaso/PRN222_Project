@@ -1,9 +1,12 @@
 ﻿@using System.Text.Json
 @model PRN_Project.Models.Exam
+@using System.Security.Claims
 
 @{
     ViewData["Title"] = "Sửa bài thi";
     var role = Context.Session.GetString("role");
+<!--     var role = User.FindFirstValue(ClaimTypes.Role); -->
+
     if (role == "Admin")
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -11,6 +14,10 @@
     else if (role == "Teacher")
     {
         Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutStudent.cshtml";
     }
 }
 
