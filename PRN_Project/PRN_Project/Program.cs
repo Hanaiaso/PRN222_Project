@@ -78,6 +78,7 @@ app.UseAuthorization();
 
 // 🔹 Thêm MapHub trước khi MapControllerRoute
 app.MapHub<ChatHub>("/chathub");
+app.MapHub < NotificationHub >("/notificationHUb");
 
 
 app.MapControllerRoute(

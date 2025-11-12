@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using PRN_Project.Hubs;
 using PRN_Project.Models;
 using System.Security.Claims;
 
@@ -10,10 +12,11 @@ namespace PRN_Project.Controllers
     public class NotificationController : Controller
     {
         private readonly LmsDbContext _context;
-
-        public NotificationController(LmsDbContext context)
+        private readonly IHubContext<NotificationHub> _hubContext;
+        public NotificationController(LmsDbContext context, IHubContext<NotificationHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         // Lấy thông tin người dùng hiện tại từ JWT Claims
@@ -28,7 +31,7 @@ namespace PRN_Project.Controllers
         private bool IsStudent() => CurrentRole == "Student";
 
         // ===== Danh sách tất cả thông báo (Admin-only) =====
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var notifications = _context.Notifications
@@ -42,7 +45,7 @@ namespace PRN_Project.Controllers
         }
 
         // ===== Xem chi tiết =====
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Details(int id)
         {
             var notification = _context.Notifications
@@ -72,7 +75,7 @@ namespace PRN_Project.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Notification notification, int[] selectedReceivers)
+        public async Task<IActionResult> Create(Notification notification, int[] selectedReceivers)
         {
             if (!ModelState.IsValid)
             {
@@ -81,12 +84,12 @@ namespace PRN_Project.Controllers
                     .ToList();
                 return View(notification);
             }
-
+ 
             notification.SentTime = DateTime.Now;
             notification.SenderId = CurrentAccountId;
 
             _context.Notifications.Add(notification);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             foreach (var receiverId in selectedReceivers)
             {
@@ -96,10 +99,13 @@ namespace PRN_Project.Controllers
                     ReceiverId = receiverId,
                     IsRead = false
                 };
+                Console.WriteLine(nr);
                 _context.NotificationReceivers.Add(nr);
             }
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            await _hubContext.Clients.All.SendAsync("ReceiveNotification", $"📢 Thông báo mới: {notification.Title}");
+
             return RedirectToAction(nameof(Index));
         }
 
