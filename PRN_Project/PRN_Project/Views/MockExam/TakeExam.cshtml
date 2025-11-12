@@ -35,22 +35,87 @@
 <script>
     let timeLeft = @duration;
     const timerDisplay = document.getElementById("timer");
+    let formSubmitted = false;
 
+    // 🕒 Bộ đếm ngược
     function updateTimer() {
+        if (formSubmitted) return;
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
         timerDisplay.innerText = `${minutes} phút ${seconds} giây`;
         timeLeft--;
 
         if (timeLeft <= 0) {
-            document.getElementById("examForm").submit();
+            autoSubmit("⏰ Hết thời gian làm bài. Hệ thống tự động nộp.");
         } else {
             setTimeout(updateTimer, 1000);
         }
     }
     updateTimer();
 
-        window.addEventListener("beforeunload", function (e) {
-        navigator.sendBeacon('/MockExam/AutoSubmit'); // gửi request nền khi đóng tab
+    // ✅ Hàm nộp bài (chỉ chạy 1 lần)
+    function autoSubmit(reason = "") {
+        if (formSubmitted) return;
+        formSubmitted = true;
+        sessionStorage.setItem("exam_submitted_@Model.EId", "true");
+
+        if (reason) alert(reason);
+
+        const form = document.getElementById("examForm");
+        const formData = new FormData(form);
+
+        try {
+            // Gửi dữ liệu an toàn ngay cả khi reload/đóng trang
+            navigator.sendBeacon(form.action, new URLSearchParams(formData));
+        } catch (e) {
+            // Fallback cho trình duyệt cũ
+            form.submit();
+        }
+    }
+
+    // Khi người dùng nộp thủ công
+    document.getElementById("examForm").addEventListener("submit", () => {
+        formSubmitted = true;
+        sessionStorage.setItem("exam_submitted_@Model.EId", "true");
+    });
+
+    // ⚠️ Cảnh báo khi người dùng rời khỏi trang (bao gồm reload hoặc back)
+    window.addEventListener("beforeunload", (e) => {
+        if (!formSubmitted) {
+            autoSubmit("⚠️ Bạn vừa rời khỏi trang thi. Bài thi đã được tự động nộp.");
+            e.preventDefault();
+            e.returnValue = "";
+        }
+    });
+
+    // 🚫 Ngăn quay lại sau khi đã nộp
+    window.addEventListener("pageshow", () => {
+        if (sessionStorage.getItem("exam_submitted_@Model.EId") === "true") {
+            alert("❌ Bạn đã nộp bài thi này. Không thể quay lại.");
+            window.location.href = "/Student/Dashboard";
+        }
+    });
+
+    // 🚨 Theo dõi hành vi gian lận khi chuyển tab
+    let tabSwitchCount = 0;
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden && !formSubmitted) {
+            tabSwitchCount++;
+            if (tabSwitchCount === 1) {
+                alert("⚠️ Bạn vừa rời khỏi tab làm bài. Nếu tiếp tục, hệ thống sẽ tự động nộp.");
+            } else if (tabSwitchCount > 1) {
+                autoSubmit("🚨 Phát hiện gian lận: Bạn đã rời khỏi tab nhiều lần. Bài thi bị tự động nộp.");
+            }
+        }
+    });
+
+    // 🧱 Phát hiện mở nhiều tab cùng bài thi
+    const tabId = Date.now().toString();
+    localStorage.setItem("currentExamTab_@Model.EId", tabId);
+
+    window.addEventListener("storage", (event) => {
+        if (event.key === "currentExamTab_@Model.EId" && event.newValue !== tabId && !formSubmitted) {
+            autoSubmit("🚨 Phát hiện mở nhiều tab cùng lúc. Bài thi bị tự động nộp.");
+        }
     });
 </script>

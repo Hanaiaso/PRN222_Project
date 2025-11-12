@@ -5,17 +5,25 @@ namespace PRN_Project.Hubs
 {
     public class ChatHub : Hub
     {// Gửi tin nhắn tới người nhận cụ thể
-        public async Task SendPrivateMessage(string receiverId, string message)
+     // PHƯƠNG THỨC MỚI CHO CHỨC NĂNG CHAT
+        public async Task SendMessage(string user, string message)
         {
-            string sender = Context.UserIdentifier; // hoặc lấy từ Context.User.Identity.Name
-
-            await Clients.User(receiverId).SendAsync("ReceiveMessage", sender, message);
+            // Phát sóng tin nhắn đến tất cả các client
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        // Khi user kết nối, có thể lưu lại ConnectionId
+
         public override async Task OnConnectedAsync()
         {
+            Console.WriteLine($"Client connected: {Context.ConnectionId}");
             await base.OnConnectedAsync();
         }
+
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            Console.WriteLine($"Client disconnected: {Context.ConnectionId}");
+            await base.OnDisconnectedAsync(exception);
+        }
+
     }
 }

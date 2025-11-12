@@ -9,12 +9,16 @@
   <ItemGroup>
     <Compile Remove="Views\Homes\**" />
     <Compile Remove="Views\Students\**" />
+    <Compile Remove="wwwroot\lib\microsoft\**" />
     <Content Remove="Views\Homes\**" />
     <Content Remove="Views\Students\**" />
+    <Content Remove="wwwroot\lib\microsoft\**" />
     <EmbeddedResource Remove="Views\Homes\**" />
     <EmbeddedResource Remove="Views\Students\**" />
+    <EmbeddedResource Remove="wwwroot\lib\microsoft\**" />
     <None Remove="Views\Homes\**" />
     <None Remove="Views\Students\**" />
+    <None Remove="wwwroot\lib\microsoft\**" />
   </ItemGroup>
 
   <ItemGroup>
