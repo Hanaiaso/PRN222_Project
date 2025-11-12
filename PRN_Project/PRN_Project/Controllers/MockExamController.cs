@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
 using PRN_Project.Models.JsonModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace PRN_Project.Controllers
 {
+    [Authorize]
     public class MockExamController : Controller
     {
         private readonly LmsDbContext _context;
@@ -15,12 +17,14 @@ namespace PRN_Project.Controllers
         }
 
         // Step 1: chọn môn thi
+        [Authorize(Roles = "Student")]
         public IActionResult ChooseSubject()
         {
             var subjects = _context.Subjects.ToList();
             return View(subjects);
         }
 
+        [Authorize(Roles = "Student")]
         public IActionResult ChooseExam(int subjectId)
         {
             var sid = HttpContext.Session.GetInt32("studentId");
@@ -47,6 +51,7 @@ namespace PRN_Project.Controllers
 
 
         // Step 3: hiển thị bài thi
+        [Authorize(Roles = "Student")]
         public IActionResult TakeExam(int examId)
         {
             var exam = _context.Exams.Find(examId);
@@ -77,6 +82,7 @@ namespace PRN_Project.Controllers
         }
 
         // Step 4: nộp bài thi (gọi từ Submit hoặc tự động nộp)
+        [Authorize(Roles = "Student")]
         [HttpPost]
         public IActionResult SubmitExam(int examId, List<StudentAnswerModel> answers)
         {
@@ -124,6 +130,7 @@ namespace PRN_Project.Controllers
         }
 
         // Step 5: xem kết quả
+        [Authorize(Roles = "Student")]
         public IActionResult Result(int submitId)
         {
             var submit = _context.Submits
@@ -138,6 +145,7 @@ namespace PRN_Project.Controllers
         }
 
         // ✅ API cho client gọi khi thoát trang
+        [Authorize(Roles = "Student")]
         [HttpPost]
         public IActionResult AutoSubmit()
         {
