@@ -51,8 +51,24 @@ namespace PRN_Project.Controllers
             account.Status = true;
             account.Role = RoleType.Student;
 
+            // Lưu Account trước
             _context.Accounts.Add(account);
             _context.SaveChanges();
+
+            // ========== TẠO BẢN GHI STUDENT TỰ ĐỘNG ==========
+            if (account.Role == RoleType.Student)
+            {
+                var student = new Student
+                {
+                    AId = account.AId,  // Lấy ID vừa được tạo
+                    SName = account.Email.Split('@')[0], // Lấy tên từ email, hoặc để trống
+                    Gender = null,  // Để null, user sẽ cập nhật sau
+                    Dob = null      // Để null, user sẽ cập nhật sau
+                };
+
+                _context.Students.Add(student);
+                _context.SaveChanges();
+            }
 
             TempData["Success"] = "Đăng ký thành công! Hãy đăng nhập.";
             return RedirectToAction("Login", "Account");
@@ -76,29 +92,56 @@ namespace PRN_Project.Controllers
                 ViewBag.Error = "Email hoặc mật khẩu không đúng!";
                 return View();
             }
-           
-            bool isMatch = BCrypt.Net.BCrypt.Verify(password, acc.Password);
+
+            bool isMatch = false;
+
+            try
+            {
+                // Kiểm tra xem password trong DB có phải hash BCrypt không
+                if (acc.Password.StartsWith("$2a$") || acc.Password.StartsWith("$2b$") || acc.Password.StartsWith("$2y$"))
+                {
+                    // Là hash → xác minh bằng BCrypt
+                    isMatch = BCrypt.Net.BCrypt.Verify(password, acc.Password);
+                }
+                else
+                {
+                    // Chưa mã hóa → so sánh trực tiếp
+                    isMatch = password == acc.Password;
+
+                    // Nếu đúng thì hash lại để chuyển sang chuẩn BCrypt
+                    if (isMatch)
+                    {
+                        acc.Password = BCrypt.Net.BCrypt.HashPassword(password);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            catch
+            {
+                ViewBag.Error = "Đã xảy ra lỗi khi kiểm tra mật khẩu.";
+                return View();
+            }
+
             if (!isMatch)
             {
                 ViewBag.Error = "Email hoặc mật khẩu không đúng!";
                 return View();
             }
 
-            // Sinh JWT Token
+            // ==== Sinh JWT Token ====
             var token = GenerateJwtToken(acc);
 
-            // Có thể lưu vào cookie (để gửi tự động mỗi request)
             Response.Cookies.Append("jwt", token, new CookieOptions
             {
                 HttpOnly = true,
                 Expires = DateTime.Now.AddMinutes(60)
             });
 
-            //return RedirectToAction("Index", "Home");
-             HttpContext.Session.SetInt32("accountId", acc.AId);
-             HttpContext.Session.SetString("userEmail", acc.Email);
-             HttpContext.Session.SetString("role", acc.Role.ToString());
-                    
+            // Lưu session
+            HttpContext.Session.SetInt32("accountId", acc.AId);
+            HttpContext.Session.SetString("userEmail", acc.Email);
+            HttpContext.Session.SetString("role", acc.Role.ToString());
+
             if (acc.Role.ToString() == "Teacher")
                 return RedirectToAction("Dashboard", "Teacher");
             else if (acc.Role.ToString() == "Student")

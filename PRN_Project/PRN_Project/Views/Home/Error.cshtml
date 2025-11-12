@@ -1,6 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using System.Security.Claims
 @{
+    ViewData["Title"] = "Lỗi truy cập";
+
+    // Lấy role từ claim
+    var role = User.FindFirstValue(ClaimTypes.Role);
+    string backUrl = "";
+
+    if (role == "Admin")
+    {
+        backUrl = Url.Action("Dashboard", "Admin");
+    }
+    else if (role == "Teacher")
+    {
+        backUrl = Url.Action("Dashboard", "Teacher");
+    }
+    else if (role == "Student")
+    {
+        backUrl = Url.Action("Dashboard", "Student");
+    }
+    else
+    {
+        // Nếu chưa đăng nhập hoặc role không xác định
+        backUrl = Url.Action("Login", "Account");
+    }
 }
-<h1>Ngu</h1>
+
+<div class="container text-center mt-5">
+    <h1 class="text-danger">Lỗi</h1>
+    <p class="fs-5">@ViewBag.Message</p>
+
+    <a href="@backUrl" class="btn btn-primary mt-3">
+        Quay lại trang chính
+    </a>
+</div>

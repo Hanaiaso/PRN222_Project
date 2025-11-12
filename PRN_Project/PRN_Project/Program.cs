@@ -20,7 +20,9 @@ builder.Services.AddSession(opt =>
 builder.Services.AddDbContext<LmsDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
 );
+
 builder.Services.AddSignalR();
+
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
@@ -77,8 +79,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // 🔹 Thêm MapHub trước khi MapControllerRoute
-app.MapHub<ChatHub>("/chathub");
-app.MapHub < NotificationHub >("/notificationHUb");
+app.MapHub<PRN_Project.Hubs.ChatHub>("/chatHub");
 
 
 app.MapControllerRoute(

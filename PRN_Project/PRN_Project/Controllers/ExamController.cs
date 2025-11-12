@@ -96,39 +96,32 @@ namespace PRN_Project.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    // Giữ lại dữ liệu cũ nếu không có questionData
-                    if (!string.IsNullOrEmpty(questionData))
-                    {
-                        exam.ExamContent = questionData;
-                    }
-                    else
-                    {
-                        // Nếu người dùng không chỉnh sửa phần câu hỏi, giữ nguyên dữ liệu cũ
-                        var oldExam = await _context.Exams.AsNoTracking().FirstOrDefaultAsync(e => e.EId == id);
-                        if (oldExam != null)
-                        {
-                            exam.ExamContent = oldExam.ExamContent;
-                        }
-                    }
+                var dbExam = await _context.Exams.FirstOrDefaultAsync(e => e.EId == id);
+                if (dbExam == null) return NotFound();
 
-                    _context.Update(exam);
-                    await _context.SaveChangesAsync();
-                    TempData["Success"] = "Cập nhật bài thi thành công!";
-                    return RedirectToAction(nameof(Index));
-                }
-                catch (DbUpdateConcurrencyException)
+                // Giữ nguyên CreatedAt
+                // Cập nhật các trường có thể sửa
+                dbExam.EName = exam.EName;
+                dbExam.SuId = exam.SuId;
+                dbExam.StartTime = exam.StartTime;
+                dbExam.EndTime = exam.EndTime;
+                dbExam.Status = exam.Status;
+
+                // Giữ lại nội dung câu hỏi nếu không thay đổi
+                if (!string.IsNullOrEmpty(questionData))
                 {
-                    if (!_context.Exams.Any(e => e.EId == exam.EId))
-                        return NotFound();
-                    throw;
+                    dbExam.ExamContent = questionData;
                 }
+
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Cập nhật bài thi thành công!";
+                return RedirectToAction(nameof(Index));
             }
 
             ViewBag.SubjectId = new SelectList(_context.Subjects, "SuId", "SuName", exam.SuId);
             return View(exam);
         }
+
 
 
         // ===== Xóa =====
