@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PRN_Project.Controllers.MyExamRankViewModel>
+@{
+    ViewData["Title"] = "Xếp hạng của tôi";
+}
+
+<h2>Xếp hạng của tôi</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Bạn chưa tham gia bài thi nào.</p>
+}
+else
+{
+    <table class="table table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Bài thi</th>
+                <th>Môn học</th>
+                <th>Điểm</th>
+                <th>Thứ hạng</th>
+                <th>Tổng thí sinh</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ExamName</td>
+                    <td>@item.SubjectName</td>
+                    <td>@item.Score.ToString("0.00")</td>
+                    <td>@item.RankInExam</td>
+                    <td>@item.TotalParticipants</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

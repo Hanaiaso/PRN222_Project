@@ -4,8 +4,8 @@
 @{
     ViewData["Title"] = "Chi tiết bài thi";
 
-    var role = Context.Session.GetString("role");
-<!--     var role = User.FindFirstValue(ClaimTypes.Role); -->
+    // var role = Context.Session.GetString("role");
+    var role = User.FindFirstValue(ClaimTypes.Role); 
 
     if (role == "Admin")
     {

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<PRN_Project.Controllers.SubjectExamRankingViewModel>
+
+@{
+    ViewData["Title"] = "Xếp hạng theo môn học";
+}
+
+<h2 class="mb-4">📊 Xếp hạng theo môn học</h2>
+
+<form method="get" class="mb-4">
+    <div style="display:flex; align-items:center; gap:1rem;">
+        <label class="fw-bold">Môn học:</label>
+        <select name="subjectId" asp-items="ViewBag.Subjects" class="form-select" onchange="this.form.submit()">
+            <option value="">-- Chọn môn học --</option>
+        </select>
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <p class="text-muted mt-3">Vui lòng chọn môn học để xem bảng xếp hạng.</p>
+}
+else
+{
+    <div>
+        @foreach (var examGroup in Model)
+        {
+            var examId = $"exam{examGroup.ExamId}";
+            var maxScore = examGroup.Rankings.Any() ? examGroup.Rankings.Max(r => r.Score) : 0;
+            var minScore = examGroup.Rankings.Any() ? examGroup.Rankings.Min(r => r.Score) : 0;
+            var avgScore = examGroup.Rankings.Any() ? examGroup.Rankings.Average(r => r.Score) : 0;
+
+            <div class="mb-3 border rounded p-2 shadow-sm">
+                <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;"
+                     onclick="toggleTable('@examId')">
+                    <strong>📝 @examGroup.ExamName</strong>
+                    <span style="color:gray; font-size:0.9rem;">(@examGroup.Rankings.Count học sinh) ⬇</span>
+                </div>
+
+                <div style="margin-top:0.5rem; font-size:0.9rem; color:#555;">
+                    <span>Trung bình: @avgScore.ToString("0.00")</span> |
+                    <span>Điểm cao nhất: @maxScore.ToString("0.00")</span> |
+                    <span>Điểm thấp nhất: @minScore.ToString("0.00")</span>
+                </div>
+
+                <div id="@examId" style="display:none; margin-top:0.5rem;">
+                    @if (examGroup.Rankings.Any())
+                    {
+                        <table style="width:100%; border-collapse:collapse; margin-top:0.5rem;">
+                            <thead style="background-color:#f2f2f2;">
+                                <tr>
+                                    <th style="padding:4px 8px; border:1px solid #ddd;">Hạng</th>
+                                    <th style="padding:4px 8px; border:1px solid #ddd;">Học sinh</th>
+                                    <th style="padding:4px 8px; border:1px solid #ddd;">Điểm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var r in examGroup.Rankings)
+                                {
+                                    var isTop = r.Score == maxScore;
+                                    <tr style="@(isTop ? "background-color:#cce5ff;" : "")">
+                                        <td style="padding:4px 8px; border:1px solid #ddd;">@r.RankPosition</td>
+                                        <td style="padding:4px 8px; border:1px solid #ddd;">@r.StudentName</td>
+                                        <td style="padding:4px 8px; border:1px solid #ddd;">@r.Score.ToString("0.00")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <!-- Export -->
+                        <a class="btn btn-outline-success btn-sm"
+                           href="@Url.Action("ExportCsv", "Ranking", new { subjectId = examGroup.ExamId })">
+                            Export Excel
+                        </a>
+                    }
+                    else
+                    {
+                        <p class="text-muted mt-2">Chưa có học sinh nào nộp bài thi này.</p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<script>
+    function toggleTable(id) {
+        const tableDiv = document.getElementById(id);
+        tableDiv.style.display = (tableDiv.style.display === "none") ? "block" : "none";
+    }
+</script>

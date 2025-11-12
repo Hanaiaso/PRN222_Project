@@ -44,9 +44,8 @@
 </form>
 
 @{
-    var role = Context.Session.GetString("role"); 
-<!--     var role = User.FindFirstValue(ClaimTypes.Role); -->
-
+    // var role = Context.Session.GetString("role"); 
+    var role = User.FindFirstValue(ClaimTypes.Role);
     if (role == "Admin")
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
