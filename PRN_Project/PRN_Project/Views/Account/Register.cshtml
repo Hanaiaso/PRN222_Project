@@ -9,6 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng ký - LMS</title>
     <link rel="stylesheet" href="~/css/auth-styles.css" />
+    <style>
+        .password-hint {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+
+    </style>
 </head>
 <body>
     <div class="auth-container">
@@ -28,6 +36,7 @@
             <div>
                 <label>Mật khẩu:</label>
                 <input asp-for="Password" type="password" placeholder="Nhập mật khẩu" />
+                <small class="password-hint">Ít nhất 8 ký tự, bao gồm chữ và số</small>
                 <span asp-validation-for="Password"></span>
             </div>
             <div>
