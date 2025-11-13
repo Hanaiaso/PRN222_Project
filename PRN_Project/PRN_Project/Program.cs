@@ -1,9 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
+using PRN_Project.Interfaces;
+using PRN_Project.Repositories;
+using PRN_Project.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<LmsDbContext>(opts => opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon")));
+
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 builder.Services.AddSession(opt =>
 {
