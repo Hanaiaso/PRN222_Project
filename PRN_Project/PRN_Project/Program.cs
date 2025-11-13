@@ -18,30 +18,39 @@ var builder = WebApplication.CreateBuilder(args);
 // ======= 1️⃣ Cấu hình MVC và DBContext =======
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<LmsDbContext>(opts =>
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
+);
+
+// ======= Đăng ký Session =======
 builder.Services.AddSession(opt =>
 {
     opt.IdleTimeout = TimeSpan.FromMinutes(30);
     opt.Cookie.HttpOnly = true;
     opt.Cookie.IsEssential = true;
 });
-builder.Services.AddDbContext<LmsDbContext>(opts =>
-    opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
-);
+
+// ======= Đăng ký SignalR =======
+builder.Services.AddSignalR();
+
+
+
 
 // ======= Đăng ký Dependency Injection cho Repository và Service =======
-
-builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
-builder.Services.AddScoped<IProfileService, ProfileService>();
 
 // Repositories
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
 
 // Services
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IMockExamService, MockExamService>();
 
-builder.Services.AddSignalR();
+
 
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -98,7 +107,7 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// 🔹 Thêm MapHub trước khi MapControllerRoute
+// Thêm MapHub trước khi MapControllerRoute
 app.MapHub<PRN_Project.Hubs.ChatHub>("/chatHub");
 
 
