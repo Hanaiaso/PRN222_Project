@@ -5,8 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PRN_Project.Hubs;
 using PRN_Project.Models;
+using PRN_Project.Repositories.Interfaces;
+using PRN_Project.Repositories;
+using PRN_Project.Services.Interfaces;
+using PRN_Project.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // ======= 1️⃣ Cấu hình MVC và DBContext =======
 builder.Services.AddControllersWithViews();
@@ -20,6 +25,10 @@ builder.Services.AddSession(opt =>
 builder.Services.AddDbContext<LmsDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
 );
+
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+
 
 builder.Services.AddSignalR();
 
