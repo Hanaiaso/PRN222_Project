@@ -1,68 +1,125 @@
 ﻿"use strict";
 
+// 1. THAY ĐỔI: Kết nối đến Private Chat Hub
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chatHub")
+    .withUrl("/privateChatHub")
     .build();
 
+// Lấy Account ID của người dùng hiện tại từ input ẩn
+const currentAccountId = parseInt(document.getElementById("studentIdHidden").value);
+// Lấy Tên người dùng hiện tại từ input readonly
+const currentUserName = document.getElementById("userInput").value;
+let currentTargetUserId = null;
+
 // -------------------------------------------------------------
-// CHỨC NĂNG CHAT VÀ THÔNG BÁO
+// CHỨC NĂNG CHAT CÁ NHÂN VÀ THÔNG BÁO
 // -------------------------------------------------------------
 
-// 1. Client lắng nghe sự kiện "ReceiveMessage" từ Hub
-connection.on("ReceiveMessage", (user, message) => {
-    // Tìm <ul> có id là messagesList
+// 1. Client lắng nghe sự kiện "ReceivePrivateMessage" từ Hub
+connection.on("ReceivePrivateMessage", (senderName, message) => {
     const messagesList = document.getElementById("messagesList");
-
-    // Tạo phần tử <li> mới để hiển thị tin nhắn
     const li = document.createElement("li");
-    li.textContent = `${user}: ${message}`;
 
-    // Thêm tin nhắn vào danh sách
+    // Format tin nhắn nhận được
+    li.textContent = `[${senderName}]: ${message}`;
+
     messagesList.appendChild(li);
+    messagesList.scrollTop = messagesList.scrollHeight; // Tự động cuộn
 
-    // Xóa nội dung ô message sau khi gửi
-    document.getElementById("messageInput").value = "";
+    // Kích hoạt thông báo chỉ khi tin nhắn đến TỪ NGƯỜI KHÁC
+    if (senderName !== currentUserName) {
+        showPopup(`${senderName}: ${message}`);
+        playSound();
+        showBrowserNotification(`${senderName}: ${message}`);
+    }
 });
 
-// 2. Client lắng nghe sự kiện "ReceiveNotification" để hiển thị thông báo
-// THAY ĐỔI: Thêm event listener mới để nhận thông báo khi có tin nhắn từ người khác
-connection.on("ReceiveNotification", (user, message) => {
-    // Hiển thị popup thông báo nổi
-    showPopup(`${user}: ${message}`);
+// 2. Gắn sự kiện cho nút START CHAT (Tìm người dùng theo Email và tạo/tìm phòng chat)
+document.getElementById("startChatButton")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    // Lấy Email từ ô nhập Email người nhận
+    const targetEmail = document.getElementById("targetEmailInput").value;
 
-    // Phát âm thanh thông báo
-    playSound();
-
-    // Hiển thị thông báo trình duyệt (nếu được phép)
-    showBrowserNotification(`${user}: ${message}`);
-});
-
-// 3. Gắn sự kiện cho nút "Send Message"
-document.getElementById("sendButton").addEventListener("click", (event) => {
-    const user = document.getElementById("userInput").value;
-    const message = document.getElementById("messageInput").value;
-
-    // Kiểm tra message không rỗng (user có thể để trống - sẽ dùng anonymous)
-    if (!message) {
-        console.warn("Message cannot be empty.");
+    if (!targetEmail) {
+        alert("Vui lòng nhập Email người muốn chat.");
         return;
     }
 
-    // Gọi phương thức SendMessage trên Hub Server
-    connection.invoke("SendMessage", user, message).catch((err) => {
-        return console.error(err.toString());
-    });
+    // 🛠️ SỬA LỖI: Chuẩn bị dữ liệu dưới dạng URL-encoded
+    const formData = new URLSearchParams();
+    formData.append('targetEmail', targetEmail);
 
-    // Ngăn chặn hành vi mặc định của form/button
+    document.getElementById("chatStatus").textContent = "Đang tìm người dùng...";
+
+    // Gọi API Controller với dữ liệu Form Data
+    fetch('/Chat/StartPrivateChat', {
+        method: 'POST',
+        headers: {
+            // THAY ĐỔI: Sử dụng content type cho Form Data
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString() // Gửi dữ liệu dưới dạng chuỗi URL-encoded
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                currentTargetUserId = data.targetUserId; // Lấy ID người nhận từ Controller
+                // Cập nhật trạng thái
+                document.getElementById("chatStatus").textContent = `Đang chat với: ${data.targetUserName}`;
+                document.getElementById("chatStatus").style.color = "green"; // Thêm màu xanh cho dễ nhìn
+
+                document.getElementById("sendButton").disabled = false;
+
+                // Xóa lịch sử cũ và hiển thị lịch sử chat mới
+                const messagesList = document.getElementById("messagesList");
+                messagesList.innerHTML = '';
+                data.history.forEach(msg => {
+                    const senderDisplay = msg.senderName || (msg.senderId === currentAccountId ? currentUserName : "Người lạ");
+                    const li = document.createElement("li");
+                    li.textContent = `[${senderDisplay}]: ${msg.content}`;
+                    messagesList.appendChild(li);
+                });
+
+            } else {
+                alert(data.message);
+                currentTargetUserId = null; // Reset
+                document.getElementById("sendButton").disabled = true;
+                document.getElementById("chatStatus").textContent = "Chưa chọn người chat.";
+                document.getElementById("chatStatus").style.color = "#cc3333"; // Reset màu lỗi
+            }
+        })
+        .catch(err => console.error("Start Chat Error:", err));
+});
+
+
+// 3. Gắn sự kiện cho nút "Send Message" (Gửi tin nhắn cá nhân)
+document.getElementById("sendButton").addEventListener("click", (event) => {
+    const message = document.getElementById("messageInput").value;
+
+    if (!message || currentTargetUserId === null) {
+        console.warn("Message or Target User is missing.");
+        return;
+    }
+
+    // Gọi phương thức SendPrivateMessage trên Hub Server
+    connection.invoke("SendPrivateMessage", currentAccountId, currentUserName, currentTargetUserId, message)
+        .then(() => {
+            // Xóa nội dung ô message sau khi gửi thành công
+            document.getElementById("messageInput").value = "";
+        })
+        .catch((err) => {
+            return console.error("SendPrivateMessage Error:", err.toString());
+        });
+
     event.preventDefault();
 });
 
+
 // -------------------------------------------------------------
-// CÁC HÀM HỖ TRỢ THÔNG BÁO
+// CÁC HÀM HỖ TRỢ THÔNG BÁO (GIỮ NGUYÊN)
 // -------------------------------------------------------------
 
 // 4. Hàm hiển thị popup thông báo nổi trên màn hình
-// THÊM MỚI: Tạo popup notification dạng toast
 function showPopup(message) {
     const notif = document.createElement("div");
     notif.className = "notification-popup";
@@ -75,7 +132,6 @@ function showPopup(message) {
 }
 
 // 5. Hàm phát âm thanh thông báo
-// THÊM MỚI: Phát âm thanh khi có tin nhắn mới
 function playSound() {
     const audio = new Audio("/sounds/newmessage.mp3");
     audio.play().catch((e) => {
@@ -84,16 +140,13 @@ function playSound() {
 }
 
 // 6. Hàm hiển thị thông báo của trình duyệt (Browser Notification API)
-// THÊM MỚI: Sử dụng Notification API của browser
 function showBrowserNotification(content) {
-    // Nếu đã được cấp quyền, hiển thị thông báo ngay
     if (Notification.permission === "granted") {
         new Notification("Tin nhắn mới", {
             body: content,
             icon: "/img/chat.png"
         });
     }
-    // Nếu chưa từ chối, yêu cầu quyền
     else if (Notification.permission !== "denied") {
         Notification.requestPermission().then((permission) => {
             if (permission === "granted") {
@@ -106,15 +159,19 @@ function showBrowserNotification(content) {
     }
 }
 
+
 // -------------------------------------------------------------
 // KẾT NỐI SIGNALR
 // -------------------------------------------------------------
 
 // 7. Khởi động kết nối SignalR
-// THAY ĐỔI: Thêm logic yêu cầu quyền notification khi kết nối thành công
 connection.start()
     .then(() => {
-        console.log("SignalR connected");
+        console.log("SignalR connected to Private Chat Hub");
+
+        // GỌI HÀM REGISTER ĐỂ ÁNH XẠ ACCOUNTID VÀO CONNECTIONID TRÊN SERVER
+        connection.invoke("Register", currentAccountId)
+            .catch(err => console.error("Register Error:", err.toString()));
 
         // Yêu cầu quyền thông báo trình duyệt nếu chưa có
         if (Notification.permission !== "granted" && Notification.permission !== "denied") {
