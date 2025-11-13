@@ -10,6 +10,9 @@ namespace PRN_Project.Hubs
         {
             // Phát sóng tin nhắn đến tất cả các client
             await Clients.All.SendAsync("ReceiveMessage", user, message);
+
+            // Gửi thông báo đến tất cả người khác (ngoại trừ người gửi)
+            await Clients.Others.SendAsync("ReceiveNotification", user, message);
         }
 
 
