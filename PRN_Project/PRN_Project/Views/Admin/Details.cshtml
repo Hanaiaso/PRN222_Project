@@ -1,0 +1,17 @@
+﻿@model PRN_Project.Models.Teacher
+
+@{
+    ViewData["Title"] = "Teacher Details";
+}
+
+<h2>Teacher Details</h2>
+
+<div class="card mt-3 p-3">
+    <h4>@Model.TName</h4>
+    <p><strong>Qualification:</strong> @Model.Qualification</p>
+    <p><strong>Email:</strong> @Model.Account?.Email</p>
+    <p><strong>Status:</strong> @(Model.Account?.Status == true ? "Active" : "Inactive")</p>
+</div>
+
+<a asp-action="TeacherAccount" class="btn btn-secondary mt-3">Back to List</a>
+
