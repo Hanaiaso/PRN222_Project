@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PRN_Project.Hubs;
 using PRN_Project.Models;
-using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Repositories;
-using PRN_Project.Services.Interfaces;
+using PRN_Project.Repositories.Implementations;
+using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Services;
+using PRN_Project.Services.Implementations;
+using PRN_Project.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,9 +28,18 @@ builder.Services.AddDbContext<LmsDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
 );
 
+// ======= Đăng ký Dependency Injection cho Repository và Service =======
+
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 
+// Repositories
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+
+// Services
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddSignalR();
 
