@@ -268,34 +268,75 @@ namespace PRN_Project.Controllers
         [HttpGet]
         public IActionResult ResetPassword()
         {
-            return View();
+            // Kiểm tra xem có email trong session không
+            string email = HttpContext.Session.GetString("otpEmail");
+            if (string.IsNullOrEmpty(email))
+            {
+                TempData["Error"] = "Phiên làm việc đã hết hạn. Vui lòng thực hiện lại quy trình quên mật khẩu.";
+                return RedirectToAction("ForgotPassword");
+            }
+
+            // Truyền một Account model rỗng xuống View
+            return View(new Account());
         }
 
         [HttpPost]
-        public IActionResult ResetPassword(string newPassword)
+        public IActionResult ResetPassword(Account model)
         {
+            // Kiểm tra email trong session
             string email = HttpContext.Session.GetString("otpEmail");
-            if (email == null)
-                return RedirectToAction("ForgotPassword");
-
-            var acc = _context.Accounts.FirstOrDefault(a => a.Email == email);
-            if (acc != null)
+            if (string.IsNullOrEmpty(email))
             {
-                // Hash lại mật khẩu mới trước khi lưu
-                acc.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                TempData["Error"] = "Phiên làm việc đã hết hạn. Vui lòng thực hiện lại quy trình quên mật khẩu.";
+                return RedirectToAction("ForgotPassword");
+            }
+
+            // Tạm thời loại bỏ validation của Email và Role (vì không cần thiết ở đây)
+            ModelState.Remove("Email");
+            ModelState.Remove("Role");
+
+            // Kiểm tra ModelState (Password và RePassword)
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "Vui lòng kiểm tra lại thông tin mật khẩu!";
+                return View(model);
+            }
+
+            // Kiểm tra null (phòng trường hợp)
+            if (string.IsNullOrWhiteSpace(model.Password))
+            {
+                ViewBag.Error = "Mật khẩu mới không được để trống!";
+                return View(model);
+            }
+
+            // Tìm tài khoản
+            var acc = _context.Accounts.FirstOrDefault(a => a.Email == email);
+            if (acc == null)
+            {
+                ViewBag.Error = "Không tìm thấy tài khoản. Vui lòng thử lại!";
+                return View(model);
+            }
+
+            try
+            {
+                // Hash mật khẩu mới
+                acc.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
                 _context.SaveChanges();
 
+                // Xóa session OTP
                 HttpContext.Session.Remove("otpCode");
                 HttpContext.Session.Remove("otpEmail");
                 HttpContext.Session.Remove("otpExpire");
 
-                TempData["Success"] = "Đặt lại mật khẩu thành công!";
+                TempData["Success"] = "Đặt lại mật khẩu thành công! Hãy đăng nhập với mật khẩu mới.";
                 return RedirectToAction("Login");
             }
-
-            ViewBag.Error = "Có lỗi xảy ra, vui lòng thử lại!";
-            return View();
-        }
+            catch (Exception ex)
+            {
+                ViewBag.Error = $"Có lỗi xảy ra: {ex.Message}";
+                return View(model);
+            }
+        }       
 
         // ========== ĐĂNG XUẤT ==========
         public IActionResult Logout()

@@ -14,16 +14,26 @@ namespace PRN_Project.Models
         [Key]
         public int AId { get; set; }
 
-        [Required(ErrorMessage = "Email không được bỏ trống"), MaxLength(100)]
+        [Required(ErrorMessage = "Email không được bỏ trống")]
+        [MaxLength(100)]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+            ErrorMessage = "Email phải có định dạng hợp lệ với @ và đuôi domain")]
         public string Email { get; set; } = null!;
 
-        [Required(ErrorMessage = "Password không được bỏ trống"), MaxLength(255)]
+        [Required(ErrorMessage = "Password không được bỏ trống")]
+        [MaxLength(255)]
+        [MinLength(8, ErrorMessage = "Mật khẩu phải có ít nhất 8 ký tự")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@#$%^&+=!]{8,}$",
+            ErrorMessage = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm cả chữ và số")]
+        [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
 
         // Thêm RePassword nhưng KHÔNG lưu vào database
         [NotMapped] // dòng này rất quan trọng
-        [Compare("Password", ErrorMessage = "Password và Repassword không trùng khớp.")]
-        [Required(ErrorMessage = "Repassword không được bỏ trống"), MaxLength(255)]
+        [Compare("Password", ErrorMessage = "Password và Repassword không trùng khớp")]
+        [Required(ErrorMessage = "Repassword không được bỏ trống")]
+        [MaxLength(255)]
         [DataType(DataType.Password)]
         public string RePassword { get; set; } = null!;
 

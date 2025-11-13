@@ -9,6 +9,9 @@ namespace PRN_Project.Models
         public string OldPassword { get; set; } = null!;
 
         [Required(ErrorMessage = "New password không được bỏ trống")]
+        [MinLength(8, ErrorMessage = "Mật khẩu mới phải có ít nhất 8 ký tự")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@#$%^&+=!]{8,}$",
+            ErrorMessage = "Mật khẩu mới phải có ít nhất 8 ký tự, bao gồm cả chữ và số")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; } = null!;
 
@@ -17,5 +20,4 @@ namespace PRN_Project.Models
         [DataType(DataType.Password)]
         public string ReNewPassword { get; set; } = null!;
     }
-
 }
