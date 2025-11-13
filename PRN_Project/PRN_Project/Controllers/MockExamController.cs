@@ -3,29 +3,33 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
 using PRN_Project.Models.JsonModels;
+using PRN_Project.Services.Interfaces;
 
 namespace PRN_Project.Controllers
 {
     [Authorize]
     public class MockExamController : Controller
     {
-        private readonly LmsDbContext _context;
+        // Khai báo Service thay vì Context
+        private readonly IMockExamService _examService;
 
-        public MockExamController(LmsDbContext context)
+        // Dependency Injection cho Service
+        public MockExamController(IMockExamService examService)
         {
-            _context = context;
+            _examService = examService;
         }
 
         // Step 1: chọn môn thi
         [Authorize(Roles = "Student")]
-        public IActionResult ChooseSubject()
+        public async Task<IActionResult> ChooseSubject()
         {
-            var subjects = _context.Subjects.ToList();
+            var subjects = await _examService.GetSubjectsAsync();
             return View(subjects);
         }
 
+        // Step 2: chọn bài thi
         [Authorize(Roles = "Student")]
-        public IActionResult ChooseExam(int subjectId)
+        public async Task<IActionResult> ChooseExam(int subjectId)
         {
             var sid = HttpContext.Session.GetInt32("studentId");
             if (sid == null)
@@ -33,17 +37,11 @@ namespace PRN_Project.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // Lấy danh sách exam của môn học
-            var exams = _context.Exams.Where(e => e.SuId == subjectId).ToList();
-
-            // Lấy danh sách exam mà học sinh đã làm
-            var doneExamIds = _context.Submits
-                .Where(r => r.SId == sid)
-                .Select(r => r.EId)
-                .ToList();
+            // Gọi Service để lấy dữ liệu
+            var (exams, subject, doneExamIds) = await _examService.GetExamsForStudentAsync(subjectId, sid.Value);
 
             // Truyền vào ViewBag
-            ViewBag.Subject = _context.Subjects.FirstOrDefault(s => s.SuId == subjectId);
+            ViewBag.Subject = subject;
             ViewBag.DoneExams = doneExamIds;
 
             return View(exams);
@@ -52,76 +50,52 @@ namespace PRN_Project.Controllers
 
         // Step 3: hiển thị bài thi
         [Authorize(Roles = "Student")]
-        public IActionResult TakeExam(int examId)
+        public async Task<IActionResult> TakeExam(int examId)
         {
-            var exam = _context.Exams.Find(examId);
-            if (exam == null) return NotFound();
-
             var studentId = HttpContext.Session.GetInt32("studentId");
             if (studentId == null) return RedirectToAction("Login", "Account");
 
-            // ✅ Kiểm tra nếu đã nộp bài thì không được thi lại
-            var submitted = _context.Submits.Any(s => s.SId == studentId && s.EId == examId);
-            if (submitted)
+            // Gọi Service để kiểm tra điều kiện thi
+            var (exam, errorRedirect) = await _examService.CanTakeExamAsync(examId, studentId.Value);
+
+            if (exam == null)
             {
-                TempData["Error"] = "Bạn đã nộp bài cho kỳ thi này, không thể làm lại.";
-                return RedirectToAction("ChooseExam", new { subjectId = exam.SuId });
+                if (errorRedirect == "NotFound") return NotFound();
+
+                // Xử lý lỗi từ Service
+                var parts = errorRedirect.Split('|');
+                TempData["Error"] = parts[0];
+                int subjectId = int.Parse(parts[1]);
+                return RedirectToAction("ChooseExam", new { subjectId });
             }
 
-            // ✅ Kiểm tra thời gian hợp lệ
-            if (exam.StartTime > DateTime.Now || exam.EndTime < DateTime.Now)
-            {
-                TempData["Error"] = "Bài thi chưa đến giờ hoặc đã hết hạn.";
-                return RedirectToAction("ChooseExam", new { subjectId = exam.SuId });
-            }
-
-            // Lưu examId vào session để nếu rời trang sẽ tự động nộp
+            // Lưu examId vào session 
             HttpContext.Session.SetInt32("currentExamId", examId);
 
             return View(exam);
         }
 
-        // Step 4: nộp bài thi (gọi từ Submit hoặc tự động nộp)
+        // Step 4: nộp bài thi
         [Authorize(Roles = "Student")]
         [HttpPost]
-        public IActionResult SubmitExam(int examId, List<StudentAnswerModel> answers)
+        public async Task<IActionResult> SubmitExam(int examId, List<StudentAnswerModel> answers)
         {
-            var exam = _context.Exams.Find(examId);
-            if (exam == null) return NotFound();
-
             var studentId = HttpContext.Session.GetInt32("studentId");
             if (studentId == null) return RedirectToAction("Login", "Account");
 
-            // ✅ Nếu đã có submit, không cho nộp lại
-            var existedSubmit = _context.Submits.FirstOrDefault(s => s.SId == studentId && s.EId == examId);
-            if (existedSubmit != null)
+            // Gọi Service để thực hiện nộp bài và tính điểm
+            var (submit, redirectAction) = await _examService.SubmitExamAsync(examId, studentId.Value, answers);
+
+            if (submit == null) return NotFound();
+
+            // Nếu đã nộp rồi (Service trả về redirect)
+            if (redirectAction != null)
             {
-                return RedirectToAction("Result", new { submitId = existedSubmit.SbId });
+                // redirectAction sẽ là "Result|submitId"
+                var parts = redirectAction.Split('|');
+                int submitId = int.Parse(parts[1]);
+                return RedirectToAction("Result", new { submitId });
             }
-
-            // ✅ Tính điểm
-            double score = 0;
-            var questions = exam.Questions ?? new List<QuestionModel>();
-            for (int i = 0; i < questions.Count; i++)
-            {
-                var studentAnswer = answers.FirstOrDefault(a => a.QuestionIndex == i);
-                if (studentAnswer != null && studentAnswer.ChosenAnswer == questions[i].CorrectAnswer)
-                {
-                    score += 10.0 / questions.Count;
-                }
-            }
-
-            var submit = new Submit
-            {
-                SId = studentId.Value,
-                EId = examId,
-                Score = Math.Round(score, 2),
-                SubmitTime = DateTime.Now,
-                StudentAnswers = answers
-            };
-
-            _context.Submits.Add(submit);
-            _context.SaveChanges();
 
             // Xóa session examId vì đã nộp xong
             HttpContext.Session.Remove("currentExamId");
@@ -131,12 +105,9 @@ namespace PRN_Project.Controllers
 
         // Step 5: xem kết quả
         [Authorize(Roles = "Student")]
-        public IActionResult Result(int submitId)
+        public async Task<IActionResult> Result(int submitId)
         {
-            var submit = _context.Submits
-                .Include(s => s.Exam)
-                .Include(s => s.Student)
-                .FirstOrDefault(s => s.SbId == submitId);
+            var submit = await _examService.GetExamResultAsync(submitId);
 
             if (submit == null) return NotFound();
 
@@ -144,10 +115,10 @@ namespace PRN_Project.Controllers
             return View(submit);
         }
 
-        // ✅ API cho client gọi khi thoát trang
+        // API cho client gọi khi thoát trang
         [Authorize(Roles = "Student")]
         [HttpPost]
-        public IActionResult AutoSubmit()
+        public async Task<IActionResult> AutoSubmit()
         {
             var studentId = HttpContext.Session.GetInt32("studentId");
             var examId = HttpContext.Session.GetInt32("currentExamId");
@@ -155,23 +126,13 @@ namespace PRN_Project.Controllers
             if (studentId == null || examId == null)
                 return Json(new { success = false, message = "Không có phiên thi hiện tại" });
 
-            // Nếu đã nộp rồi thì bỏ qua
-            if (_context.Submits.Any(s => s.SId == studentId && s.EId == examId))
+            // Gọi Service để tự động nộp
+            var submit = await _examService.AutoSubmitAsync(studentId.Value, examId.Value);
+
+            if (submit == null) // Đã nộp rồi
                 return Json(new { success = false, message = "Đã nộp rồi" });
 
-            // Nộp bài trắng (không có câu trả lời)
-            var submit = new Submit
-            {
-                SId = studentId.Value,
-                EId = examId.Value,
-                Score = 0,
-                SubmitTime = DateTime.Now,
-                StudentAnswers = new List<StudentAnswerModel>()
-            };
-
-            _context.Submits.Add(submit);
-            _context.SaveChanges();
-
+            // Xóa session examId vì đã nộp xong
             HttpContext.Session.Remove("currentExamId");
 
             return Json(new { success = true });
