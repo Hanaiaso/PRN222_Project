@@ -12,8 +12,8 @@ using PRN_Project.Models;
 namespace PRN_Project.Migrations
 {
     [DbContext(typeof(LmsDbContext))]
-    [Migration("20251105025059_DBT5")]
-    partial class DBT5
+    [Migration("20251113195919_InitDataChat")]
+    partial class InitDataChat
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -168,6 +168,65 @@ namespace PRN_Project.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.ChatGroup", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GroupId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("GroupId");
+
+                    b.ToTable("ChatGroups");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.ChatMessage2", b =>
+                {
+                    b.Property<long>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("MessageId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MessageId");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("ChatMessages2");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
                 {
                     b.Property<int>("EId")
@@ -268,6 +327,63 @@ namespace PRN_Project.Migrations
                             RaId = 2,
                             SuId = 2
                         });
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.GroupMember", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("JoinedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("GroupId", "AccountId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("GroupMembers");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.LearningMaterial", b =>
+                {
+                    b.Property<int>("MaterialID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaterialID"));
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("FilePath")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<DateTime>("UploadDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.HasKey("MaterialID");
+
+                    b.HasIndex("SubjectID");
+
+                    b.ToTable("LearningMaterials");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Notification", b =>
@@ -380,6 +496,32 @@ namespace PRN_Project.Migrations
                             NtId = 3,
                             ReceiverId = 2
                         });
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.PrivateChat", b =>
+                {
+                    b.Property<int>("ChatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ChatId"));
+
+                    b.Property<DateTime>("LastActive")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserAId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserBId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ChatId");
+
+                    b.HasIndex("UserAId");
+
+                    b.HasIndex("UserBId");
+
+                    b.ToTable("PrivateChats");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Rank", b =>
@@ -498,6 +640,9 @@ namespace PRN_Project.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("SuId");
+
+                    b.HasIndex("SuId")
+                        .IsUnique();
 
                     b.ToTable("Subjects");
 
@@ -670,6 +815,29 @@ namespace PRN_Project.Migrations
                     b.Navigation("Exam");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.ChatMessage2", b =>
+                {
+                    b.HasOne("PRN_Project.Models.ChatGroup", "Group")
+                        .WithMany("Messages")
+                        .HasForeignKey("GroupId");
+
+                    b.HasOne("PRN_Project.Models.Account", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId");
+
+                    b.HasOne("PRN_Project.Models.Account", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
                 {
                     b.HasOne("PRN_Project.Models.Subject", "Subject")
@@ -699,6 +867,36 @@ namespace PRN_Project.Migrations
                     b.Navigation("Submit");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.GroupMember", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.ChatGroup", "Group")
+                        .WithMany("Members")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.LearningMaterial", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Subject", "Subject")
+                        .WithMany("LearningMaterials")
+                        .HasForeignKey("SubjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.Notification", b =>
                 {
                     b.HasOne("PRN_Project.Models.Account", "Sender")
@@ -726,6 +924,25 @@ namespace PRN_Project.Migrations
                     b.Navigation("Notification");
 
                     b.Navigation("Receiver");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.PrivateChat", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Account", "UserA")
+                        .WithMany()
+                        .HasForeignKey("UserAId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.Account", "UserB")
+                        .WithMany()
+                        .HasForeignKey("UserBId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("UserA");
+
+                    b.Navigation("UserB");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Student", b =>
@@ -801,6 +1018,13 @@ namespace PRN_Project.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.ChatGroup", b =>
+                {
+                    b.Navigation("Members");
+
+                    b.Navigation("Messages");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
                 {
                     b.Navigation("Answers");
@@ -826,6 +1050,8 @@ namespace PRN_Project.Migrations
             modelBuilder.Entity("PRN_Project.Models.Subject", b =>
                 {
                     b.Navigation("Exams");
+
+                    b.Navigation("LearningMaterials");
 
                     b.Navigation("TeacherSubjects");
                 });

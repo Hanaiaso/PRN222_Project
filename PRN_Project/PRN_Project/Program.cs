@@ -43,12 +43,14 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
 // Services
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IMockExamService, MockExamService>();
+builder.Services.AddScoped<IChatService, ChatService>();
 
 
 
@@ -108,7 +110,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Thêm MapHub trước khi MapControllerRoute
-app.MapHub<PRN_Project.Hubs.ChatHub>("/chatHub");
+app.MapHub<PRN_Project.Hubs.PrivateChatHub>("/privateChatHub");
 
 
 app.MapControllerRoute(

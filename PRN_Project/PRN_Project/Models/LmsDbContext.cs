@@ -21,7 +21,11 @@ namespace PRN_Project.Models
         public DbSet<Rank> Ranks { get; set; } = null!;
         public DbSet<Notification> Notifications { get; set; } = null!;
         public DbSet<NotificationReceiver> NotificationReceivers { get; set; } = null!;
-
+        public DbSet<ChatGroup> ChatGroups { get; set; }
+        public DbSet<GroupMember> GroupMembers { get; set; }
+        public DbSet<ChatMessage2> ChatMessages2 { get; set; }
+        public DbSet<PrivateChat> PrivateChats { get; set; }
+        public DbSet<LearningMaterial> LearningMaterials { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -147,6 +151,42 @@ namespace PRN_Project.Models
                 .WithMany(a => a.NotificationReceivers)
                 .HasForeignKey(nr => nr.ReceiverId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+
+            // Thiết lập khóa chính kép cho GroupMember
+            modelBuilder.Entity<GroupMember>()
+                .HasKey(gm => new { gm.GroupId, gm.AccountId });
+
+            // Thiết lập mối quan hệ tự tham chiếu nếu cần (ví dụ: PrivateChat)
+            modelBuilder.Entity<PrivateChat>()
+                .HasOne(pc => pc.UserA)
+                .WithMany()
+                .HasForeignKey(pc => pc.UserAId)
+                .OnDelete(DeleteBehavior.Restrict); // Tránh xóa cascade
+
+            modelBuilder.Entity<PrivateChat>()
+                .HasOne(pc => pc.UserB)
+                .WithMany()
+                .HasForeignKey(pc => pc.UserBId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // 🔹 Default value cho UploadDate
+            modelBuilder.Entity<LearningMaterial>()
+                .Property(s => s.UploadDate)
+                .HasDefaultValueSql("GETDATE()");
+
+            // 🔹 Subject có nhiều LearningMaterials
+            modelBuilder.Entity<LearningMaterial>()
+                .HasOne(s => s.Subject)
+                .WithMany(a => a.LearningMaterials)
+                .HasForeignKey(s => s.SubjectID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // 🔹 Unique index cho Subject.SuId (mặc dù là PK nhưng thêm cũng không sai)
+            modelBuilder.Entity<Subject>()
+                .HasIndex(a => a.SuId)
+                .IsUnique();
+
 
             // === SEED DỮ LIỆU TĨNH ===
 
