@@ -1,0 +1,135 @@
+﻿@* SỬA DÒNG NÀY:
+Từ: @model PRN_Project.Controllers.ProfileViewModel
+Thành: @model PRN_Project.ViewModels.ProfileViewModel 
+*@
+@model PRN_Project.ViewModels.ProfileViewModel
+@{
+    // Đặt Layout dựa trên Role
+    string layout = (ViewBag.Role == "Teacher") ? "_LayoutTeacher" : "_LayoutStudent";
+    Layout = $"~/Views/Shared/{layout}.cshtml";
+    ViewData["Title"] = "Thông tin cá nhân";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">@ViewData["Title"]</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Xem và cập nhật thông tin cá nhân của bạn</li>
+    </ol>
+
+    <!-- Hiển thị thông báo thành công (nếu có) -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <!-- Phần hiển thị thông tin (Read-only) -->
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fas fa-user me-1"></i>
+                        Thông tin tài khoản
+                    </div>
+                    <a href="@Url.Action("Edit", "Profile")" class="btn btn-light btn-sm">
+                        <i class="fas fa-edit me-1"></i>
+                        Thay đổi
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-muted small">Vai trò</label>
+                            <div>
+                                @if (ViewBag.Role == "Student")
+                                {
+                                    <span class="badge bg-info fs-6">👨‍🎓 Học sinh</span>
+                                }
+                                else if (ViewBag.Role == "Teacher")
+                                {
+                                    <span class="badge bg-success fs-6">👨‍🏫 Giáo viên</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary fs-6">@ViewBag.Role</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-muted small">Email</label>
+                            <div class="fw-bold">@Model.Email</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-muted small">Họ và tên</label>
+                            <div class="fw-bold">@Model.FullName</div>
+                        </div>
+                    </div>
+                    @if (ViewBag.Role == "Student")
+                    {
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted small">Giới tính</label>
+                                <div class="fw-bold">
+                                    @if (Model.Gender == "Male")
+                                    {
+                                        <span>Nam</span>
+                                    }
+                                    else if (Model.Gender == "Female")
+                                    {
+                                        <span>Nữ</span>
+                                    }
+                                    else if (Model.Gender == "Other")
+                                    {
+                                        <span>Khác</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Chưa cập nhật</span>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted small">Ngày sinh</label>
+                                <div class="fw-bold">
+                                    @if (Model.Dob.HasValue)
+                                    {
+                                        @Model.Dob.Value.ToString("dd/MM/yyyy")
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Chưa cập nhật</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (ViewBag.Role == "Teacher")
+                    {
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted small">Chuyên môn</label>
+                                <div class="fw-bold">
+                                    @if (!string.IsNullOrEmpty(Model.Qualification))
+                                    {
+                                        @Model.Qualification
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Chưa cập nhật</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
