@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
-using PRN_Project.Interfaces;
 using PRN_Project.Repositories;
+using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Services;
+using PRN_Project.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();

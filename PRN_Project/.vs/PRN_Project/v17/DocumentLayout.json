@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\repositories\\implementations\\profilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\implementations\\profilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\repositories\\interfaces\\iprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\interfaces\\iprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,22 +67,6 @@
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\services\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\interfaces\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\interfaces\\iprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\repositories\\profilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\profilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\interfaces\\iprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\interfaces\\iprofilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\admin\\documents\\github\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -94,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 642,
-          "SelectedChildIndex": 30,
+          "SelectedChildIndex": 21,
           "Children": [
             {
               "$type": "Bookmark",
@@ -138,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Student.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Student.cs",
@@ -146,12 +138,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Student.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:30.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:30.422Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Teacher.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Teacher.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Teacher.cs",
@@ -159,12 +150,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Teacher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:05:26.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:05:26.872Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "OTPModel.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\OTPModel.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\OTPModel.cs",
@@ -172,12 +162,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\OTPModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:18.502Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:18.502Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Notification.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Notification.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Notification.cs",
@@ -185,12 +174,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Notification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:17.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:17.901Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ExamRank.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\ExamRank.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\ExamRank.cs",
@@ -198,12 +186,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\ExamRank.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:17.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:17.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Exam.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Exam.cs",
@@ -211,12 +198,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Exam.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:15.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:15.667Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ChangePasswordModel.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\ChangePasswordModel.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\ChangePasswordModel.cs",
@@ -224,12 +210,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\ChangePasswordModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:14.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:14.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Answer.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Answer.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Answer.cs",
@@ -237,12 +222,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Answer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:14.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:14.286Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Admin.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Admin.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Admin.cs",
@@ -250,12 +234,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Admin.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:13.779Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:13.779Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Account.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Models\\Account.cs",
@@ -263,12 +246,11 @@
               "RelativeToolTip": "PRN_Project\\Models\\Account.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAApwCMAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T20:03:09.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T20:03:09.595Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ProfileViewModel.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ProfileViewModel.cs",
               "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\ProfileViewModel.cs",
@@ -276,56 +258,29 @@
               "RelativeToolTip": "PRN_Project\\ViewModels\\ProfileViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T15:21:26.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-12T15:21:26.105Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ProfileService.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\ProfileService.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Services\\ProfileService.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\ProfileService.cs",
-              "RelativeToolTip": "PRN_Project\\Services\\ProfileService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T15:19:58.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IProfileService.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Interfaces\\IProfileService.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Interfaces\\IProfileService.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Interfaces\\IProfileService.cs",
-              "RelativeToolTip": "PRN_Project\\Interfaces\\IProfileService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T15:19:18.532Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 0,
               "Title": "ProfileRepository.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\ProfileRepository.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\ProfileRepository.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\ProfileRepository.cs",
-              "RelativeToolTip": "PRN_Project\\Repositories\\ProfileRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\ProfileRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Implementations\\ProfileRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\ProfileRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Implementations\\ProfileRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T15:18:32.533Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 2,
               "Title": "IProfileRepository.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Interfaces\\IProfileRepository.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Interfaces\\IProfileRepository.cs",
-              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Interfaces\\IProfileRepository.cs",
-              "RelativeToolTip": "PRN_Project\\Interfaces\\IProfileRepository.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Interfaces\\IProfileRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Interfaces\\IProfileRepository.cs",
+              "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Interfaces\\IProfileRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Interfaces\\IProfileRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T15:17:42.924Z",
@@ -333,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 18,
               "Title": "PRN_Project.csproj",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\PRN_Project.csproj",
               "RelativeDocumentMoniker": "PRN_Project\\PRN_Project.csproj",
@@ -345,20 +300,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
               "RelativeToolTip": "PRN_Project\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T20:07:37.692Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 16,
               "Title": "_SidebarTeacher.cshtml",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
               "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
@@ -370,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ShowProfile.cshtml",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Profile\\ShowProfile.cshtml",
               "RelativeDocumentMoniker": "PRN_Project\\Views\\Profile\\ShowProfile.cshtml",
@@ -378,12 +333,11 @@
               "RelativeToolTip": "PRN_Project\\Views\\Profile\\ShowProfile.cshtml",
               "ViewState": "AgIAAAkAAAAAAAAAAAAQwB0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T19:48:44.781Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-11T19:48:44.781Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 17,
               "Title": "_SidebarStudent.cshtml",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
               "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
@@ -395,13 +349,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProfileController.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "PRN_Project\\Controllers\\ProfileController.cs",
               "ToolTip": "C:\\Users\\admin\\Documents\\GitHub\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ProfileController.cs",
               "RelativeToolTip": "PRN_Project\\Controllers\\ProfileController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAgwGkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-11T19:37:31.741Z",
               "EditorCaption": ""

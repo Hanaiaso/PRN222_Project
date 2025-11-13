@@ -1,6 +1,6 @@
-﻿using PRN_Project.Controllers;
-using PRN_Project.Interfaces;
-using PRN_Project.Models;
+﻿using PRN_Project.Models;
+using PRN_Project.Repositories.Interfaces;
+using PRN_Project.Services.Interfaces;
 using PRN_Project.ViewModels;
 using System.Threading.Tasks;
 
@@ -10,7 +10,6 @@ namespace PRN_Project.Services
     {
         private readonly IProfileRepository _profileRepo;
 
-        // Tiêm (Inject) Repository (KHÔNG dùng DbContext)
         public ProfileService(IProfileRepository profileRepo)
         {
             _profileRepo = profileRepo;
@@ -25,7 +24,6 @@ namespace PRN_Project.Services
                 return null; // Không tìm thấy
             }
 
-            // Map từ Model (Account) sang ViewModel (ProfileViewModel)
             var viewModel = new ProfileViewModel
             {
                 Email = account.Email
@@ -52,10 +50,10 @@ namespace PRN_Project.Services
             var account = await _profileRepo.GetAccountByIdAsync(accountId);
             if (account == null)
             {
-                return false; // Không tìm thấy
+                return false; 
             }
 
-            // Map ngược từ ViewModel sang Model (Account)
+
             account.Email = model.Email;
 
             if (role == "Student" && account.Student != null)
@@ -70,8 +68,6 @@ namespace PRN_Project.Services
                 account.Teacher.Qualification = model.Qualification;
             }
 
-            // _context.Update(account) là không cần thiết
-            // vì Entity Framework đang "theo dõi" (track) account
 
             return await _profileRepo.SaveChangesAsync();
         }

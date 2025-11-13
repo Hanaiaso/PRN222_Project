@@ -1,7 +1,7 @@
 ﻿using PRN_Project.Models;
 using System.Threading.Tasks;
 
-namespace PRN_Project.Interfaces
+namespace PRN_Project.Repositories.Interfaces
 {
     public interface IProfileRepository
     {

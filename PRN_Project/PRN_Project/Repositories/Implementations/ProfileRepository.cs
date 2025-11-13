@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PRN_Project.Interfaces;
 using PRN_Project.Models;
+using PRN_Project.Repositories.Interfaces;
 using System.Threading.Tasks;
 
 namespace PRN_Project.Repositories

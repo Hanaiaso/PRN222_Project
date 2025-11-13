@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PRN_Project.Interfaces; // Thêm
-using PRN_Project.ViewModels; // Thêm
+using PRN_Project.Services.Interfaces;
+using PRN_Project.ViewModels;
 using System.Threading.Tasks;
 
 namespace PRN_Project.Controllers

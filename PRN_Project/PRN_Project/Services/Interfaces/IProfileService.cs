@@ -1,8 +1,7 @@
-﻿using PRN_Project.Controllers;
-using PRN_Project.ViewModels;
+﻿using PRN_Project.ViewModels;
 using System.Threading.Tasks;
 
-namespace PRN_Project.Interfaces
+namespace PRN_Project.Services.Interfaces
 {
     public interface IProfileService
     {
