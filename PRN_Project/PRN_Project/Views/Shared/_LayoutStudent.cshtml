@@ -20,5 +20,21 @@
         </div>
         @Html.Partial("_Footer")
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/notificationHub")
+        .build();
+
+    connection.on("ReceiveNotification", function (message) {
+        alert(message); // Hiện popup thông báo
+        // hoặc bạn có thể append vào vùng hiển thị thông báo
+        // document.getElementById("notificationList").innerHTML += `<li>${message}</li>`;
+    });
+
+    connection.start().catch(err => console.error(err.toString()));
+</script>
 </body>
 </html>

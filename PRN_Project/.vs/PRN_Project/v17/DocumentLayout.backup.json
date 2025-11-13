@@ -181,93 +181,124 @@
       "DocumentGroups": [
         {
           "DockedHeight": 642,
-          "SelectedChildIndex": 43,
+          "SelectedChildIndex": 11,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Create.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\Create.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Create.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Notification\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T02:21:53.419Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Index.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\Index.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Index.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Notification\\Index.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T02:05:13.683Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:7:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_SidebarAdmin.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T02:05:03.951Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_SidebarTeacher.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T02:04:43.31Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_SidebarStudent.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T02:04:29.048Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
+              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
+              "RelativeToolTip": "PRN_Project\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-12T02:00:38.696Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:22:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:23:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_LayoutStudent.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T01:58:47.04Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_LayoutStudent.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-13T01:02:01.793Z",
+              "WhenOpened": "2025-11-12T01:58:41.868Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Teacher.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Teacher.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Teacher.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Teacher.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Teacher.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T00:48:13.218Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Home\\Index.cshtml",
+              "DocumentIndex": 9,
+              "Title": "_Header.cshtml",
+              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Header.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_Header.cshtml",
+              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Header.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_Header.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T08:47:58.87Z"
+              "WhenOpened": "2025-11-12T01:58:25.89Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
