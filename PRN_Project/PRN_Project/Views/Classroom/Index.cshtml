@@ -1,0 +1,80 @@
+﻿@{
+	ViewData["Title"] = "Lớp học của tôi";
+}
+
+<style>
+	.class-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 20px;
+		padding: 20px;
+	}
+
+	.class-card {
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.class-card-header {
+		background-color: #f0f0f0; /* Bạn có thể dùng ảnh */
+		padding: 20px;
+		min-height: 100px;
+	}
+
+		.class-card-header h3 {
+			color: #333;
+			margin: 0;
+		}
+
+	.class-card-body {
+		padding: 15px;
+		font-size: 0.9rem;
+		color: #555;
+	}
+
+	.join-class-section {
+		margin: 20px;
+		padding: 20px;
+		background-color: #f9f9f9;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+	}
+</style>
+
+<h2>📚 Lớp học của tôi</h2>
+<p>Tất cả các lớp bạn đã tham gia hoặc giảng dạy.</p>
+
+<div class="class-grid">
+	<a asp-controller="Classroom" asp-action="Details" asp-route-id="1" class="class-card">
+		<div class="class-card-header" style="background-color: #fd7e14;">
+			<h3>FALL24_JPD123_T24</h3>
+		</div>
+		<div class="class-card-body">
+			<span>Nguyễn Thị Thu Thủy</span>
+		</div>
+	</a>
+
+	<a asp-controller="Classroom" asp-action="Details" asp-route-id="2" class="class-card">
+		<div class="class-card-header" style="background-color: #20c997;">
+			<h3>IoT SE18101</h3>
+		</div>
+		<div class="class-card-body">
+			<span>Nguyễn Thị Hoàng Yến</span>
+		</div>
+	</a>
+</div>
+
+<div class="join-class-section">
+	<h4>Tham gia lớp học mới</h4>
+	<form asp-controller="Classroom" asp-action="Join" method="post">
+		<div class="form-group">
+			<label for="classCode">Mã lớp</label>
+			<input type="text" id="classCode" name="classCode" class="form-control" placeholder="Nhập mã lớp..." />
+		</div>
+		<button type="submit" class="btn btn-primary mt-2">Tham gia</button>
+	</form>
+</div>

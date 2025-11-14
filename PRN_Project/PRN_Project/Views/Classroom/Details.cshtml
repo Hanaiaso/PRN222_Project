@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Chi tiết Lớp học";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+
+    // Chúng ta sẽ dùng một tham số query (ví dụ: ?tab=stream) để biết tab nào đang active
+    var currentTab = Context.Request.Query["tab"].ToString().ToLower();
+    if (string.IsNullOrEmpty(currentTab))
+    {
+        currentTab = "stream"; // Mặc định là stream
+    }
+}
+
+<style>
+    .class-banner {
+        background-color: #fd7e14; /* Màu cam giống ảnh */
+        color: white;
+        padding: 40px 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+        .class-banner h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+    .class-tabs {
+        display: flex;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+        .class-tabs a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+        }
+
+            .class-tabs a.active {
+                color: #0d6efd; /* Màu xanh active */
+                border-bottom-color: #0d6efd;
+            }
+
+    .tab-content {
+        /* Nội dung của tab sẽ ở đây */
+    }
+</style>
+
+<div class="class-banner">
+    <h1>FALL24_JPD123_T24</h1>
+</div>
+
+<nav class="class-tabs">
+    <a asp-action="Details" asp-route-id="@ViewBag.ClassId" asp-route-tab="stream"
+       class="@(currentTab == "stream" ? "active" : "")">
+        Luồng (Stream)
+    </a>
+    <a asp-action="Details" asp-route-id="@ViewBag.ClassId" asp-route-tab="classwork"
+       class="@(currentTab == "classwork" ? "active" : "")">
+        Bài tập (Classwork)
+    </a>
+    <a asp-action="Details" asp-route-id="@ViewBag.ClassId" asp-route-tab="people"
+       class="@(currentTab == "people" ? "active" : "")">
+        Mọi người (People)
+    </a>
+</nav>
+
+<div class="tab-content">
+
+    @if (currentTab == "stream")
+    {
+        <h4>Luồng thông báo của lớp</h4>
+        <p>(Hiển thị ô đăng bài và danh sách các bài đã đăng...)</p>
+    }
+    else if (currentTab == "classwork")
+    {
+        <h4>Bài tập trên lớp</h4>
+        <p>(Liệt kê các bài tập từ Stream...)</p>
+    }
+    else if (currentTab == "people")
+    {
+        <h4>Danh sách lớp</h4>
+        <p>(Danh sách giáo viên và học sinh...)</p>
+    }
+
+</div>
