@@ -46,6 +46,8 @@ builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository >();
+builder.Services.AddScoped<ILearningMaterialRepository, LearningMaterialRepository>();
+builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
 // Services
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
@@ -55,7 +57,8 @@ builder.Services.AddScoped<IChatService, ChatService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IExamRepository, ExamRepository>();
 builder.Services.AddScoped<IExamService, ExamService>();
-
+builder.Services.AddScoped<ILearningMaterialService, LearningMaterialService>();
+builder.Services.AddScoped<ISubjectService, SubjectService>();
 builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IRankingService, RankingService>();
 
