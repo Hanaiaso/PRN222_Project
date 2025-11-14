@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PRN_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class DBT5 : Migration
+    public partial class InitDataChat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,6 +27,21 @@ namespace PRN_Project.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Accounts", x => x.AId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChatGroups",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChatGroups", x => x.GroupId);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,6 +115,33 @@ namespace PRN_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PrivateChats",
+                columns: table => new
+                {
+                    ChatId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserAId = table.Column<int>(type: "int", nullable: false),
+                    UserBId = table.Column<int>(type: "int", nullable: false),
+                    LastActive = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrivateChats", x => x.ChatId);
+                    table.ForeignKey(
+                        name: "FK_PrivateChats_Accounts_UserAId",
+                        column: x => x.UserAId,
+                        principalTable: "Accounts",
+                        principalColumn: "AId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PrivateChats_Accounts_UserBId",
+                        column: x => x.UserBId,
+                        principalTable: "Accounts",
+                        principalColumn: "AId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
                 {
@@ -143,6 +185,65 @@ namespace PRN_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ChatMessages2",
+                columns: table => new
+                {
+                    MessageId = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SenderId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: true),
+                    ReceiverId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChatMessages2", x => x.MessageId);
+                    table.ForeignKey(
+                        name: "FK_ChatMessages2_Accounts_ReceiverId",
+                        column: x => x.ReceiverId,
+                        principalTable: "Accounts",
+                        principalColumn: "AId");
+                    table.ForeignKey(
+                        name: "FK_ChatMessages2_Accounts_SenderId",
+                        column: x => x.SenderId,
+                        principalTable: "Accounts",
+                        principalColumn: "AId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ChatMessages2_ChatGroups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "ChatGroups",
+                        principalColumn: "GroupId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GroupMembers",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(type: "int", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    JoinedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GroupMembers", x => new { x.GroupId, x.AccountId });
+                    table.ForeignKey(
+                        name: "FK_GroupMembers_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "AId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GroupMembers_ChatGroups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "ChatGroups",
+                        principalColumn: "GroupId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Exams",
                 columns: table => new
                 {
@@ -162,6 +263,29 @@ namespace PRN_Project.Migrations
                     table.ForeignKey(
                         name: "FK_Exams_Subjects_SuId",
                         column: x => x.SuId,
+                        principalTable: "Subjects",
+                        principalColumn: "SuId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LearningMaterials",
+                columns: table => new
+                {
+                    MaterialID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SubjectID = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    FilePath = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    UploadDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LearningMaterials", x => x.MaterialID);
+                    table.ForeignKey(
+                        name: "FK_LearningMaterials_Subjects_SubjectID",
+                        column: x => x.SubjectID,
                         principalTable: "Subjects",
                         principalColumn: "SuId",
                         onDelete: ReferentialAction.Cascade);
@@ -432,6 +556,21 @@ namespace PRN_Project.Migrations
                 column: "EId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ChatMessages2_GroupId",
+                table: "ChatMessages2",
+                column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ChatMessages2_ReceiverId",
+                table: "ChatMessages2",
+                column: "ReceiverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ChatMessages2_SenderId",
+                table: "ChatMessages2",
+                column: "SenderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExamRanks_RaId",
                 table: "ExamRanks",
                 column: "RaId");
@@ -446,6 +585,16 @@ namespace PRN_Project.Migrations
                 name: "IX_Exams_SuId",
                 table: "Exams",
                 column: "SuId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GroupMembers_AccountId",
+                table: "GroupMembers",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LearningMaterials_SubjectID",
+                table: "LearningMaterials",
+                column: "SubjectID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NotificationReceivers_NtId",
@@ -463,9 +612,25 @@ namespace PRN_Project.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PrivateChats_UserAId",
+                table: "PrivateChats",
+                column: "UserAId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PrivateChats_UserBId",
+                table: "PrivateChats",
+                column: "UserBId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_AId",
                 table: "Students",
                 column: "AId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Subjects_SuId",
+                table: "Subjects",
+                column: "SuId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -506,10 +671,22 @@ namespace PRN_Project.Migrations
                 name: "Answers");
 
             migrationBuilder.DropTable(
+                name: "ChatMessages2");
+
+            migrationBuilder.DropTable(
                 name: "ExamRanks");
 
             migrationBuilder.DropTable(
+                name: "GroupMembers");
+
+            migrationBuilder.DropTable(
+                name: "LearningMaterials");
+
+            migrationBuilder.DropTable(
                 name: "NotificationReceivers");
+
+            migrationBuilder.DropTable(
+                name: "PrivateChats");
 
             migrationBuilder.DropTable(
                 name: "TeacherSubjects");
@@ -519,6 +696,9 @@ namespace PRN_Project.Migrations
 
             migrationBuilder.DropTable(
                 name: "Submits");
+
+            migrationBuilder.DropTable(
+                name: "ChatGroups");
 
             migrationBuilder.DropTable(
                 name: "Notifications");
