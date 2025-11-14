@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace PRN_Project.Models
 {
@@ -199,6 +200,10 @@ namespace PRN_Project.Models
 
             modelBuilder.Entity<Admin>().HasData(
                 new Admin { AdId = 1, AId = 1, AdName = "Super Admin" }
+            );
+
+            modelBuilder.Entity<ChatGroup>().HasData(
+                new ChatGroup { GroupId = 3, Name = "CongDong", Type = 1, CreatedAt = new DateTime(2025, 11, 14) }
             );
 
             modelBuilder.Entity<Teacher>().HasData(

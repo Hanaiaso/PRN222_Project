@@ -21,5 +21,14 @@ namespace PRN_Project.Services.Interfaces
 
         // Cập nhật: Tải lịch sử chat 1-1
         Task<List<ChatMessage2>> LoadPrivateChatHistoryAsync(int user1Id, int user2Id); // MỚI
+        Task<bool> SaveCommunityMessageAsync(int senderId, string content, int groupId); // MỚI
+        Task<List<ChatMessage2>> LoadCommunityChatHistoryAsync(int groupId); // MỚI
+        
+        // Thêm các phương thức mới cho Chat Nhóm
+        Task<ChatGroup?> CreateGroupWithMembersAsync(string groupName, int creatorId, List<string> memberEmails);
+        Task<ChatGroup?> GetGroupDetailsAsync(int groupId, int currentAccountId);
+        Task<bool> SaveGroupMessageAsync(int senderId, string content, int groupId);
+        Task<List<ChatMessage2>> LoadGroupChatHistoryAsync(int groupId);
+        Task<List<ChatGroup>> GetUserGroupsAsync(int accountId);
     }
 }

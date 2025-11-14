@@ -111,7 +111,8 @@ app.UseAuthorization();
 
 // Thêm MapHub trước khi MapControllerRoute
 app.MapHub<PRN_Project.Hubs.PrivateChatHub>("/privateChatHub");
-
+app.MapHub<CommunityChatHub>("/communityChatHub");
+app.MapHub<GroupChatHub>("/groupChatHub");
 
 app.MapControllerRoute(
     name: "default",
