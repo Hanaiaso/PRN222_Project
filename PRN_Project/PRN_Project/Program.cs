@@ -45,14 +45,14 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
-
+builder.Services.AddScoped<INotificationRepository, NotificationRepository >();
 // Services
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IMockExamService, MockExamService>();
 builder.Services.AddScoped<IChatService, ChatService>();
-
+builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IExamRepository, ExamRepository>();
 builder.Services.AddScoped<IExamService, ExamService>();
 
