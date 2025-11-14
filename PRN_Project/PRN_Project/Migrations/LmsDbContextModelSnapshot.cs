@@ -165,6 +165,43 @@ namespace PRN_Project.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.AssignmentSubmission", b =>
+                {
+                    b.Property<int>("SubmissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubmissionId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Grade")
+                        .HasColumnType("float");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SubmitTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SubmissionId");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("Sid");
+
+                    b.ToTable("AssignmentSubmissions");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.ChatGroup", b =>
                 {
                     b.Property<int>("GroupId")
@@ -187,6 +224,15 @@ namespace PRN_Project.Migrations
                     b.HasKey("GroupId");
 
                     b.ToTable("ChatGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupId = 3,
+                            CreatedAt = new DateTime(2025, 11, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "CongDong",
+                            Type = 1
+                        });
                 });
 
             modelBuilder.Entity("PRN_Project.Models.ChatMessage2", b =>
@@ -222,6 +268,99 @@ namespace PRN_Project.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("ChatMessages2");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Classroom", b =>
+                {
+                    b.Property<int>("ClassroomId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassroomId"));
+
+                    b.Property<string>("ClassCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ClassDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClassName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Tid")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClassroomId");
+
+                    b.HasIndex("ClassCode")
+                        .IsUnique();
+
+                    b.HasIndex("Tid");
+
+                    b.ToTable("Classrooms");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.ClassroomMember", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"));
+
+                    b.Property<int>("ClassroomId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("JoinDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Sid")
+                        .HasColumnType("int");
+
+                    b.HasKey("MemberId");
+
+                    b.HasIndex("Sid");
+
+                    b.HasIndex("ClassroomId", "Sid")
+                        .IsUnique();
+
+                    b.ToTable("ClassroomMembers");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"));
+
+                    b.Property<int>("Aid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("Aid");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
@@ -493,6 +632,47 @@ namespace PRN_Project.Migrations
                             NtId = 3,
                             ReceiverId = 2
                         });
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Post", b =>
+                {
+                    b.Property<int>("PostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PostId"));
+
+                    b.Property<int>("Aid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClassroomId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PostType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PostId");
+
+                    b.HasIndex("Aid");
+
+                    b.HasIndex("ClassroomId");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.PrivateChat", b =>
@@ -812,6 +992,25 @@ namespace PRN_Project.Migrations
                     b.Navigation("Exam");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.AssignmentSubmission", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Post", "Post")
+                        .WithMany("Submissions")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.Student", "Student")
+                        .WithMany("Submissions")
+                        .HasForeignKey("Sid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.ChatMessage2", b =>
                 {
                     b.HasOne("PRN_Project.Models.ChatGroup", "Group")
@@ -833,6 +1032,55 @@ namespace PRN_Project.Migrations
                     b.Navigation("Receiver");
 
                     b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Classroom", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Teacher", "Teacher")
+                        .WithMany("Classrooms")
+                        .HasForeignKey("Tid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.ClassroomMember", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Classroom", "Classroom")
+                        .WithMany("Members")
+                        .HasForeignKey("ClassroomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.Student", "Student")
+                        .WithMany("ClassroomMembers")
+                        .HasForeignKey("Sid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Classroom");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("PRN_Project.Models.Comment", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Account", "Account")
+                        .WithMany("Comments")
+                        .HasForeignKey("Aid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
@@ -923,6 +1171,25 @@ namespace PRN_Project.Migrations
                     b.Navigation("Receiver");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.Post", b =>
+                {
+                    b.HasOne("PRN_Project.Models.Account", "Account")
+                        .WithMany("Posts")
+                        .HasForeignKey("Aid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PRN_Project.Models.Classroom", "Classroom")
+                        .WithMany("Posts")
+                        .HasForeignKey("ClassroomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+
+                    b.Navigation("Classroom");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.PrivateChat", b =>
                 {
                     b.HasOne("PRN_Project.Models.Account", "UserA")
@@ -1006,7 +1273,11 @@ namespace PRN_Project.Migrations
                 {
                     b.Navigation("Admin");
 
+                    b.Navigation("Comments");
+
                     b.Navigation("NotificationReceivers");
+
+                    b.Navigation("Posts");
 
                     b.Navigation("SentNotifications");
 
@@ -1022,6 +1293,13 @@ namespace PRN_Project.Migrations
                     b.Navigation("Messages");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.Classroom", b =>
+                {
+                    b.Navigation("Members");
+
+                    b.Navigation("Posts");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.Exam", b =>
                 {
                     b.Navigation("Answers");
@@ -1034,6 +1312,13 @@ namespace PRN_Project.Migrations
                     b.Navigation("Receivers");
                 });
 
+            modelBuilder.Entity("PRN_Project.Models.Post", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Submissions");
+                });
+
             modelBuilder.Entity("PRN_Project.Models.Rank", b =>
                 {
                     b.Navigation("ExamRanks");
@@ -1041,6 +1326,10 @@ namespace PRN_Project.Migrations
 
             modelBuilder.Entity("PRN_Project.Models.Student", b =>
                 {
+                    b.Navigation("ClassroomMembers");
+
+                    b.Navigation("Submissions");
+
                     b.Navigation("Submits");
                 });
 
@@ -1060,6 +1349,8 @@ namespace PRN_Project.Migrations
 
             modelBuilder.Entity("PRN_Project.Models.Teacher", b =>
                 {
+                    b.Navigation("Classrooms");
+
                     b.Navigation("TeacherSubjects");
                 });
 #pragma warning restore 612, 618

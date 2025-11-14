@@ -21,6 +21,10 @@ namespace PRN_Project.Models
 
         // Navigation
         public ICollection<Submit>? Submits { get; set; }
+        public ICollection<ClassroomMember>? ClassroomMembers { get; set; }
+        public ICollection<AssignmentSubmission>? Submissions { get; set; }
+
+        
       
     }
 }
