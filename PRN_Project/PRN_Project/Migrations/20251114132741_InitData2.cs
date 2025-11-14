@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PRN_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDataChat : Migration
+    public partial class InitData2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -319,6 +319,29 @@ namespace PRN_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Classrooms",
+                columns: table => new
+                {
+                    ClassroomId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Tid = table.Column<int>(type: "int", nullable: false),
+                    ClassName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClassCode = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClassDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classrooms", x => x.ClassroomId);
+                    table.ForeignKey(
+                        name: "FK_Classrooms_Teachers_Tid",
+                        column: x => x.Tid,
+                        principalTable: "Teachers",
+                        principalColumn: "TId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TeacherSubjects",
                 columns: table => new
                 {
@@ -397,6 +420,64 @@ namespace PRN_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClassroomMembers",
+                columns: table => new
+                {
+                    MemberId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClassroomId = table.Column<int>(type: "int", nullable: false),
+                    Sid = table.Column<int>(type: "int", nullable: false),
+                    JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClassroomMembers", x => x.MemberId);
+                    table.ForeignKey(
+                        name: "FK_ClassroomMembers_Classrooms_ClassroomId",
+                        column: x => x.ClassroomId,
+                        principalTable: "Classrooms",
+                        principalColumn: "ClassroomId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ClassroomMembers_Students_Sid",
+                        column: x => x.Sid,
+                        principalTable: "Students",
+                        principalColumn: "SId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Posts",
+                columns: table => new
+                {
+                    PostId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClassroomId = table.Column<int>(type: "int", nullable: false),
+                    Aid = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.PostId);
+                    table.ForeignKey(
+                        name: "FK_Posts_Accounts_Aid",
+                        column: x => x.Aid,
+                        principalTable: "Accounts",
+                        principalColumn: "AId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Posts_Classrooms_ClassroomId",
+                        column: x => x.ClassroomId,
+                        principalTable: "Classrooms",
+                        principalColumn: "ClassroomId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ExamRanks",
                 columns: table => new
                 {
@@ -422,6 +503,64 @@ namespace PRN_Project.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AssignmentSubmissions",
+                columns: table => new
+                {
+                    SubmissionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PostId = table.Column<int>(type: "int", nullable: false),
+                    Sid = table.Column<int>(type: "int", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubmitTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Grade = table.Column<double>(type: "float", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssignmentSubmissions", x => x.SubmissionId);
+                    table.ForeignKey(
+                        name: "FK_AssignmentSubmissions_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "PostId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AssignmentSubmissions_Students_Sid",
+                        column: x => x.Sid,
+                        principalTable: "Students",
+                        principalColumn: "SId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    CommentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PostId = table.Column<int>(type: "int", nullable: false),
+                    Aid = table.Column<int>(type: "int", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comments_Accounts_Aid",
+                        column: x => x.Aid,
+                        principalTable: "Accounts",
+                        principalColumn: "AId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Posts_PostId",
+                        column: x => x.PostId,
+                        principalTable: "Posts",
+                        principalColumn: "PostId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Accounts",
                 columns: new[] { "AId", "Email", "Password", "Role", "Status" },
@@ -432,6 +571,11 @@ namespace PRN_Project.Migrations
                     { 3, "student@example.com", "Student@123", 2, true },
                     { 4, "student2@example.com", "Student@123", 2, true }
                 });
+
+            migrationBuilder.InsertData(
+                table: "ChatGroups",
+                columns: new[] { "GroupId", "CreatedAt", "Name", "Type" },
+                values: new object[] { 3, new DateTime(2025, 11, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "CongDong", 1 });
 
             migrationBuilder.InsertData(
                 table: "Ranks",
@@ -556,6 +700,16 @@ namespace PRN_Project.Migrations
                 column: "EId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AssignmentSubmissions_PostId",
+                table: "AssignmentSubmissions",
+                column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AssignmentSubmissions_Sid",
+                table: "AssignmentSubmissions",
+                column: "Sid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ChatMessages2_GroupId",
                 table: "ChatMessages2",
                 column: "GroupId");
@@ -569,6 +723,38 @@ namespace PRN_Project.Migrations
                 name: "IX_ChatMessages2_SenderId",
                 table: "ChatMessages2",
                 column: "SenderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassroomMembers_ClassroomId_Sid",
+                table: "ClassroomMembers",
+                columns: new[] { "ClassroomId", "Sid" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassroomMembers_Sid",
+                table: "ClassroomMembers",
+                column: "Sid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Classrooms_ClassCode",
+                table: "Classrooms",
+                column: "ClassCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Classrooms_Tid",
+                table: "Classrooms",
+                column: "Tid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_Aid",
+                table: "Comments",
+                column: "Aid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_PostId",
+                table: "Comments",
+                column: "PostId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ExamRanks_RaId",
@@ -610,6 +796,16 @@ namespace PRN_Project.Migrations
                 name: "IX_Notifications_SenderId",
                 table: "Notifications",
                 column: "SenderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_Aid",
+                table: "Posts",
+                column: "Aid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_ClassroomId",
+                table: "Posts",
+                column: "ClassroomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PrivateChats_UserAId",
@@ -671,7 +867,16 @@ namespace PRN_Project.Migrations
                 name: "Answers");
 
             migrationBuilder.DropTable(
+                name: "AssignmentSubmissions");
+
+            migrationBuilder.DropTable(
                 name: "ChatMessages2");
+
+            migrationBuilder.DropTable(
+                name: "ClassroomMembers");
+
+            migrationBuilder.DropTable(
+                name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "ExamRanks");
@@ -692,6 +897,9 @@ namespace PRN_Project.Migrations
                 name: "TeacherSubjects");
 
             migrationBuilder.DropTable(
+                name: "Posts");
+
+            migrationBuilder.DropTable(
                 name: "Ranks");
 
             migrationBuilder.DropTable(
@@ -704,13 +912,16 @@ namespace PRN_Project.Migrations
                 name: "Notifications");
 
             migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "Classrooms");
 
             migrationBuilder.DropTable(
                 name: "Exams");
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "Subjects");

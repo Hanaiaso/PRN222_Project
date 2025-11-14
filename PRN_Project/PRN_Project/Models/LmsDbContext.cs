@@ -27,6 +27,11 @@ namespace PRN_Project.Models
         public DbSet<ChatMessage2> ChatMessages2 { get; set; }
         public DbSet<PrivateChat> PrivateChats { get; set; }
         public DbSet<LearningMaterial> LearningMaterials { get; set; }
+        public DbSet<Classroom> Classrooms { get; set; }
+        public DbSet<ClassroomMember> ClassroomMembers { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<AssignmentSubmission> AssignmentSubmissions { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -187,6 +192,70 @@ namespace PRN_Project.Models
             modelBuilder.Entity<Subject>()
                 .HasIndex(a => a.SuId)
                 .IsUnique();
+
+            modelBuilder.Entity<Classroom>()
+                .HasIndex(c => c.ClassCode)
+                .IsUnique();
+
+            modelBuilder.Entity<Classroom>()
+                .HasOne(c => c.Teacher)
+                .WithMany(t => t.Classrooms)
+                .HasForeignKey(c => c.Tid)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ClassroomMember>()
+                .HasIndex(m => new { m.ClassroomId, m.Sid })
+                .IsUnique();
+
+            modelBuilder.Entity<ClassroomMember>()
+                .HasOne(m => m.Classroom)
+                .WithMany(c => c.Members)
+                .HasForeignKey(m => m.ClassroomId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ClassroomMember>()
+                .HasOne(m => m.Student)
+                .WithMany(s => s.ClassroomMembers)
+                .HasForeignKey(m => m.Sid)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Post>()
+                .HasOne(p => p.Classroom)
+                .WithMany(c => c.Posts)
+                .HasForeignKey(p => p.ClassroomId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Post>()
+                .HasOne(p => p.Account)
+                .WithMany(a => a.Posts)
+                .HasForeignKey(p => p.Aid)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<AssignmentSubmission>()
+                .HasOne(s => s.Post)
+                .WithMany(p => p.Submissions)
+                .HasForeignKey(s => s.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<AssignmentSubmission>()
+                .HasOne(s => s.Student)
+                .WithMany(st => st.Submissions)
+                .HasForeignKey(s => s.Sid)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Post)
+                .WithMany(p => p.Comments)
+                .HasForeignKey(c => c.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Account)
+                .WithMany(a => a.Comments)
+                .HasForeignKey(c => c.Aid)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             // === SEED DỮ LIỆU TĨNH ===

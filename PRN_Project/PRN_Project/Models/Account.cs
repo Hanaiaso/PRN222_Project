@@ -48,5 +48,7 @@ namespace PRN_Project.Models
         public Admin? Admin { get; set; }
         public ICollection<Notification>? SentNotifications { get; set; }
         public ICollection<NotificationReceiver>? NotificationReceivers { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
+        public ICollection<Post>? Posts { get; set; }
     }
 }
