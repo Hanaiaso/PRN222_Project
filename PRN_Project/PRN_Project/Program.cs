@@ -9,8 +9,8 @@ using PRN_Project.Repositories;
 using PRN_Project.Repositories.Implementations;
 using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Services;
+using PRN_Project.Repositories.Implementations;
 using PRN_Project.Services.Implementations;
-using PRN_Project.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +51,12 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IMockExamService, MockExamService>();
 builder.Services.AddScoped<IChatService, ChatService>();
+
+builder.Services.AddScoped<IExamRepository, ExamRepository>();
+builder.Services.AddScoped<IExamService, ExamService>();
+
+builder.Services.AddScoped<IRankingRepository, RankingRepository>();
+builder.Services.AddScoped<IRankingService, RankingService>();
 
 
 
