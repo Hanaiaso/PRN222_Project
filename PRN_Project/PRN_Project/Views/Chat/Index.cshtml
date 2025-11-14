@@ -1,32 +1,54 @@
-﻿
+﻿@using PRN_Project.Models
 @{
-
+    ViewData["Title"] = "Trang giao tiếp";
 }
+
 <div class="container">
-	<div class="row p-1">
-		<div class="col-1">User</div>
-		<div class="col-5"><input type="text" id="userInput" value="@ViewBag.StudentName" readonly /></div>
-		<input type="hidden" id="studentIdHidden" value="@ViewBag.StudentId" />
-	</div>
-	<div class="row p-1">
-		<div class="col-1">Message</div>
-		<div class="col-5"><input type="text" class="w-100" id="messageInput" /></div>
-	</div>
-	<div class="row p-1">
-		<div class="col-6 text-end">
-			<input type="button" id="sendButton" value="Send Message" />
-		</div>
-	</div>
-	<div class="row p-1">
-		<div class="col-6">
-			<hr />
-		</div>
-	</div>
-	<div class="row p-1">
-		<div class="col-6">
-			<ul id="messagesList"></ul>
-		</div>
-	</div>
+    <h2>Trò chuyện cá nhân</h2>
+
+    <div class="row p-1 align-items-center">
+        <div class="col-2">**Người gửi**</div>
+        <div class="col-4">
+            <input type="text" id="userInput" value="@ViewBag.StudentName" readonly class="form-control" style="background-color: #f0f0f0;" />
+            <input type="hidden" id="studentIdHidden" value="@ViewBag.StudentId" />
+        </div>
+        <div class="col-6" id="chatStatus" style="font-weight: bold; color: #cc3333;">Chưa chọn người chat.</div>
+    </div>
+
+    <hr />
+
+    <div class="row p-1 mb-3">
+        <div class="col-2">**Email người nhận**</div>
+        <div class="col-4">
+            <input type="email" id="targetEmailInput" class="form-control" placeholder="Nhập email người muốn chat..." />
+        </div>
+        <div class="col-6">
+            <input type="button" id="startChatButton" value="Bắt đầu Chat" class="btn btn-primary" />
+        </div>
+    </div>
+
+    <div class="row p-1">
+        <div class="col-2">Tin nhắn</div>
+        <div class="col-4">
+            <input type="text" class="w-100 form-control" id="messageInput" placeholder="Nhập tin nhắn..." />
+        </div>
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Gửi Tin Nhắn" class="btn btn-success" disabled />
+        </div>
+    </div>
+
+    <div class="row p-1 mt-3">
+        <div class="col-12">
+            <hr />
+            <h3>Lịch sử Chat</h3>
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-12">
+            <ul id="messagesList" class="list-group" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc;">
+            </ul>
+        </div>
+    </div>
 </div>
 <script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/js/chat.js"></script>

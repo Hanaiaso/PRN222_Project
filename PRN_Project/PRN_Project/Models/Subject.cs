@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PRN_Project.Models
 {
@@ -13,5 +14,6 @@ namespace PRN_Project.Models
         // Navigation
         public ICollection<TeacherSubject>? TeacherSubjects { get; set; }
         public ICollection<Exam>? Exams { get; set; }
+        public ICollection<LearningMaterial>? LearningMaterials { get; set; }
     }
 }

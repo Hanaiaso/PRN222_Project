@@ -5,10 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PRN_Project.Hubs;
 using PRN_Project.Models;
-using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Repositories;
-using PRN_Project.Services.Interfaces;
+using PRN_Project.Repositories.Implementations;
+using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Services;
+using PRN_Project.Repositories.Implementations;
+using PRN_Project.Services.Implementations;
+using PRN_Project.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,21 +19,47 @@ var builder = WebApplication.CreateBuilder(args);
 // ======= 1️⃣ Cấu hình MVC và DBContext =======
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<LmsDbContext>(opts =>
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
+);
+
+// ======= Đăng ký Session =======
 builder.Services.AddSession(opt =>
 {
     opt.IdleTimeout = TimeSpan.FromMinutes(30);
     opt.Cookie.HttpOnly = true;
     opt.Cookie.IsEssential = true;
 });
-builder.Services.AddDbContext<LmsDbContext>(opts =>
-    opts.UseSqlServer(builder.Configuration.GetConnectionString("StrCon"))
-);
 
-builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
-builder.Services.AddScoped<IProfileService, ProfileService>();
-
-
+// ======= Đăng ký SignalR =======
 builder.Services.AddSignalR();
+
+
+
+
+// ======= Đăng ký Dependency Injection cho Repository và Service =======
+
+// Repositories
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
+
+// Services
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IMockExamService, MockExamService>();
+builder.Services.AddScoped<IChatService, ChatService>();
+
+builder.Services.AddScoped<IExamRepository, ExamRepository>();
+builder.Services.AddScoped<IExamService, ExamService>();
+
+builder.Services.AddScoped<IRankingRepository, RankingRepository>();
+builder.Services.AddScoped<IRankingService, RankingService>();
+
+
 
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -87,9 +116,10 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// 🔹 Thêm MapHub trước khi MapControllerRoute
-app.MapHub<PRN_Project.Hubs.ChatHub>("/chatHub");
-
+// Thêm MapHub trước khi MapControllerRoute
+app.MapHub<PRN_Project.Hubs.PrivateChatHub>("/privateChatHub");
+app.MapHub<CommunityChatHub>("/communityChatHub");
+app.MapHub<GroupChatHub>("/groupChatHub");
 
 app.MapControllerRoute(
     name: "default",
