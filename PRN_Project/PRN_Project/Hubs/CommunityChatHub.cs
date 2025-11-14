@@ -28,10 +28,10 @@ namespace PRN_Project.Hubs
             if (success)
             {
                 // 2. Phát sóng tin nhắn đến tất cả client trong nhóm
-                await Clients.Group(CommunityGroupId.ToString()).SendAsync("ReceiveCommunityMessage", senderName, message);
+                await Clients.Group(CommunityGroupId.ToString()).SendAsync("ReceiveCommunityMessage", senderName, message, DateTime.Now);
 
                 // 3. Gửi thông báo đến những người không phải là người gửi
-                await Clients.OthersInGroup(CommunityGroupId.ToString()).SendAsync("ReceiveNotification", senderName, message);
+                await Clients.OthersInGroup(CommunityGroupId.ToString()).SendAsync("ReceiveNotification", senderName, message, DateTime.Now);
             }
         }
 

@@ -15,16 +15,39 @@ let currentTargetUserId = null;
 // CHỨC NĂNG CHAT CÁ NHÂN VÀ THÔNG BÁO
 // -------------------------------------------------------------
 
-// 1. Client lắng nghe sự kiện "ReceivePrivateMessage" từ Hub
-connection.on("ReceivePrivateMessage", (senderName, message) => {
-    const messagesList = document.getElementById("messagesList");
+function formatTime(timestamp) {
+    // Chuyển đổi chuỗi ISO (từ C#) thành đối tượng Date
+    const date = new Date(timestamp);
+    // Format thành giờ:phút:giây Ngày/Tháng/Năm
+    return date.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+        + ' ' + date.toLocaleDateString('vi-VN');
+}
+
+// Hàm hỗ trợ render tin nhắn (cho cả lịch sử và tin nhắn mới)
+function renderMessage(user, message, timestamp, messagesList, senderId = null) {
     const li = document.createElement("li");
 
-    // Format tin nhắn nhận được
-    li.textContent = `[${senderName}]: ${message}`;
+    // Logic color: So sánh tên người gửi
+    const isCurrentUser = user === currentUserName || senderId === currentAccountId; // Kiểm tra bằng tên hoặc ID
+    const senderNameHtml = `<span class="${isCurrentUser ? 'current-user-name' : 'other-user-name'}">[${user}]</span>`;
+
+    const timeDisplay = timestamp ? ` (${formatTime(timestamp)})` : '';
+
+    // Sử dụng innerHTML để chèn thẻ span CSS
+    li.innerHTML = `${senderNameHtml}${timeDisplay}: ${message}`;
+    li.className = "list-group-item"; // Thêm class Bootstrap cho đẹp hơn
 
     messagesList.appendChild(li);
-    messagesList.scrollTop = messagesList.scrollHeight; // Tự động cuộn
+    messagesList.scrollTop = messagesList.scrollHeight;
+}
+
+
+// 1. Client lắng nghe sự kiện "ReceivePrivateMessage" từ Hub
+connection.on("ReceivePrivateMessage", (senderName, message, timestamp) => {
+    const messagesList = document.getElementById("messagesList");
+
+    // ✅ GỌI HÀM RENDER TIN NHẮN MỚI
+    renderMessage(senderName, message, timestamp, messagesList);
 
     // Kích hoạt thông báo chỉ khi tin nhắn đến TỪ NGƯỜI KHÁC
     if (senderName !== currentUserName) {
@@ -34,10 +57,9 @@ connection.on("ReceivePrivateMessage", (senderName, message) => {
     }
 });
 
-// 2. Gắn sự kiện cho nút START CHAT (Tìm người dùng theo Email và tạo/tìm phòng chat)
+// 2. Gắn sự kiện cho nút START CHAT (Tìm người dùng theo Email và tải lịch sử)
 document.getElementById("startChatButton")?.addEventListener("click", (event) => {
     event.preventDefault();
-    // Lấy Email từ ô nhập Email người nhận
     const targetEmail = document.getElementById("targetEmailInput").value;
 
     if (!targetEmail) {
@@ -45,47 +67,43 @@ document.getElementById("startChatButton")?.addEventListener("click", (event) =>
         return;
     }
 
-    // 🛠️ SỬA LỖI: Chuẩn bị dữ liệu dưới dạng URL-encoded
     const formData = new URLSearchParams();
     formData.append('targetEmail', targetEmail);
 
     document.getElementById("chatStatus").textContent = "Đang tìm người dùng...";
 
-    // Gọi API Controller với dữ liệu Form Data
     fetch('/Chat/StartPrivateChat', {
         method: 'POST',
         headers: {
-            // THAY ĐỔI: Sử dụng content type cho Form Data
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: formData.toString() // Gửi dữ liệu dưới dạng chuỗi URL-encoded
+        body: formData.toString()
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                currentTargetUserId = data.targetUserId; // Lấy ID người nhận từ Controller
-                // Cập nhật trạng thái
+                currentTargetUserId = data.targetUserId;
                 document.getElementById("chatStatus").textContent = `Đang chat với: ${data.targetUserName}`;
-                document.getElementById("chatStatus").style.color = "green"; // Thêm màu xanh cho dễ nhìn
+                document.getElementById("chatStatus").style.color = "green";
 
                 document.getElementById("sendButton").disabled = false;
 
                 // Xóa lịch sử cũ và hiển thị lịch sử chat mới
                 const messagesList = document.getElementById("messagesList");
                 messagesList.innerHTML = '';
+
+                // ✅ RENDER LỊCH SỬ CHAT
                 data.history.forEach(msg => {
                     const senderDisplay = msg.senderName || (msg.senderId === currentAccountId ? currentUserName : "Người lạ");
-                    const li = document.createElement("li");
-                    li.textContent = `[${senderDisplay}]: ${msg.content}`;
-                    messagesList.appendChild(li);
+                    renderMessage(senderDisplay, msg.content, msg.timestamp, messagesList, msg.senderId);
                 });
 
             } else {
                 alert(data.message);
-                currentTargetUserId = null; // Reset
+                currentTargetUserId = null;
                 document.getElementById("sendButton").disabled = true;
                 document.getElementById("chatStatus").textContent = "Chưa chọn người chat.";
-                document.getElementById("chatStatus").style.color = "#cc3333"; // Reset màu lỗi
+                document.getElementById("chatStatus").style.color = "#cc3333";
             }
         })
         .catch(err => console.error("Start Chat Error:", err));
@@ -101,11 +119,11 @@ document.getElementById("sendButton").addEventListener("click", (event) => {
         return;
     }
 
-    // Gọi phương thức SendPrivateMessage trên Hub Server
     connection.invoke("SendPrivateMessage", currentAccountId, currentUserName, currentTargetUserId, message)
         .then(() => {
             // Xóa nội dung ô message sau khi gửi thành công
             document.getElementById("messageInput").value = "";
+            // KHÔNG TỰ ECHO: Tin nhắn sẽ được hiển thị qua ReceivePrivateMessage
         })
         .catch((err) => {
             return console.error("SendPrivateMessage Error:", err.toString());
@@ -119,19 +137,14 @@ document.getElementById("sendButton").addEventListener("click", (event) => {
 // CÁC HÀM HỖ TRỢ THÔNG BÁO (GIỮ NGUYÊN)
 // -------------------------------------------------------------
 
-// 4. Hàm hiển thị popup thông báo nổi trên màn hình
 function showPopup(message) {
     const notif = document.createElement("div");
     notif.className = "notification-popup";
     notif.textContent = message;
-
     document.body.appendChild(notif);
-
-    // Tự động xóa popup sau 4 giây
     setTimeout(() => notif.remove(), 4000);
 }
 
-// 5. Hàm phát âm thanh thông báo
 function playSound() {
     const audio = new Audio("/sounds/newmessage.mp3");
     audio.play().catch((e) => {
@@ -139,7 +152,6 @@ function playSound() {
     });
 }
 
-// 6. Hàm hiển thị thông báo của trình duyệt (Browser Notification API)
 function showBrowserNotification(content) {
     if (Notification.permission === "granted") {
         new Notification("Tin nhắn mới", {
@@ -164,16 +176,13 @@ function showBrowserNotification(content) {
 // KẾT NỐI SIGNALR
 // -------------------------------------------------------------
 
-// 7. Khởi động kết nối SignalR
 connection.start()
     .then(() => {
         console.log("SignalR connected to Private Chat Hub");
 
-        // GỌI HÀM REGISTER ĐỂ ÁNH XẠ ACCOUNTID VÀO CONNECTIONID TRÊN SERVER
         connection.invoke("Register", currentAccountId)
             .catch(err => console.error("Register Error:", err.toString()));
 
-        // Yêu cầu quyền thông báo trình duyệt nếu chưa có
         if (Notification.permission !== "granted" && Notification.permission !== "denied") {
             Notification.requestPermission();
         }

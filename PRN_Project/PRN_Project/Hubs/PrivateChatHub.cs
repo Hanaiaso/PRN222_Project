@@ -44,12 +44,12 @@ namespace PRN_Project.Hubs
             }
 
             // Gửi tin nhắn đến người gửi (để hiển thị tin nhắn vừa gửi)
-            await Clients.Caller.SendAsync("ReceivePrivateMessage", senderName, message);
+            await Clients.Caller.SendAsync("ReceivePrivateMessage", senderName, message, DateTime.Now);
 
             // Gửi tin nhắn đến người nhận (nếu họ đang online)
             if (receiverConnectionId != null)
             {
-                await Clients.Client(receiverConnectionId).SendAsync("ReceivePrivateMessage", senderName, message);
+                await Clients.Client(receiverConnectionId).SendAsync("ReceivePrivateMessage", senderName, message, DateTime.Now);
             }
         }
 

@@ -145,5 +145,54 @@ namespace PRN_Project.Services.Implementations
         {
             return await _repository.GetGroupsByAccountIdAsync(accountId);
         }
+
+        public async Task<bool> LeaveGroupAsync(int groupId, int accountId)
+        {
+            bool isMember = await _repository.IsMemberOfGroupAsync(groupId, accountId);
+            if (!isMember) return true; // Hoặc false, tùy theo yêu cầu (người dùng đã không còn là thành viên)
+
+            // *Tùy chọn*: Thêm logic kiểm tra người quản trị cuối cùng tại đây
+
+            await _repository.RemoveMemberFromGroupAsync(groupId, accountId);
+            return true;
+        }
+        public async Task<(bool Success, string Message)> AddMembersToExistingGroupAsync(int groupId, int currentAccountId, List<string> memberEmails)
+        {
+            // 1. Kiểm tra xem người yêu cầu có thuộc nhóm không (quyền admin nên được kiểm tra ở đây)
+            bool isMember = await _repository.IsMemberOfGroupAsync(groupId, currentAccountId);
+            if (!isMember)
+            {
+                return (false, "Bạn không có quyền thực hiện thao tác này.");
+            }
+
+            // 2. Lấy thông tin nhóm (Tùy chọn: kiểm tra nhóm có tồn tại không)
+            var group = await _repository.GetGroupByIdAsync(groupId);
+            if (group == null)
+            {
+                return (false, "Nhóm chat không tồn tại.");
+            }
+
+            int addedCount = 0;
+
+            // 3. Xử lý và thêm từng email
+            foreach (var email in memberEmails.Distinct())
+            {
+                var account = await _repository.GetAccountByEmailAsync(email);
+
+                if (account != null)
+                {
+                    // AddMemberToGroupAsync đã có logic kiểm tra trùng lặp
+                    await _repository.AddMemberToGroupAsync(groupId, account.AId);
+                    addedCount++;
+                }
+            }
+
+            if (addedCount == 0 && memberEmails.Count > 0)
+            {
+                return (true, "Không tìm thấy người dùng hợp lệ nào để thêm vào nhóm.");
+            }
+
+            return (true, $"Đã thêm thành công {addedCount}/{memberEmails.Count} thành viên.");
+        }
     }
 }
