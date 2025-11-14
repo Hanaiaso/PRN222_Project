@@ -161,5 +161,52 @@ namespace PRN_Project.Controllers
 
             return View(group);
         }
+
+        // Action xử lý người dùng rời nhóm
+        [HttpPost]
+        public async Task<IActionResult> LeaveGroup(int groupId)
+        {
+            var accountId = HttpContext.Session.GetInt32("accountId");
+            if (accountId == null) return Unauthorized();
+
+            bool success = await _chatService.LeaveGroupAsync(groupId, accountId.Value);
+
+            if (success)
+            {
+                // Gửi thông báo đến các thành viên khác trong nhóm (qua SignalR)
+                // Đây là một ví dụ, logic SignalR nên nằm trong Service/Hub
+                // Clients.Group(groupId.ToString()).SendAsync("MemberLeft", accountId.Value);
+
+                return Json(new { success = true, message = "Đã rời nhóm thành công." });
+            }
+
+            return Json(new { success = false, message = "Không thể rời nhóm." });
+        }
+        // Action xử lý việc thêm thành viên vào nhóm đã có
+        [HttpPost]
+        public async Task<IActionResult> AddMembers([FromBody] CreateGroupRequest request, [FromQuery] int groupId)
+        {
+            var currentAccountId = HttpContext.Session.GetInt32("accountId");
+            if (currentAccountId == null) return Unauthorized();
+
+            if (groupId <= 0 || request.MemberEmails == null || !request.MemberEmails.Any())
+            {
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ (Group ID hoặc Email trống)." });
+            }
+
+            // Gọi Service để thực hiện thêm thành viên
+            var result = await _chatService.AddMembersToExistingGroupAsync(
+                groupId,
+                currentAccountId.Value,
+                request.MemberEmails
+            );
+
+            if (result.Success)
+            {
+                // Tùy chọn: Gửi thông báo SignalR đến nhóm về thành viên mới
+            }
+
+            return Json(new { success = result.Success, message = result.Message });
+        }
     }
 }

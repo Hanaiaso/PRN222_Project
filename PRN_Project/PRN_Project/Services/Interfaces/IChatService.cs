@@ -30,5 +30,8 @@ namespace PRN_Project.Services.Interfaces
         Task<bool> SaveGroupMessageAsync(int senderId, string content, int groupId);
         Task<List<ChatMessage2>> LoadGroupChatHistoryAsync(int groupId);
         Task<List<ChatGroup>> GetUserGroupsAsync(int accountId);
+        Task<bool> LeaveGroupAsync(int groupId, int accountId);
+        Task<(bool Success, string Message)> AddMembersToExistingGroupAsync(int groupId, int currentAccountId, List<string> memberEmails);
     }
 }
+

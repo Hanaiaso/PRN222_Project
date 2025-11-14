@@ -1,7 +1,7 @@
 ﻿@model PRN_Project.Models.Exam
 
 @{
-    var duration = (Model.EndTime - DateTime.Now)?.TotalSeconds ?? 0;
+    var duration = (int)Math.Floor((Model.EndTime - DateTime.Now)?.TotalSeconds ?? 0);
 }
 
 <h2>📝 Bài thi: @Model.EName</h2>
@@ -40,12 +40,15 @@
     // 🕒 Bộ đếm ngược
     function updateTimer() {
         if (formSubmitted) return;
+        // Tính toán phút và giây còn lại
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
-        timerDisplay.innerText = `${minutes} phút ${seconds} giây`;
+        const formattedSeconds = seconds.toString().padStart(2, '0');
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+        timerDisplay.innerText = `${formattedMinutes} phút ${formattedSeconds} giây`;
         timeLeft--;
 
-        if (timeLeft <= 0) {
+        if (timeLeft < 0) {
             autoSubmit("⏰ Hết thời gian làm bài. Hệ thống tự động nộp.");
         } else {
             setTimeout(updateTimer, 1000);
