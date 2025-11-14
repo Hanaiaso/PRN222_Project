@@ -9,6 +9,8 @@ using PRN_Project.Repositories.Interfaces;
 using PRN_Project.Repositories;
 using PRN_Project.Services.Interfaces;
 using PRN_Project.Services;
+using PRN_Project.Repositories.Implementations;
+using PRN_Project.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,12 @@ builder.Services.AddDbContext<LmsDbContext>(opts =>
 
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
+
+builder.Services.AddScoped<IExamRepository, ExamRepository>();
+builder.Services.AddScoped<IExamService, ExamService>();
+
+builder.Services.AddScoped<IRankingRepository, RankingRepository>();
+builder.Services.AddScoped<IRankingService, RankingService>();
 
 
 builder.Services.AddSignalR();
