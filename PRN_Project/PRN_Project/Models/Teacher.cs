@@ -19,5 +19,6 @@ namespace PRN_Project.Models
 
         // Navigation
         public ICollection<TeacherSubject>? TeacherSubjects { get; set; }
+        public ICollection<Classroom>? Classrooms { get; set; }
     }
 }
