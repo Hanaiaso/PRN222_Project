@@ -1,0 +1,43 @@
+﻿@model PRN_Project.Models.ChatGroup
+@{
+    ViewData["Title"] = $"Nhóm: {Model.Name}";
+}
+
+<h2 class="text-primary">Nhóm Chat: @Model.Name</h2>
+
+<div class="row p-1 align-items-center mb-3">
+    <div class="col-2">**Người gửi**</div>
+    <div class="col-4">
+        <input type="text" id="userInput" value="@ViewBag.StudentName" readonly class="form-control" style="background-color: #f0f0f0;" />
+        <input type="hidden" id="studentIdHidden" value="@ViewBag.StudentId" />
+        <input type="hidden" id="groupIdHidden" value="@Model.GroupId" /> @* <-- ID NHÓM CẦN GỬI LÊN HUB *@
+    </div>
+    <div class="col-6">
+        <span class="text-success fw-bold">ID Nhóm: @Model.GroupId</span>
+    </div>
+</div>
+
+<div class="row p-1 mt-3">
+    <div class="col-12">
+        <h3>Lịch sử Nhóm</h3>
+    </div>
+</div>
+<div class="row p-1 mb-3">
+    <div class="col-12">
+        <ul id="messagesList" class="list-group p-2"
+            style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; background-color: #f9f9f9;">
+        </ul>
+    </div>
+</div>
+
+<div class="row p-1 align-items-center">
+    <div class="col-9">
+        <input type="text" class="w-100 form-control" id="messageInput" placeholder="Gửi tin nhắn nhóm..." />
+    </div>
+    <div class="col-3">
+        <input type="button" id="sendButton" value="Gửi Nhóm" class="btn btn-success w-100" disabled />
+    </div>
+</div>
+
+<script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/groupChat.js"></script>

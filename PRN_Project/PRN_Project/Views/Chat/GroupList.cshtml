@@ -1,0 +1,126 @@
+﻿@model List<PRN_Project.Models.ChatGroup>
+@{
+    ViewData["Title"] = "Danh sách Nhóm Chat";
+}
+
+<h2 class="text-primary">Danh sách Nhóm Chat</h2>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createGroupModal">
+            <i class="fas fa-plus"></i> Tạo Nhóm Mới
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info">Bạn chưa là thành viên của nhóm chat nào.</div>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (var group in Model.Where(g => g.Type == 1)) // Lọc nhóm riêng tư
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="fw-bold">@group.Name</span>
+                            <small class="text-muted ms-3">(@group.GroupId)</small>
+                        </div>
+                        <a href="@Url.Action("GroupChat", "Chat", new { groupId = group.GroupId })" class="btn btn-sm btn-outline-primary">
+                            Vào Chat
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="createGroupModal" tabindex="-1" aria-labelledby="createGroupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createGroupModalLabel">Tạo Nhóm Chat Mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="groupNameInput" class="form-label">Tên Nhóm:</label>
+                    <input type="text" class="form-control" id="groupNameInput" placeholder="Nhập tên nhóm" required>
+                </div>
+                <div class="mb-3">
+                    <label for="memberEmailsInput" class="form-label">Thành viên (Email, cách nhau bằng dấu phẩy):</label>
+                    <textarea class="form-control" id="memberEmailsInput" rows="3" placeholder="email1@example.com, email2@example.com"></textarea>
+                    <small class="text-muted">Người tạo sẽ tự động là thành viên.</small>
+                </div>
+                <div id="createGroupStatus" class="mt-2" style="font-weight: bold;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnCreateGroup">Tạo Nhóm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('btnCreateGroup').addEventListener('click', function () {
+            // 1. Lấy giá trị tên nhóm
+        const groupNameInput = document.getElementById('groupNameInput'); // Lấy element
+        const groupName = groupNameInput ? groupNameInput.value.trim() : ""; // Lấy giá trị an toàn
+
+        // 2. Lấy giá trị email
+        const emailsString = document.getElementById('memberEmailsInput').value.trim();
+        const statusDiv = document.getElementById('createGroupStatus');
+
+        // KIỂM TRA LẠI: Nếu vẫn bị lỗi, hãy đảm bảo ô input không bị disabled hay hidden.
+        if (groupName === "") {
+            statusDiv.textContent = "Tên nhóm không được trống. Vui lòng nhập lại.";
+            statusDiv.style.color = 'red';
+            return;
+        }
+
+            // Tách các email thành mảng
+            const memberEmails = emailsString.split(',').map(email => email.trim()).filter(email => email !== "");
+
+            statusDiv.textContent = "Đang tạo nhóm...";
+            statusDiv.style.color = 'blue';
+
+            // Gửi yêu cầu AJAX
+            fetch('@Url.Action("CreateGroup", "Chat")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    groupName: groupName,
+                    memberEmails: memberEmails
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    statusDiv.textContent = `Tạo nhóm "${data.groupName}" thành công!`;
+                    statusDiv.style.color = 'green';
+
+                    // Tải lại trang sau 1.5s để cập nhật danh sách
+                    setTimeout(() => {
+                        window.location.href = '@Url.Action("GroupChat", "Chat")?groupId=' + data.groupId;
+                    }, 1500);
+                } else {
+                    statusDiv.textContent = `Lỗi: ${data.message}`;
+                    statusDiv.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                statusDiv.textContent = "Lỗi kết nối Server.";
+                statusDiv.style.color = 'red';
+                console.error('Error creating group:', error);
+            });
+        });
+    </script>
+}

@@ -51,5 +51,87 @@ namespace PRN_Project.Repositories.Implementations
         {
             await _context.ChatMessages2.AddAsync(message);
         }
+
+        public async Task<ChatGroup?> GetCommunityGroupAsync(int groupId)
+        {
+            // Giả định Community Group có GroupId là 1
+            return await _context.ChatGroups.FindAsync(groupId);
+        }
+
+        public async Task<List<ChatMessage2>> LoadCommunityChatHistoryAsync(int groupId)
+        {
+            // Truy vấn lịch sử tin nhắn chỉ dành cho GroupId này
+            return await _context.ChatMessages2
+                .Where(m => m.GroupId == groupId)
+                .Include(m => m.Sender)
+                .OrderBy(m => m.Timestamp)
+                .ToListAsync();
+        }
+
+        public async Task<ChatGroup> CreateGroupAsync(string groupName, int creatorId)
+        {
+            var newGroup = new ChatGroup
+            {
+                Name = groupName,
+                Type = 1, // Giả định Type=1 là Private Group
+                CreatedAt = DateTime.Now,
+            };
+            await _context.ChatGroups.AddAsync(newGroup);
+            await _context.SaveChangesAsync();
+
+            // Thêm người tạo nhóm làm thành viên quản trị
+            await AddMemberToGroupAsync(newGroup.GroupId, creatorId, true);
+            return newGroup;
+        }
+
+        public async Task AddMemberToGroupAsync(int groupId, int accountId, bool isAdmin = false)
+        {
+            // Kiểm tra trùng lặp
+            var exists = await _context.GroupMembers
+                .AnyAsync(gm => gm.GroupId == groupId && gm.AccountId == accountId);
+
+            if (!exists)
+            {
+                var member = new GroupMember
+                {
+                    GroupId = groupId,
+                    AccountId = accountId,
+                    IsAdmin = isAdmin,
+                    JoinedAt = DateTime.Now
+                };
+                await _context.GroupMembers.AddAsync(member);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<bool> IsMemberOfGroupAsync(int groupId, int accountId)
+        {
+            return await _context.GroupMembers.AnyAsync(gm => gm.GroupId == groupId && gm.AccountId == accountId);
+        }
+
+        public async Task<ChatGroup?> GetGroupByIdAsync(int groupId)
+        {
+            // Lấy nhóm và thông tin thành viên nếu cần
+            return await _context.ChatGroups
+                .Include(g => g.Members)
+                .FirstOrDefaultAsync(g => g.GroupId == groupId);
+        }
+
+        public async Task<List<ChatMessage2>> LoadGroupChatHistoryAsync(int groupId)
+        {
+            return await _context.ChatMessages2
+                .Where(m => m.GroupId == groupId)
+                .Include(m => m.Sender)
+                .OrderBy(m => m.Timestamp)
+                .ToListAsync();
+        }
+
+        public async Task<List<ChatGroup>> GetGroupsByAccountIdAsync(int accountId)
+        {
+            return await _context.GroupMembers
+                .Where(gm => gm.AccountId == accountId)
+                .Select(gm => gm.Group)
+                .ToListAsync();
+        }
     }
 }
