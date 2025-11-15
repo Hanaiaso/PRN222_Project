@@ -167,7 +167,16 @@
                                     <td><span class="badge bg-light text-dark border">@item.SubjectName</span></td>
                                     <td class="text-muted">@item.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
                                     <td class="text-center"><span class="badge bg-info rounded-pill">@item.TotalSubmissions</span></td>
-                                    <td class="text-center fw-bold">@item.AverageScore.ToString("0.0")</td>
+                                    <td>
+                                        @if (item.AverageScore.HasValue)
+                                        {
+                                            @Math.Round(item.AverageScore.Value, 2)
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">-</span>
+                                        }
+                                    </td>
                                     <td>
                                         @if (item.AverageScore >= 8)
                                         {

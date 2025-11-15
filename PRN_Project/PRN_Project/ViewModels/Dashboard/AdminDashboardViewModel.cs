@@ -16,7 +16,7 @@ namespace PRN_Project.ViewModels.Dashboard
         public string ExamName { get; set; }
         public string SubjectName { get; set; }
         public int TotalSubmissions { get; set; }
-        public double AverageScore { get; set; }
+        public double? AverageScore { get; set; }
         public DateTime? CreatedAt { get; set; }
     }
 }

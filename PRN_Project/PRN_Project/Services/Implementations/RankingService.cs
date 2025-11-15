@@ -77,21 +77,19 @@ namespace PRN_Project.Services.Implementations
             return result;
         }
 
-        public async Task<string> ExportRankingCsvAsync(int subjectId)
+        public async Task<string> ExportRankingCsvAsync(int examId) 
         {
-            var exams = await _repo.GetExamsBySubjectAsync(subjectId);
+            // Lấy thông tin bài thi cụ thể
+            var exam = await _repo.GetExamByIdAsync(examId);
+            if (exam == null) return "";
             var sb = new StringBuilder();
             sb.AppendLine("Môn học,Bài thi,Học sinh,Điểm,Thứ hạng");
-
-            foreach (var exam in exams)
-            {
-                var submits = await _repo.GetSubmitsByExamAsync(exam.EId);
-                var rows = submits.Select((s, i) =>
-                    $"{exam.Subject?.SuName},{exam.EName},{s.Student?.SName ?? "Unknown"},{(s.Score ?? 0):0.00},{i + 1}");
-
-                sb.AppendLine(string.Join("\n", rows));
-            }
-
+            //Lấy danh sách bài làm của bài thi này
+            var submits = await _repo.GetSubmitsByExamAsync(examId);
+            //Tạo các dòng dữ liệu
+            var rows = submits.Select((s, i) =>
+                $"{exam.Subject?.SuName ?? "Unknown"},{exam.EName},{s.Student?.SName ?? "Unknown"},{(s.Score ?? 0):0.00},{i + 1}");
+            sb.AppendLine(string.Join("\n", rows));
             return sb.ToString();
         }
     }

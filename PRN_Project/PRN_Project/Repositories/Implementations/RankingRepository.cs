@@ -63,5 +63,11 @@ namespace PRN_Project.Repositories.Implementations
                 .Where(s => s.SId == studentId)
                 .ToListAsync();
         }
+        public async Task<Exam?> GetExamByIdAsync(int examId)
+        {
+            return await _context.Exams
+                .Include(e => e.Subject)
+                .FirstOrDefaultAsync(e => e.EId == examId);
+        }
     }
 }
