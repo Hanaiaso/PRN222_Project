@@ -123,7 +123,7 @@ app.UseAuthorization();
 app.MapHub<PRN_Project.Hubs.PrivateChatHub>("/privateChatHub");
 app.MapHub<CommunityChatHub>("/communityChatHub");
 app.MapHub<GroupChatHub>("/groupChatHub");
-
+app.MapHub<NotificationHub>("/notificationHub");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}"

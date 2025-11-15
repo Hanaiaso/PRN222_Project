@@ -51,7 +51,15 @@ namespace PRN_Project.Services.Implementations
 
             await _repo.UpdateAsync(notification);
 
-            await _hubContext.Clients.All.SendAsync("ReceiveNotification", $"📢 Thông báo mới: {notification.Title}");
+            await _hubContext.Clients.All.SendAsync(
+                "ReceiveNotification",
+                new
+                {
+                    id = notification.NtId,
+                    title = notification.Title,
+                    sentTime = notification.SentTime.ToString("HH:mm dd/MM/yyyy")
+                }
+            );
         }
 
         public async Task UpdateAsync(Notification notification)
