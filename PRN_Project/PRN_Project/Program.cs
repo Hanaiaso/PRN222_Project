@@ -45,6 +45,9 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
+builder.Services.AddScoped<ITeacherClassroomService, TeacherClassroomService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+
 
 // Services
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -60,6 +63,8 @@ builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IRankingService, RankingService>();
 
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+builder.Services.AddScoped<ITeacherClassroomRepository, TeacherClassroomRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PRN_Project.Models.Classroom>
+
+@{
+    ViewData["Title"] = "Các lớp học của tôi";
+}
+
+<h2>Các lớp học của tôi</h2>
+
+@if (!Model.Any())
+{
+    <p>Bạn chưa được phân công lớp học nào.</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Tên lớp</th>
+                <th>Mã lớp</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ClassName</td>
+                    <td>@item.ClassCode</td>
+                    <td>
+                        <a asp-action="ClassDetails" asp-route-classroomId="@item.ClassroomId" class="btn btn-primary">
+                            Xem danh sách lớp
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
