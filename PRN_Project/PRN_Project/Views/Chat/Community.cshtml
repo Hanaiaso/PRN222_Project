@@ -11,6 +11,16 @@
 <div class="container">
     <h2 class="text-center text-primary">💬 Kênh Chat Cộng Đồng</h2>
 
+    <button id="btnToggleNotif">🔔</button>
+    <script>
+        document.getElementById('btnToggleNotif').addEventListener('click', () => {
+          const v = window.NotificationHelpers.toggle();
+          document.getElementById('btnToggleNotif').textContent = v ? '🔔' : '🔕';
+        });
+        // init
+        document.getElementById('btnToggleNotif').textContent = (window.NotificationHelpers && window.NotificationHelpers.isEnabled()) ? '🔔' : '🔕';
+    </script>
+
     <div class="row p-1 align-items-center mb-3">
         <div class="col-1">Xin Chào</div>
         <div class="col-5">
