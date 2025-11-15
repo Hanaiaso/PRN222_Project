@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PRN_Project.Services.Interfaces;
 using PRN_Project.ViewModels;
 using System.Threading.Tasks;
 
 namespace PRN_Project.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly IProfileService _profileService;

@@ -12,6 +12,7 @@ using PRN_Project.Services;
 using PRN_Project.Repositories.Implementations;
 using PRN_Project.Services.Implementations;
 using PRN_Project.Services.Interfaces;
+using PRN_Project.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +68,10 @@ builder.Services.AddScoped<IPostService, PostService>();
 
 builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
 builder.Services.AddScoped<ISubmissionService, SubmissionService>();
+
+// ======= Đăng ký Background Services =======
+builder.Services.AddScoped<IAssignmentReminderService, AssignmentReminderService>();
+builder.Services.AddHostedService<AssignmentReminderWorkerService>();
 
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");

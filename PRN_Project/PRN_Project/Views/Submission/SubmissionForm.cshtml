@@ -31,13 +31,13 @@
             if (isOverdueForSubmit)
             {
                 <div style="background: #fee; color: #c33; padding: 8px; border-radius: 6px; margin-bottom: 10px; font-size: 0.9rem;">
-                    ⚠️ Đã quá hạn nộp bài (@dueDate.Value.ToString("dd/MM/yyyy HH:mm"))
+                    ⚠️ Đã quá hạn nộp bài (@dueDate.Value.ToString("dd/MM/yyyy") lúc @dueDate.Value.ToString("hh:mm tt", new System.Globalization.CultureInfo("en-US")).ToLower())
                 </div>
             }
             else
             {
                 <div style="color: #666; font-size: 0.9rem; margin-bottom: 10px;">
-                    ⏰ Hạn nộp: @dueDate.Value.ToString("dd/MM/yyyy HH:mm")
+                    ⏰ Hạn nộp: @dueDate.Value.ToString("dd/MM/yyyy") lúc @dueDate.Value.ToString("hh:mm tt", new System.Globalization.CultureInfo("en-US")).ToLower()
                 </div>
             }
         }

@@ -26,7 +26,7 @@
         @if (Model.DueDate.HasValue)
         {
             <div class="due-date @(isOverdue ? "overdue" : isDueSoon ? "due-soon" : "upcoming")">
-                ⏰ Hạn nộp: @Model.DueDate.Value.ToString("dd/MM/yyyy HH:mm")
+                ⏰ Hạn nộp: @Model.DueDate.Value.ToString("dd/MM/yyyy") lúc @Model.DueDate.Value.ToString("hh:mm tt", new System.Globalization.CultureInfo("en-US")).ToLower()
                 @if (isOverdue)
                 {
                     <span style="display: block; font-size: 0.8rem; margin-top: 3px;">(Đã quá hạn)</span>
