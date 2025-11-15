@@ -5,69 +5,188 @@
 }
 
 <div class="container-fluid p-4">
-    <h2 class="mb-4">My Class Performance</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-primary"><i class="fas fa-chalkboard-teacher me-2"></i>Bảng Tin Giảng Viên</h2>
+            <p class="text-muted">Tổng quan hiệu suất và kết quả học tập của các lớp</p>
+        </div>
+        <div class="text-end">
+            <span class="badge bg-white text-primary border border-primary p-2 rounded-pill shadow-sm">
+                <i class="far fa-calendar-alt me-1"></i> @DateTime.Now.ToString("dd/MM/yyyy")
+            </span>
+        </div>
+    </div>
 
-    <div class="row">
-        @if (Model.ClassStats != null && Model.ClassStats.Any())
-        {
-            @foreach (var item in Model.ClassStats)
+    @if (Model.ClassStats == null || !Model.ClassStats.Any())
+    {
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 text-center">
+                <div class="card shadow-sm border-0 p-5">
+                    <div class="mb-3">
+                        <i class="fas fa-clipboard-list fa-4x text-muted opacity-25"></i>
+                    </div>
+                    <h4>Chưa có dữ liệu lớp học</h4>
+                    <p class="text-muted">Hiện tại bạn chưa được phân công lớp nào hoặc chưa có học sinh.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @for (int i = 0; i < Model.ClassStats.Count; i++)
             {
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-header bg-white border-bottom-0">
-                            <h5 class="card-title text-primary">@item.ClassName</h5>
-                            <small class="text-muted">Code: @item.ClassCode</small>
+                var item = Model.ClassStats[i];
+                // Tạo ID duy nhất cho mỗi biểu đồ để script có thể vẽ đúng
+                var chartId = "gradeChart_" + i;
+
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="card border-0 shadow-sm h-100 hover-shadow transition-all">
+                        <div class="card-header bg-white border-bottom-0 pt-4 px-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 class="card-title fw-bold text-dark mb-1">@item.ClassName</h5>
+                                    <span class="badge bg-light text-secondary border">@item.ClassCode</span>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-muted p-0" type="button" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#">Xem chi tiết</a></li>
+                                        <li><a class="dropdown-item" href="#">Xuất báo cáo</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-3">
-                                <span>Students: <strong>@item.TotalStudents</strong></span>
-                                <span>Participation: <strong>@item.ParticipationRate%</strong></span>
-                            </div>
 
-                            <h6 class="text-muted mb-2">Grade Distribution (A/B/C/D)</h6>
-
-                            <div class="progress-stacked mb-2" style="height: 25px;">
-                                @{
-                                    var total = item.GradeA + item.GradeB + item.GradeC + item.GradeD;
-                                    // Avoid divide by zero
-                                    total = total == 0 ? 1 : total;
-
-                                    var pA = (item.GradeA * 100) / total;
-                                    var pB = (item.GradeB * 100) / total;
-                                    var pC = (item.GradeC * 100) / total;
-                                    var pD = (item.GradeD * 100) / total;
-                                }
-
-                                <div class="progress" role="progressbar" style="width: @pA%" aria-valuenow="@pA" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-success">A</div>
+                        <div class="card-body px-4">
+                            <div class="row text-center mb-4 g-2">
+                                <div class="col-6">
+                                    <div class="p-2 bg-light rounded-3">
+                                        <small class="text-muted d-block text-uppercase" style="font-size: 0.7rem; font-weight: 600;">Sĩ số</small>
+                                        <span class="h5 fw-bold text-primary mb-0">@item.TotalStudents</span>
+                                    </div>
                                 </div>
-                                <div class="progress" role="progressbar" style="width: @pB%" aria-valuenow="@pB" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-info">B</div>
-                                </div>
-                                <div class="progress" role="progressbar" style="width: @pC%" aria-valuenow="@pC" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-warning">C</div>
-                                </div>
-                                <div class="progress" role="progressbar" style="width: @pD%" aria-valuenow="@pD" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-danger">D</div>
+                                <div class="col-6">
+                                    <div class="p-2 bg-light rounded-3">
+                                        <small class="text-muted d-block text-uppercase" style="font-size: 0.7rem; font-weight: 600;">Tham gia thi</small>
+                                        <span class="h5 fw-bold text-success mb-0">@item.ParticipationRate%</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="small text-muted mt-2 d-flex justify-content-between">
-                                <span><i class="fas fa-square text-success"></i> A: @item.GradeA</span>
-                                <span><i class="fas fa-square text-info"></i> B: @item.GradeB</span>
-                                <span><i class="fas fa-square text-warning"></i> C: @item.GradeC</span>
-                                <span><i class="fas fa-square text-danger"></i> D: @item.GradeD</span>
+                            <div class="position-relative" style="height: 200px; width: 100%;">
+                                <canvas id="@chartId"></canvas>
+                                <div class="position-absolute top-50 start-50 translate-middle text-center pointer-events-none">
+                                    <small class="text-muted">Bài nộp</small>
+                                    <div class="fw-bold h4 mb-0">@item.TotalSubmissions</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 pt-3 border-top">
+                                <div class="d-flex justify-content-between text-muted small mb-1">
+                                    <span><i class="fas fa-circle text-success me-1"></i>Giỏi (A)</span>
+                                    <span class="fw-bold">@item.GradeA</span>
+                                </div>
+                                <div class="d-flex justify-content-between text-muted small mb-1">
+                                    <span><i class="fas fa-circle text-primary me-1"></i>Khá (B)</span>
+                                    <span class="fw-bold">@item.GradeB</span>
+                                </div>
+                                <div class="d-flex justify-content-between text-muted small mb-1">
+                                    <span><i class="fas fa-circle text-warning me-1"></i>Trung bình (C)</span>
+                                    <span class="fw-bold">@item.GradeC</span>
+                                </div>
+                                <div class="d-flex justify-content-between text-muted small mb-1">
+                                    <span><i class="fas fa-circle text-danger me-1"></i>Yếu (D)</span>
+                                    <span class="fw-bold">@item.GradeD</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
-        }
-        else
-        {
-            <div class="col-12">
-                <div class="alert alert-info">You are not managing any classes yet.</div>
-            </div>
-        }
-    </div>
+        </div>
+    }
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Dữ liệu từ Model được truyền vào JS
+            // Sử dụng vòng lặp Razor để generate code JS cho từng biểu đồ
+        @for (int i = 0; i < Model.ClassStats.Count; i++)
+        {
+            var item = Model.ClassStats[i];
+            var chartId = "gradeChart_" + i;
+
+            <text>
+                    (function() {
+                        const ctx = document.getElementById('@chartId').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Giỏi (A)', 'Khá (B)', 'Trung bình (C)', 'Yếu (D)'],
+                                datasets: [{
+                                    data: [@item.GradeA, @item.GradeB, @item.GradeC, @item.GradeD],
+                                    backgroundColor: [
+                                        '#2ecc71', // Green - A
+                                        '#3498db', // Blue - B
+                                        '#f1c40f', // Yellow - C
+                                        '#e74c3c'  // Red - D
+                                    ],
+                                    borderWidth: 2,
+                                    borderColor: '#ffffff',
+                                    hoverOffset: 4
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '75%', // Tạo lỗ rỗng ở giữa lớn hơn
+                                plugins: {
+                                    legend: {
+                                        display: false // Ẩn legend mặc định của ChartJS vì ta đã tự custom bên dưới
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                let label = context.label || '';
+                                                if (label) {
+                                                    label += ': ';
+                                                }
+                                                let value = context.raw;
+                                                let total = context.chart._metasets[context.datasetIndex].total;
+                                                let percentage = Math.round((value / total) * 100) + '%';
+                                                return label + value + ' (' + percentage + ')';
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    })();
+            </text>
+        }
+        });
+    </script>
+}
+
+<style>
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    }
+
+    .transition-all {
+        transition: all 0.3s ease;
+    }
+    /* Tắt click sự kiện vào text giữa biểu đồ */
+    .pointer-events-none {
+        pointer-events: none;
+    }
+</style>

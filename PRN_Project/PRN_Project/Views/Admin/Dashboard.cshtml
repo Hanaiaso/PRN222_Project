@@ -2,85 +2,281 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Admin Dashboard";
+
+    // Gom nhóm các bài thi gần đây theo Môn Học và tính điểm trung bình
+    var subjectStats = Model.RecentExamStats
+        .GroupBy(e => e.SubjectName)
+        .Select(g => new
+        {
+            SubjectName = g.Key,
+            AvgScore = g.Average(e => e.AverageScore)
+        })
+        .ToList();
+
+    // Chuyển dữ liệu sang mảng để Chart.js dùng
+    var chartLabels = subjectStats.Select(s => s.SubjectName).ToArray();
+    var chartData = subjectStats.Select(s => s.AvgScore).ToArray();
 }
 
 <div class="container-fluid p-4">
-    <h2 class="mb-4">System Overview</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark"><i class="fas fa-user-shield me-2 text-primary"></i>Tổng quan hệ thống</h2>
+            <p class="text-muted mb-0">Chào mừng quản trị viên, đây là báo cáo ngày @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
+        <div>
+            <a asp-controller="Notification" asp-action="Create" class="btn btn-primary shadow-sm">
+                <i class="fas fa-plus me-2"></i>Tạo thông báo
+            </a>
+        </div>
+    </div>
 
-    <div class="row mb-4">
+    <div class="row g-4 mb-4">
         <div class="col-md-3">
-            <div class="card text-white bg-primary mb-3">
+            <div class="card border-0 shadow-sm h-100 kpi-card border-start border-4 border-info">
                 <div class="card-body">
-                    <h5 class="card-title">Students</h5>
-                    <p class="card-text display-4">@Model.TotalStudents</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted text-uppercase fw-bold small mb-1">Học sinh</p>
+                            <h3 class="fw-bold text-dark mb-0">@Model.TotalStudents</h3>
+                        </div>
+                        <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle p-3">
+                            <i class="fas fa-user-graduate fa-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-success fw-bold"><i class="fas fa-arrow-up"></i> Active</span> trong hệ thống
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
-            <div class="card text-white bg-success mb-3">
+            <div class="card border-0 shadow-sm h-100 kpi-card border-start border-4 border-success">
                 <div class="card-body">
-                    <h5 class="card-title">Teachers</h5>
-                    <p class="card-text display-4">@Model.TotalTeachers</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted text-uppercase fw-bold small mb-1">Giảng viên</p>
+                            <h3 class="fw-bold text-dark mb-0">@Model.TotalTeachers</h3>
+                        </div>
+                        <div class="icon-box bg-success bg-opacity-10 text-success rounded-circle p-3">
+                            <i class="fas fa-chalkboard-teacher fa-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-success fw-bold"><i class="fas fa-check-circle"></i> Verified</span> tài khoản
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
-            <div class="card text-white bg-warning mb-3">
+            <div class="card border-0 shadow-sm h-100 kpi-card border-start border-4 border-warning">
                 <div class="card-body">
-                    <h5 class="card-title">Classes</h5>
-                    <p class="card-text display-4">@Model.TotalClasses</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted text-uppercase fw-bold small mb-1">Lớp học</p>
+                            <h3 class="fw-bold text-dark mb-0">@Model.TotalClasses</h3>
+                        </div>
+                        <div class="icon-box bg-warning bg-opacity-10 text-warning rounded-circle p-3">
+                            <i class="fas fa-school fa-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-primary fw-bold">@Model.TotalClasses</span> đang hoạt động
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
-            <div class="card text-white bg-info mb-3">
+            <div class="card border-0 shadow-sm h-100 kpi-card border-start border-4 border-danger">
                 <div class="card-body">
-                    <h5 class="card-title">Exams Created</h5>
-                    <p class="card-text display-4">@Model.TotalExams</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted text-uppercase fw-bold small mb-1">Bài thi</p>
+                            <h3 class="fw-bold text-dark mb-0">@Model.TotalExams</h3>
+                        </div>
+                        <div class="icon-box bg-danger bg-opacity-10 text-danger rounded-circle p-3">
+                            <i class="fas fa-file-alt fa-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-danger fw-bold">New</span> được tạo gần đây
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card shadow">
-        <div class="card-header bg-white">
-            <h5 class="mb-0">Recent Exam Results</h5>
+    <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3 border-0">
+                    <h5 class="card-title fw-bold mb-0">👥 Tỉ lệ người dùng</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" style="position: relative; height: 250px;">
+                        <canvas id="userChart"></canvas>
+                    </div>
+                    <div class="text-center mt-3">
+                        <small class="text-muted">Tỉ lệ giữa Học sinh và Giảng viên</small>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th>Exam Name</th>
-                        <th>Subject</th>
-                        <th>Date Created</th>
-                        <th>Submissions</th>
-                        <th>Avg. Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.RecentExamStats != null && Model.RecentExamStats.Any())
-                    {
-                        foreach (var item in Model.RecentExamStats)
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center">
+                    <h5 class="card-title fw-bold mb-0">📊 Điểm trung bình theo Môn học (Gần đây)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" style="position: relative; height: 250px;">
+                        <canvas id="examChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white py-3 border-0">
+            <h5 class="card-title fw-bold mb-0">📝 Kết quả thi mới nhất</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-secondary">
+                        <tr>
+                            <th class="ps-4 py-3">Tên bài thi</th>
+                            <th>Môn học</th>
+                            <th>Ngày tạo</th>
+                            <th class="text-center">Số bài nộp</th>
+                            <th class="text-center">Điểm TB</th>
+                            <th>Đánh giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.RecentExamStats != null && Model.RecentExamStats.Any())
                         {
-                            <tr>
-                                <td>@item.ExamName</td>
-                                <td>@item.SubjectName</td>
-                                <td>@item.CreatedAt?.ToString("dd/MM/yyyy")</td>
-                                <td>@item.TotalSubmissions</td>
-                                <td>
-                                    <span class="badge @(item.AverageScore >= 5 ? "bg-success" : "bg-danger")">
-                                        @item.AverageScore.ToString("0.0")
-                                    </span>
-                                </td>
-                            </tr>
+                            foreach (var item in Model.RecentExamStats)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-bold text-primary">@item.ExamName</td>
+                                    <td><span class="badge bg-light text-dark border">@item.SubjectName</span></td>
+                                    <td class="text-muted">@item.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td class="text-center"><span class="badge bg-info rounded-pill">@item.TotalSubmissions</span></td>
+                                    <td class="text-center fw-bold">@item.AverageScore.ToString("0.0")</td>
+                                    <td>
+                                        @if (item.AverageScore >= 8)
+                                        {
+                                            <span class="text-success fw-bold"><i class="fas fa-smile"></i> Tốt</span>
+                                        }
+                                        else if (item.AverageScore >= 5)
+                                        {
+                                            <span class="text-warning fw-bold"><i class="fas fa-meh"></i> Khá</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger fw-bold"><i class="fas fa-frown"></i> Yếu</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
                         }
-                    }
-                    else
-                    {
-                        <tr><td colspan="5" class="text-center">No exam data available.</td></tr>
-                    }
-                </tbody>
-            </table>
+                        else
+                        {
+                            <tr><td colspan="6" class="text-center py-4 text-muted">Chưa có dữ liệu thi gần đây.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // 1. Biểu đồ tròn: Tỉ lệ Học sinh / Giáo viên
+    const ctxUser = document.getElementById('userChart').getContext('2d');
+    new Chart(ctxUser, {
+        type: 'doughnut',
+        data: {
+            labels: ['Học sinh', 'Giảng viên'],
+            datasets: [{
+                data: [@Model.TotalStudents, @Model.TotalTeachers],
+                backgroundColor: ['#36a2eb', '#2ecc71'], // Xanh dương, Xanh lá
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+
+    // 2. Biểu đồ cột: Điểm trung bình theo MÔN HỌC (Dữ liệu đã được xử lý ở đầu file View)
+    var chartLabels = @Html.Raw(Json.Serialize(chartLabels));
+    var chartData = @Html.Raw(Json.Serialize(chartData));
+
+    const ctxExam = document.getElementById('examChart').getContext('2d');
+    new Chart(ctxExam, {
+        type: 'bar',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Điểm trung bình môn',
+                data: chartData,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 159, 64, 0.7)'
+                ],
+                borderRadius: 5,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10,
+                    title: { display: true, text: 'Điểm số (0-10)' }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+</script>
+
+<style>
+    .kpi-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
