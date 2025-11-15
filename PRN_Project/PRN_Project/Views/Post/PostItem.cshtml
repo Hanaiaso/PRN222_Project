@@ -33,7 +33,7 @@
                     else if (Model.DueDate.HasValue)
                     {
                         <span style="margin-left: 5px; color: #d32f2f; font-weight: 600;">
-                            ⏰ Hạn: @Model.DueDate.Value.ToString("dd/MM/yyyy HH:mm")
+                            ⏰ Hạn: @Model.DueDate.Value.ToString("dd/MM/yyyy") lúc @Model.DueDate.Value.ToString("hh:mm tt", new System.Globalization.CultureInfo("en-US")).ToLower()
                         </span>
                     }
                 }

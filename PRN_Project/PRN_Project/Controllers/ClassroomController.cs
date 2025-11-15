@@ -6,7 +6,7 @@ using PRN_Project.Models;
 
 namespace PRN_Project.Controllers
 {
-    [Authorize] // Bắt buộc đăng nhập
+    [Authorize] 
     public class ClassroomController : Controller
     {
         private readonly IClassroomService _classroomService;
@@ -20,22 +20,22 @@ namespace PRN_Project.Controllers
             _postService = postService;
         }
 
-        // === TRANG DASHBOARD LỚP HỌC ===
+        // dashboard của lớp học
         public async Task<IActionResult> Index()
         {
-            // Lấy AccountId và Vai trò của người dùng đang đăng nhập
+            
             var accountId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)); // AccountId từ JWT token
-            var userRole = User.FindFirstValue(ClaimTypes.Role); // "Student" hoặc "Teacher"
+            var userRole = User.FindFirstValue(ClaimTypes.Role); 
 
             // Service sẽ tự động chuyển đổi AccountId sang TeacherId/StudentId và lấy đúng lớp học
             var myClasses = await _classroomService.GetMyClassesAsync(accountId, userRole);
 
-            return View(myClasses); // Truyền model danh sách lớp học sang View
+            return View(myClasses); 
         }
 
-        // === HÀNH ĐỘNG JOIN LỚP (CHO HỌC SINH) ===
+        // học sinh join lớp
         [HttpPost]
-        [Authorize(Roles = "Student")] // Chỉ học sinh mới được Join
+        [Authorize(Roles = "Student")] // check Role của học sinh
         public async Task<IActionResult> Join(string classCode)
         {
             if (string.IsNullOrEmpty(classCode))
