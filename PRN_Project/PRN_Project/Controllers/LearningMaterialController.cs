@@ -29,10 +29,33 @@ namespace PRN_Project.Controllers
         }
         [Authorize(Roles = "Admin,Teacher")]
         [HttpPost]
-        public async Task<IActionResult> Create(LearningMaterial material)
+        public async Task<IActionResult> Create(LearningMaterial material, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.Length > 0)
+                {
+
+                    var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".zip" };
+                    var extension = Path.GetExtension(file.FileName).ToLower();
+
+                    if (!allowedExtensions.Contains(extension))
+                    {
+                        ModelState.AddModelError("File", "File upload chưa đúng định dạng.");
+                        return View(material);
+                    }
+
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                    if (!Directory.Exists(uploadsFolder))
+                        Directory.CreateDirectory(uploadsFolder);
+                    var uniqueFileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    material.FilePath = "/uploads/" + uniqueFileName;
+                }
                 material.UploadDate = DateTime.Now;
                 await _materialService.AddMaterialAsync(material);
                 return RedirectToAction("Index", new { subjectId = material.SubjectID });
@@ -48,12 +71,43 @@ namespace PRN_Project.Controllers
         }
         [Authorize(Roles = "Admin,Teacher")]
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, LearningMaterial material)
+        public async Task<IActionResult> Edit(int id, LearningMaterial material, IFormFile? file)
         {
             if (id != material.MaterialID) return BadRequest();
             if (ModelState.IsValid)
             {
-                await _materialService.UpdateMaterialAsync(material);
+                // Lấy file cũ trước khi update
+                var existing = await _materialService.GetMaterialByIdAsync(id);
+                if (existing == null) return NotFound();
+                existing.Title = material.Title;
+                existing.Description = material.Description;
+                // Nếu người dùng upload file mới
+                if (file != null && file.Length > 0)
+                {
+                    // Xóa file cũ
+                    if (!string.IsNullOrEmpty(existing.FilePath))
+                    {
+                        var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", existing.FilePath.TrimStart('/'));
+                        if (System.IO.File.Exists(oldFilePath))
+                            System.IO.File.Delete(oldFilePath);
+                    }
+
+                    // Lưu file mới
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                    if (!Directory.Exists(uploadsFolder))
+                        Directory.CreateDirectory(uploadsFolder);
+
+                    var uniqueFileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    existing.FilePath = "/uploads/" + uniqueFileName;
+                }
+
+                await _materialService.UpdateMaterialAsync(existing);
                 return RedirectToAction("Index", new { subjectId = material.SubjectID });
             }
             return View(material);
@@ -77,6 +131,13 @@ namespace PRN_Project.Controllers
             {
                 return NotFound();
             };
+            // Xóa file trên server
+            if (!string.IsNullOrEmpty(material.FilePath))
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", material.FilePath.TrimStart('/'));
+                if (System.IO.File.Exists(filePath))
+                    System.IO.File.Delete(filePath);
+            }
             var subjectId = material.SubjectID;
             await _materialService.DeleteMaterialAsync(id);
             return RedirectToAction("Index", new { subjectId });

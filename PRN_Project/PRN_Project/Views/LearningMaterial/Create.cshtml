@@ -5,7 +5,7 @@
 
 <h2>Thêm tài liệu</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="SubjectID" />
 
     <div class="mb-3">
@@ -21,9 +21,14 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Link tài liệu</label>
-        <input asp-for="FilePath" class="form-control" />
-        <span asp-validation-for="FilePath" class="text-danger"></span>
+        <label class="form-label">Chọn file</label>
+        <input type="file" name="file" class="form-control" required />
+        <span class="text-danger">
+            @Html.ValidationMessage("File")
+        </span>
+        <p class="text-info">
+             Chỉ được phép upload các file: <strong>PDF, DOC, DOCX, ZIP</strong>.
+        </p>
     </div>
 
     <button type="submit" class="btn btn-primary">Thêm</button>
