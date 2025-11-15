@@ -1,0 +1,36 @@
+@using PRN_Project.Models
+@model AssignmentSubmission
+
+<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+        <div>
+            <div style="font-weight: 600; color: #333; margin-bottom: 5px;">
+                👤 @(Model.Student?.SName ?? $"Học sinh ID: {Model.Sid}")
+            </div>
+            <div style="font-size: 0.9rem; color: #666;">
+                📅 Nộp lúc: @Model.SubmitTime.ToString("dd/MM/yyyy HH:mm")
+            </div>
+        </div>
+        <div>
+            @if (Model.Grade.HasValue)
+            {
+                <span style="background: #007bff; color: white; padding: 5px 12px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                    📝 Điểm: @Model.Grade.Value
+                </span>
+            }
+            else
+            {
+                <span style="background: #ffc107; color: #333; padding: 5px 12px; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                    ⏳ Chưa chấm
+                </span>
+            }
+        </div>
+    </div>
+    <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0e0e0;">
+        <div style="font-weight: 600; margin-bottom: 5px; color: #555; font-size: 0.9rem;">Bài làm:</div>
+        <div style="color: #333; line-height: 1.6; white-space: pre-wrap; background: white; padding: 10px; border-radius: 6px;">
+            @Model.Content
+        </div>
+    </div>
+</div>
+

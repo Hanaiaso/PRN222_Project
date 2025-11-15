@@ -1,0 +1,66 @@
+@using PRN_Project.Models
+@using System.Security.Claims
+@model Post
+
+@{
+    bool hasSubmitted = false;
+    if (User.IsInRole("Student"))
+    {
+        var studentSubmissions = ViewBag.StudentSubmissions as Dictionary<int, AssignmentSubmission?> ?? new Dictionary<int, AssignmentSubmission?>();
+        hasSubmitted = studentSubmissions.ContainsKey(Model.PostId) && studentSubmissions[Model.PostId] != null;
+    }
+}
+
+<div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: white;">
+    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+        <div style="flex: 1;">
+            <div style="font-weight: bold; font-size: 1.1rem; margin-bottom: 5px;">
+                @Model.Title
+            </div>
+            <div style="font-size: 0.9rem; color: #666;">
+                @(Model.Account?.Email ?? "N/A") - @Model.CreateTime.ToString("dd/MM/yyyy HH:mm")
+                @if (Model.PostType == "Assignment")
+                {
+                    <span style="margin-left: 10px; padding: 3px 8px; background: #e3f2fd; color: #1976d2; border-radius: 4px; font-size: 0.85rem;">
+                        📚 Bài tập
+                    </span>
+                    @if (User.IsInRole("Student") && hasSubmitted)
+                    {
+                        <span style="margin-left: 5px; color: #28a745; font-weight: 600;">
+                            ✅ Đã nộp bài
+                        </span>
+                    }
+                    else if (Model.DueDate.HasValue)
+                    {
+                        <span style="margin-left: 5px; color: #d32f2f; font-weight: 600;">
+                            ⏰ Hạn: @Model.DueDate.Value.ToString("dd/MM/yyyy HH:mm")
+                        </span>
+                    }
+                }
+                else
+                {
+                    <span style="margin-left: 10px; padding: 3px 8px; background: #fff3e0; color: #f57c00; border-radius: 4px; font-size: 0.85rem;">
+                        📢 Thông báo
+                    </span>
+                }
+            </div>
+        </div>
+    </div>
+    <div style="line-height: 1.6; color: #555; margin-top: 10px;">
+        @Html.Raw(ConvertLinks(Model.Content))
+    </div>
+</div>
+
+@functions {
+    public string ConvertLinks(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+        var pattern = @"(https?://[^\s]+)";
+        return System.Text.RegularExpressions.Regex.Replace(
+            text,
+            pattern,
+            "<a href=\"$1\" target=\"_blank\" style=\"color:#0d6efd;\">$1</a>"
+        );
+    }
+}
+

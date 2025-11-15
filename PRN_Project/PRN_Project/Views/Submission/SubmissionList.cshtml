@@ -1,0 +1,55 @@
+@using PRN_Project.Models
+@model IEnumerable<AssignmentSubmission>
+
+@{
+    var postId = ViewBag.PostId as int? ?? 0;
+    var submissionCount = Model?.Count() ?? 0;
+}
+
+@if (Model != null && Model.Any())
+{
+    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #e0e0e0;">
+        <button 
+            type="button" 
+            class="btn btn-sm btn-outline-primary" 
+            onclick="toggleSubmissions(@postId)"
+            style="margin-bottom: 12px; font-weight: 600;">
+            <span id="submissionToggleIcon_@postId">▼</span> 
+            <span id="submissionToggleText_@postId">Hiển thị</span> danh sách bài nộp (@submissionCount)
+        </button>
+        
+        <div id="submissionsList_@postId" style="display: none;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                @foreach (var submission in Model.OrderByDescending(s => s.SubmitTime))
+                {
+                    @await Html.PartialAsync("~/Views/Submission/SubmissionItem.cshtml", submission)
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div style="text-align: center; padding: 20px; color: #999; font-size: 0.9rem;">
+        📭 Chưa có học sinh nào nộp bài
+    </div>
+}
+
+<script>
+    function toggleSubmissions(postId) {
+        const list = document.getElementById('submissionsList_' + postId);
+        const icon = document.getElementById('submissionToggleIcon_' + postId);
+        const text = document.getElementById('submissionToggleText_' + postId);
+        
+        if (list.style.display === 'none') {
+            list.style.display = 'block';
+            icon.textContent = '▲';
+            text.textContent = 'Ẩn';
+        } else {
+            list.style.display = 'none';
+            icon.textContent = '▼';
+            text.textContent = 'Hiển thị';
+        }
+    }
+</script>
+

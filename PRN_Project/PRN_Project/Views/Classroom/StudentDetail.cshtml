@@ -1,0 +1,51 @@
+@model PRN_Project.Models.Student
+@{
+    ViewData["Title"] = "Chi tiết học sinh";
+    var classroomId = ViewBag.ClassroomId as int? ?? 0;
+}
+
+<div class="container-fluid px-4">
+    <div style="margin-bottom: 20px;">
+        <a href="@Url.Action("Details", "Classroom", new { id = classroomId, tab = "people" })" 
+           class="btn btn-secondary" 
+           style="margin-bottom: 15px;">
+            ← Quay lại danh sách lớp
+        </a>
+    </div>
+
+    <h2 class="mb-4">👤 Chi tiết học sinh</h2>
+
+    <!-- Thông tin học sinh -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">📋 Thông tin cá nhân</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted small">Họ và tên</label>
+                    <div class="fw-bold fs-5">@(Model.SName ?? "N/A")</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted small">Email</label>
+                    <div class="fs-6">@(Model.Account?.Email ?? "N/A")</div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Gender))
+                {
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-muted small">Giới tính</label>
+                        <div>@Model.Gender</div>
+                    </div>
+                }
+                @if (Model.Dob.HasValue)
+                {
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-muted small">Ngày sinh</label>
+                        <div>@Model.Dob.Value.ToString("dd/MM/yyyy")</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

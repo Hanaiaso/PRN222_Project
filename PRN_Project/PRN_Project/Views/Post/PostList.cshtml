@@ -1,0 +1,19 @@
+@using PRN_Project.Models
+@model IEnumerable<Post>
+
+@if (Model != null && Model.Any())
+{
+    <div>
+        @foreach (var post in Model.OrderByDescending(p => p.CreateTime))
+        {
+            @await Html.PartialAsync("~/Views/Post/PostItem.cshtml", post)
+        }
+    </div>
+}
+else
+{
+    <p style="text-align: center; padding: 40px; color: #999;">
+        📭 Chưa có bài đăng nào trong lớp này. Hãy đăng bài đầu tiên!
+    </p>
+}
+

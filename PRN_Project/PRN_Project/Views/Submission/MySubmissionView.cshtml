@@ -1,0 +1,53 @@
+@using PRN_Project.Models
+@model AssignmentSubmission
+
+@{
+    var postId = ViewBag.PostId as int? ?? 0;
+    var canEdit = ViewBag.CanEdit as bool? ?? false;
+}
+
+<div style="width: 100%;">
+    <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <span style="color: #28a745; font-weight: 600;">
+                ✅ Đã nộp bài
+            </span>
+            <span style="margin-left: 15px; color: #666; font-size: 0.9rem;">
+                📅 Nộp lúc: @Model?.SubmitTime.ToString("dd/MM/yyyy HH:mm")
+            </span>
+            @if (Model?.Grade.HasValue == true)
+            {
+                <span style="margin-left: 15px; color: #007bff; font-weight: 600;">
+                    📝 Điểm: @Model.Grade.Value
+                </span>
+            }
+        </div>
+        @if (canEdit)
+        {
+            <button 
+                type="button" 
+                class="btn btn-sm btn-outline-primary" 
+                onclick="toggleEditForm(@postId)"
+                style="font-weight: 600;">
+                ✏️ Sửa bài
+            </button>
+        }
+    </div>
+    
+    <!-- Hiển thị bài nộp -->
+    <div id="submissionView_@postId">
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; margin-top: 10px;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: #333;">Bài làm của bạn:</div>
+            <div style="color: #555; line-height: 1.6; white-space: pre-wrap;">@Model?.Content</div>
+        </div>
+    </div>
+    
+    <!-- Form sửa bài (ẩn mặc định) -->
+    @if (canEdit)
+    {
+        var editFormViewData = new ViewDataDictionary(ViewData);
+        editFormViewData["PostId"] = postId;
+        @await Html.PartialAsync("~/Views/Submission/EditSubmissionForm.cshtml", Model, editFormViewData)
+    }
+</div>
+

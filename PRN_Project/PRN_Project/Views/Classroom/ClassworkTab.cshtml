@@ -1,0 +1,28 @@
+@using PRN_Project.Models
+@model Classroom
+
+@{
+    // Lấy dữ liệu đã được lọc từ Controller
+    var assignments = ViewBag.Assignments as List<Post> ?? new List<Post>();
+    var totalStudents = ViewBag.TotalStudents as int? ?? 0;
+}
+
+<h4>📚 Bài tập trên lớp</h4>
+
+@if (assignments.Any())
+{
+    @foreach (var assignment in assignments)
+    {
+        @await Html.PartialAsync("~/Views/Assignment/AssignmentCard.cshtml", assignment, ViewData)
+    }
+}
+else
+{
+    <div class="no-assignments">
+        <p>📭 Chưa có bài tập nào trong lớp này.</p>
+        <p style="font-size: 0.9rem; margin-top: 10px;">
+            Giáo viên có thể đăng bài tập vào <strong>Luồng (Stream)</strong> với loại "Assignment"
+        </p>
+    </div>
+}
+
