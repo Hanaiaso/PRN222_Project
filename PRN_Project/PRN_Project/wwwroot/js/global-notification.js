@@ -1,4 +1,6 @@
-﻿const communityConnection = new signalR.HubConnectionBuilder()
+﻿"use strict";
+
+const communityConnection = new signalR.HubConnectionBuilder()
     .withUrl("/communityChatHub")
     .build();
 

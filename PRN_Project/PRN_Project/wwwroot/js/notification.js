@@ -1,4 +1,4 @@
-﻿
+﻿"use strict";
     const connection = new signalR.HubConnectionBuilder()
     .withUrl("/notificationHub")
     .build();
