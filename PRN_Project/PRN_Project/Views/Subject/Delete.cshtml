@@ -1,0 +1,16 @@
+﻿@model PRN_Project.Models.Subject
+@{
+    ViewBag.Title = "Xóa môn học";
+}
+
+<h2>Xóa môn học</h2>
+
+<div class="alert alert-warning">
+    Bạn có chắc muốn xóa môn học: <strong>@Model.SuName</strong>?
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.SuId" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

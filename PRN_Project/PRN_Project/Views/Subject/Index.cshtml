@@ -1,0 +1,39 @@
+﻿@model List<PRN_Project.Models.Subject>
+@{
+    ViewBag.Title = "Danh sách môn học";
+}
+
+<h2>Danh sách môn học</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Thêm môn học mới</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên môn học</th>
+            <th>Hành động</th>
+            <th>Quản lý tài liệu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@Model[i].SuName</td>
+                <td>
+                    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model[i].SuId">Sửa</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@Model[i].SuId">Xóa</a>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-info" asp-controller="LearningMaterial" asp-action="Index" asp-route-subjectId="@Model[i].SuId">
+                        Quản lý tài liệu
+                     </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
