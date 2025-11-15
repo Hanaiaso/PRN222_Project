@@ -1,2 +1,86 @@
-﻿<h2>👑 Trang quản trị</h2>
-<p>Quản lý hệ thống, tài khoản và báo cáo tại đây.</p>
+﻿@model PRN_Project.ViewModels.Dashboard.AdminDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid p-4">
+    <h2 class="mb-4">System Overview</h2>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                    <p class="card-text display-4">@Model.TotalStudents</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Teachers</h5>
+                    <p class="card-text display-4">@Model.TotalTeachers</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Classes</h5>
+                    <p class="card-text display-4">@Model.TotalClasses</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Exams Created</h5>
+                    <p class="card-text display-4">@Model.TotalExams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-white">
+            <h5 class="mb-0">Recent Exam Results</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Exam Name</th>
+                        <th>Subject</th>
+                        <th>Date Created</th>
+                        <th>Submissions</th>
+                        <th>Avg. Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.RecentExamStats != null && Model.RecentExamStats.Any())
+                    {
+                        foreach (var item in Model.RecentExamStats)
+                        {
+                            <tr>
+                                <td>@item.ExamName</td>
+                                <td>@item.SubjectName</td>
+                                <td>@item.CreatedAt?.ToString("dd/MM/yyyy")</td>
+                                <td>@item.TotalSubmissions</td>
+                                <td>
+                                    <span class="badge @(item.AverageScore >= 5 ? "bg-success" : "bg-danger")">
+                                        @item.AverageScore.ToString("0.0")
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="5" class="text-center">No exam data available.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,2 +1,73 @@
-﻿<h2>👨‍🏫 Bảng điều khiển giảng viên</h2>
-<p>Quản lý bài thi, xem điểm và theo dõi tiến độ học sinh tại đây.</p>
+﻿@model PRN_Project.ViewModels.Dashboard.TeacherDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    ViewData["Title"] = "Teacher Dashboard";
+}
+
+<div class="container-fluid p-4">
+    <h2 class="mb-4">My Class Performance</h2>
+
+    <div class="row">
+        @if (Model.ClassStats != null && Model.ClassStats.Any())
+        {
+            @foreach (var item in Model.ClassStats)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-white border-bottom-0">
+                            <h5 class="card-title text-primary">@item.ClassName</h5>
+                            <small class="text-muted">Code: @item.ClassCode</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Students: <strong>@item.TotalStudents</strong></span>
+                                <span>Participation: <strong>@item.ParticipationRate%</strong></span>
+                            </div>
+
+                            <h6 class="text-muted mb-2">Grade Distribution (A/B/C/D)</h6>
+
+                            <div class="progress-stacked mb-2" style="height: 25px;">
+                                @{
+                                    var total = item.GradeA + item.GradeB + item.GradeC + item.GradeD;
+                                    // Avoid divide by zero
+                                    total = total == 0 ? 1 : total;
+
+                                    var pA = (item.GradeA * 100) / total;
+                                    var pB = (item.GradeB * 100) / total;
+                                    var pC = (item.GradeC * 100) / total;
+                                    var pD = (item.GradeD * 100) / total;
+                                }
+
+                                <div class="progress" role="progressbar" style="width: @pA%" aria-valuenow="@pA" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success">A</div>
+                                </div>
+                                <div class="progress" role="progressbar" style="width: @pB%" aria-valuenow="@pB" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-info">B</div>
+                                </div>
+                                <div class="progress" role="progressbar" style="width: @pC%" aria-valuenow="@pC" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-warning">C</div>
+                                </div>
+                                <div class="progress" role="progressbar" style="width: @pD%" aria-valuenow="@pD" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-danger">D</div>
+                                </div>
+                            </div>
+
+                            <div class="small text-muted mt-2 d-flex justify-content-between">
+                                <span><i class="fas fa-square text-success"></i> A: @item.GradeA</span>
+                                <span><i class="fas fa-square text-info"></i> B: @item.GradeB</span>
+                                <span><i class="fas fa-square text-warning"></i> C: @item.GradeC</span>
+                                <span><i class="fas fa-square text-danger"></i> D: @item.GradeD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info">You are not managing any classes yet.</div>
+            </div>
+        }
+    </div>
+</div>

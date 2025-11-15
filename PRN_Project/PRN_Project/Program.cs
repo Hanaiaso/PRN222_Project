@@ -59,7 +59,7 @@ builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IRankingService, RankingService>();
 
-
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 
 // ======= 2️⃣ Cấu hình JWT Authentication =======
 var jwtSettings = builder.Configuration.GetSection("Jwt");
