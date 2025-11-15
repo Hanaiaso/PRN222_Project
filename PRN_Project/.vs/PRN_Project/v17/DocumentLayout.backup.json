@@ -3,175 +3,144 @@
   "WorkspaceRootPath": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebaradmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebaradmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\student\\studentprogress.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\student\\studentprogress.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\implementations\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\implementations\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_layoutstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_layoutstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\changepasswordmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\changepasswordmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\home\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\home\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\mockexamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\mockexamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\repositories\\implementations\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\implementations\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\interfaces\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\interfaces\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\examcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\examcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\viewmodels\\studentsubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\studentsubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\interfaces\\irankingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\interfaces\\irankingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\repositories\\interfaces\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\interfaces\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\exam\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\exam\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\implementations\\teacherclassroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\implementations\\teacherclassroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\exam\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\exam\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\implementations\\rankingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\implementations\\rankingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\exam\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\exam\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\interfaces\\iteacherclassroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\interfaces\\iteacherclassroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\exam\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\exam\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\profileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\exam\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\exam\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\viewmodels\\studentprogressviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\studentprogressviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\notification\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\notification\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\repositories\\implementations\\teacherclassroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\implementations\\teacherclassroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\repositories\\interfaces\\iteacherclassroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\interfaces\\iteacherclassroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\teacherclassroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\teacherclassroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\student\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\student\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\teacherclassroom\\class.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\teacherclassroom\\class.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\notification\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\notification\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\teacherclassroom\\studentsubmissions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\teacherclassroom\\studentsubmissions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\teacher\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\teacher\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\teacherclassroom\\editcomment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\teacherclassroom\\editcomment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\otpmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\otpmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\teacherclassroom\\classdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\teacherclassroom\\classdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\migrations\\lmsdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\migrations\\lmsdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\notification\\mynotifications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\notification\\mynotifications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\wwwroot\\css\\auth-styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\wwwroot\\css\\auth-styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_layoutteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_layoutteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\shared\\_sidebarstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\shared\\_sidebarstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\KY 7\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\views\\admin\\accountteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\views\\admin\\accountteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\viewmodels\\studentanswerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\studentanswerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\viewmodels\\examquestionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\examquestionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\viewmodels\\creategrouprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\viewmodels\\creategrouprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\implementations\\mockexamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\implementations\\mockexamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\services\\interfaces\\imockexamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\services\\interfaces\\imockexamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\controllers\\mockexamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\controllers\\mockexamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\repositories\\implementations\\examrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\implementations\\examrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|c:\\users\\pc\\downloads\\prn222_project\\prn222_project\\prn_project\\prn_project\\repositories\\implementations\\mockexamrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5747C242-ABF7-44F7-9738-7A46D2FFAC04}|PRN_Project\\PRN_Project.csproj|solutionrelative:prn_project\\repositories\\implementations\\mockexamrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -181,360 +150,215 @@
       "DocumentGroups": [
         {
           "DockedHeight": 642,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 40,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:22:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:23:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Create.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\Create.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Create.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Notification\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T02:21:53.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\Index.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Index.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Notification\\Index.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T02:05:13.683Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_SidebarAdmin.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T02:05:03.951Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_SidebarTeacher.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T02:04:43.31Z",
+              "Title": "StudentService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\StudentService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Implementations\\StudentService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\StudentService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Implementations\\StudentService.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAkwHEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:43:38.032Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "_SidebarStudent.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "Title": "IRankingService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\IRankingService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Interfaces\\IRankingService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\IRankingService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Interfaces\\IRankingService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T02:04:29.048Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:43:23.394Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeToolTip": "PRN_Project\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-12T02:00:38.696Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_LayoutStudent.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T01:58:47.04Z",
+              "DocumentIndex": 4,
+              "Title": "IStudentService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\IStudentService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Interfaces\\IStudentService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\IStudentService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Interfaces\\IStudentService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAwwAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:43:07.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_LayoutAdmin.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T01:58:41.868Z",
+              "Title": "StudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\StudentRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Implementations\\StudentRepository.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\StudentRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Implementations\\StudentRepository.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwDAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:41:56.842Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "_Header.cshtml",
-              "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "ToolTip": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T01:58:25.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Error.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\Error.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Home\\Error.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Home\\Error.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Home\\Error.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-12T08:47:53.984Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAUwAIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T08:13:45.961Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "StudentController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\StudentController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\StudentController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\StudentController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\StudentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T18:30:47.345Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Account.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Account.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Account.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Account.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAmwBsAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T01:10:22.821Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "TeacherController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\TeacherController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\TeacherController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\TeacherController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\TeacherController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T08:11:33.391Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ExamController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ExamController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\ExamController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ExamController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\ExamController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T03:26:57.543Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T04:33:19.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "NotificationController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\NotificationController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\NotificationController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\NotificationController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\NotificationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T05:42:40.897Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBIAAAARAAAAAAAAAA==",
+              "Title": "IStudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAoAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T01:09:06.948Z",
+              "WhenOpened": "2025-11-15T10:41:25.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RankingService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\RankingService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Implementations\\RankingService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\RankingService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Implementations\\RankingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:38:46.312Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "MockExamController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\MockExamController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\MockExamController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\MockExamController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\MockExamController.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAjwFcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T18:01:36.377Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Admin.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Admin.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Admin.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Admin.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Admin.cs",
+              "Title": "StudentProgressViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\StudentProgressViewModel.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\StudentProgressViewModel.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\StudentProgressViewModel.cs",
+              "RelativeToolTip": "PRN_Project\\ViewModels\\StudentProgressViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T08:20:35.195Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ChatController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ChatController.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\ChatController.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\ChatController.cs",
-              "RelativeToolTip": "PRN_Project\\Controllers\\ChatController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T08:26:27.197Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Student.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Student.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Student.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T02:48:53.962Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Edit.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Exam\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Edit.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Exam\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:39:03.131Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Delete.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Exam\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Delete.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Exam\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:38:58.306Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Create.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\Create.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Create.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Notification\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:54:33.453Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:57:56.655Z",
+              "WhenOpened": "2025-11-15T10:38:42.864Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Create.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Exam\\Create.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Create.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Exam\\Create.cshtml",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvwEAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:38:51.209Z"
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
+              "RelativeToolTip": "PRN_Project\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAD8AAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:37:04.901Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Details.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Exam\\Details.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Details.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Exam\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:38:08.24Z"
+              "DocumentIndex": 15,
+              "Title": "TeacherClassroomRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\TeacherClassroomRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Implementations\\TeacherClassroomRepository.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\TeacherClassroomRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Implementations\\TeacherClassroomRepository.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAADwv10AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:36:45.997Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 16,
+              "Title": "ITeacherClassroomRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Interfaces\\ITeacherClassroomRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Interfaces\\ITeacherClassroomRepository.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Interfaces\\ITeacherClassroomRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Interfaces\\ITeacherClassroomRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:36:26.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TeacherClassroomService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\TeacherClassroomService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Implementations\\TeacherClassroomService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\TeacherClassroomService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Implementations\\TeacherClassroomService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAswEoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:36:06.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ITeacherClassroomService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\ITeacherClassroomService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Interfaces\\ITeacherClassroomService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\ITeacherClassroomService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Interfaces\\ITeacherClassroomService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvxwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:35:19.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "PRN_Project\\Views\\_ViewImports.cshtml",
@@ -542,251 +366,294 @@
               "RelativeToolTip": "PRN_Project\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T17:58:03.91Z",
+              "WhenOpened": "2025-11-15T10:27:08.348Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Index.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Exam\\Index.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Exam\\Index.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Exam\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:39:07.237Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Program.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Program.cs",
-              "RelativeToolTip": "PRN_Project\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T01:07:08.975Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Student\\Dashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:31:36.928Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Result.cshtml",
-              "DocumentMoniker": "E:\\KY 7\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Result.cshtml",
-              "ToolTip": "E:\\KY 7\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\Result.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:31:33.617Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Teacher\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Teacher\\Dashboard.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Teacher\\Dashboard.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Teacher\\Dashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T04:01:52.859Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "_Header.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_Header.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:53:18.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "_Footer.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Footer.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_Footer.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_Footer.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_Footer.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:57:35.8Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_LayoutAdmin.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:57:38.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_SidebarAdmin.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:57:42.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Exam.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Exam.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Exam.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Exam.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T02:20:34.075Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Delete.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\Delete.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Notification\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-11T04:54:37.517Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeDocumentMoniker": "PRN_Project\\appsettings.json",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\appsettings.json",
-              "RelativeToolTip": "PRN_Project\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-05T02:35:10.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ChangePasswordModel.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\ChangePasswordModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\ChangePasswordModel.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\ChangePasswordModel.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\ChangePasswordModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T01:08:14.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
               "Title": "_SidebarTeacher.cshtml",
               "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
               "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
               "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
               "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarTeacher.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:36:36.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "OTPModel.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\OTPModel.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\OTPModel.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\OTPModel.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\OTPModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T01:08:37.04Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "MyNotifications.cshtml",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\MyNotifications.cshtml",
-              "RelativeDocumentMoniker": "PRN_Project\\Views\\Notification\\MyNotifications.cshtml",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Notification\\MyNotifications.cshtml",
-              "RelativeToolTip": "PRN_Project\\Views\\Notification\\MyNotifications.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-10T03:58:10.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "LmsDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "RelativeToolTip": "PRN_Project\\Migrations\\LmsDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T04:19:46.704Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Answer.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Answer.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Answer.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Answer.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Answer.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T02:48:15.911Z",
+              "WhenOpened": "2025-11-15T10:13:16.3Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "Subject.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Subject.cs",
-              "RelativeDocumentMoniker": "PRN_Project\\Models\\Subject.cs",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Models\\Subject.cs",
-              "RelativeToolTip": "PRN_Project\\Models\\Subject.cs",
+              "DocumentIndex": 24,
+              "Title": "_LayoutTeacher.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_LayoutTeacher.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T02:42:00.746Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T10:13:10.466Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "auth-styles.css",
-              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\wwwroot\\css\\auth-styles.css",
-              "RelativeDocumentMoniker": "PRN_Project\\wwwroot\\css\\auth-styles.css",
-              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\wwwroot\\css\\auth-styles.css",
-              "RelativeToolTip": "PRN_Project\\wwwroot\\css\\auth-styles.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-06T01:12:29.553Z"
+              "DocumentIndex": 20,
+              "Title": "EditComment.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\EditComment.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\TeacherClassroom\\EditComment.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\EditComment.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\TeacherClassroom\\EditComment.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T10:12:36.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "StudentSubmissions.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\StudentSubmissions.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\TeacherClassroom\\StudentSubmissions.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\StudentSubmissions.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\TeacherClassroom\\StudentSubmissions.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T10:11:49.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ClassDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\ClassDetails.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\TeacherClassroom\\ClassDetails.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\ClassDetails.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\TeacherClassroom\\ClassDetails.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T10:11:08.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Class.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\Class.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\TeacherClassroom\\Class.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\TeacherClassroom\\Class.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\TeacherClassroom\\Class.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAkwBIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T10:10:17.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TeacherClassroomController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\TeacherClassroomController.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\TeacherClassroomController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\TeacherClassroomController.cs",
+              "RelativeToolTip": "PRN_Project\\Controllers\\TeacherClassroomController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAYwGUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:07:43.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TeacherController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\TeacherController.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\TeacherController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\TeacherController.cs",
+              "RelativeToolTip": "PRN_Project\\Controllers\\TeacherController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwCAAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T10:06:33.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "_SidebarStudent.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T08:47:02.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AccountTeacher.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Admin\\AccountTeacher.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Admin\\AccountTeacher.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Admin\\AccountTeacher.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Admin\\AccountTeacher.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T08:42:55.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "StudentAnswerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\StudentAnswerViewModel.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\StudentAnswerViewModel.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\StudentAnswerViewModel.cs",
+              "RelativeToolTip": "PRN_Project\\ViewModels\\StudentAnswerViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:40:56.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ExamQuestionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ExamQuestionViewModel.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\ExamQuestionViewModel.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ExamQuestionViewModel.cs",
+              "RelativeToolTip": "PRN_Project\\ViewModels\\ExamQuestionViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:27:21.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StudentSubmissionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\StudentSubmissionViewModel.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\StudentSubmissionViewModel.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\StudentSubmissionViewModel.cs",
+              "RelativeToolTip": "PRN_Project\\ViewModels\\StudentSubmissionViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwA4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:23:41.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CreateGroupRequest.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\CreateGroupRequest.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\CreateGroupRequest.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\CreateGroupRequest.cs",
+              "RelativeToolTip": "PRN_Project\\ViewModels\\CreateGroupRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:22:47.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ProfileViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ProfileViewModel.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\ViewModels\\ProfileViewModel.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\ViewModels\\ProfileViewModel.cs",
+              "RelativeToolTip": "PRN_Project\\ViewModels\\ProfileViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:22:46.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentProgress.cshtml",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\StudentProgress.cshtml",
+              "RelativeDocumentMoniker": "PRN_Project\\Views\\Student\\StudentProgress.cshtml",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Student\\StudentProgress.cshtml",
+              "RelativeToolTip": "PRN_Project\\Views\\Student\\StudentProgress.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAE0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T08:22:33.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MockExamService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\MockExamService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Implementations\\MockExamService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Implementations\\MockExamService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Implementations\\MockExamService.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAkwDwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:16:48.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IMockExamService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\IMockExamService.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Services\\Interfaces\\IMockExamService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Services\\Interfaces\\IMockExamService.cs",
+              "RelativeToolTip": "PRN_Project\\Services\\Interfaces\\IMockExamService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:16:20.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\StudentController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "PRN_Project\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAmwDkAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:16:04.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ExamRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\ExamRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Implementations\\ExamRepository.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\ExamRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Implementations\\ExamRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:16:01.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "MockExamController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\MockExamController.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Controllers\\MockExamController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Controllers\\MockExamController.cs",
+              "RelativeToolTip": "PRN_Project\\Controllers\\MockExamController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAkwFYAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:15:57.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "MockExamRepository.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\MockExamRepository.cs",
+              "RelativeDocumentMoniker": "PRN_Project\\Repositories\\Implementations\\MockExamRepository.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\PRN222_project\\PRN222_Project\\PRN_Project\\PRN_Project\\Repositories\\Implementations\\MockExamRepository.cs",
+              "RelativeToolTip": "PRN_Project\\Repositories\\Implementations\\MockExamRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T08:15:53.726Z",
+              "EditorCaption": ""
             }
           ]
         },

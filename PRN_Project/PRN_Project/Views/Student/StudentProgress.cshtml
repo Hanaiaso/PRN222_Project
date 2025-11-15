@@ -1,0 +1,121 @@
+﻿@model PRN_Project.ViewModels.StudentProgressViewModel
+
+@{
+    ViewData["Title"] = $"Tiến độ của {Model.StudentName}";
+}
+
+<h2>Báo cáo tiến độ: <strong>@Model.StudentName</strong></h2>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tổng số bài đã nộp</h5>
+                <p class="card-text fs-3">@Model.TotalExamsTaken</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Điểm trung bình</h5>
+                <p class="card-text fs-3">
+                    @(Model.AverageScore?.ToString("F2") ?? "Chưa có điểm")
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<h3>So sánh tiến bộ (Điểm số qua các bài thi)</h3>
+<div style="width: 90%; max-width: 800px; margin-bottom: 30px;">
+    <canvas id="progressChart"></canvas>
+</div>
+
+<h3>Chi tiết các bài đã nộp</h3>
+
+@if (!Model.Submissions.Any())
+{
+    <p>Học sinh này chưa nộp bài thi nào.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Môn học</th>
+                <th>Tên bài thi</th>
+                <th>Kết quả (Đúng/Tổng)</th>
+                <th>Thời lượng (phút)</th>
+                <th>Ngày nộp</th>
+                <th>Điểm số</th>
+                <th>Nhận xét của GV</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var submission in Model.Submissions)
+            {
+                <tr>
+                    <td>@submission.SubjectName</td>
+                    <td>@submission.ExamName</td>
+                    <td>
+                        <strong>@submission.CorrectAnswers / @submission.NumberOfQuestions</strong>
+                    </td>
+                    <td>
+                        @(submission.ExamDuration?.TotalMinutes.ToString() ?? "N/A")
+                    </td>
+                    <td>@submission.SubmitTime.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td><strong>@submission.Score</strong></td>
+
+                    <td>
+                        @if (string.IsNullOrEmpty(submission.TeacherComment))
+                        {
+                            <span class="text-muted">—</span>
+                        }
+                        else
+                        {
+                            <span style="font-style: italic;">@submission.TeacherComment</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('progressChart').getContext('2d');
+
+        // Lấy dữ liệu từ Model mà Controller đã truyền sang
+        const labels = @Html.Raw(Model.ChartLabels);
+        const data = @Html.Raw(Model.ChartData);
+
+        new Chart(ctx, {
+            type: 'line', // Biểu đồ đường để thấy "tiến bộ"
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Điểm số',
+                    data: data,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10 // Giả sử thang điểm 10
+                    }
+                }
+            }
+        });
+    </script>
+}

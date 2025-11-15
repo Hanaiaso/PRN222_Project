@@ -1,0 +1,46 @@
+﻿@model PRN_Project.Models.Submit
+
+@{
+    ViewData["Title"] = "Thêm nhận xét";
+}
+
+<h2>Thêm/Sửa nhận xét</h2>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Học sinh</dt>
+    <dd class="col-sm-9">@Model.Student.SName</dd>
+
+    <dt class="col-sm-3">Bài thi</dt>
+    <dd class="col-sm-9">@Model.Exam.EName</dd>
+
+    <dt class="col-sm-3">Điểm số</dt>
+    <dd class="col-sm-9"><strong>@Model.Score</strong></dd>
+</dl>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="EditComment" method="post">
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" name="submitId" value="@Model.SbId" />
+            <input type="hidden" name="classroomId" value="@ViewBag.ClassroomId" />
+
+            <div class="form-group mb-3">
+                <label for="comment" class="control-label">Nhập nhận xét</label>
+                <textarea name="comment" id="comment" class="form-control" rows="5">@Model.Comment</textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Lưu nhận xét" class="btn btn-success" />
+                <a asp-action="StudentSubmissions"
+                   asp-route-studentId="@Model.SId"
+                   asp-route-classroomId="@ViewBag.ClassroomId"
+                   class="btn btn-link">
+                    Hủy
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
