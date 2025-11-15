@@ -1,77 +1,57 @@
-﻿"use strict";
+﻿// groupChat.js
+"use strict";
 
-// Định nghĩa Hub Connection
-const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/groupChatHub") // Kết nối đến Group Chat Hub
+const groupConnection = new signalR.HubConnectionBuilder()
+    .withUrl("/groupChatHub")
     .build();
 
-// Lấy thông tin người dùng và nhóm từ View (Được đặt trong input ẩn)
 const currentAccountId = parseInt(document.getElementById("studentIdHidden").value);
 const currentUserName = document.getElementById("userInput").value;
-const currentGroupId = document.getElementById("groupIdHidden").value;
+const currentGroupId = parseInt((document.getElementById("groupIdHidden") || {}).value || "0");
 
 function formatTime(timestamp) {
-    // Chuyển đổi chuỗi ISO (từ C#) thành đối tượng Date
     const date = new Date(timestamp);
-    // Format thành giờ:phút:giây Ngày/Tháng/Năm
     return date.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
         + ' ' + date.toLocaleDateString('vi-VN');
 }
 
-// --- 1. LẮNG NGHE SỰ KIỆN TỪ HUB (CẬP NHẬT) ---
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": "&#39;" }[m]));
+}
 
-// Lắng nghe tin nhắn từ nhóm
-connection.on("ReceiveGroupMessage", (user, message, timestamp) => {
+// --- RECEIVE GROUP MESSAGE ---
+groupConnection.on("ReceiveGroupMessage", (user, message, timestamp) => {
     const messagesList = document.getElementById("messagesList");
     const li = document.createElement("li");
-
-    // Logic color: So sánh tên người gửi (user) với tên người dùng hiện tại
     const isCurrentUser = user === currentUserName;
     const senderNameHtml = `<span class="${isCurrentUser ? 'current-user-name' : 'other-user-name'}">[${user}]</span>`;
-
-    // Thêm thời gian vào hiển thị
     const timeDisplay = timestamp ? ` (${formatTime(timestamp)})` : '';
-
     li.className = "list-group-item";
-    li.innerHTML = `${senderNameHtml}${timeDisplay}: ${message}`; // Sử dụng innerHTML để chèn thẻ span
-
+    li.innerHTML = `${senderNameHtml}${timeDisplay}: ${escapeHtml(message)}`;
     messagesList.appendChild(li);
-    messagesList.scrollTop = messagesList.scrollHeight; // Tự động cuộn xuống
+    messagesList.scrollTop = messagesList.scrollHeight;
 });
 
-// Lắng nghe thông báo (Sử dụng lại các hàm notification đã có)
-connection.on("ReceiveNotification", (user, message) => {
-    // Kích hoạt các hàm thông báo đã được định nghĩa trong file khác hoặc trong View
-    showPopup(`${user}: ${message}`);
-    playSound();
-    showBrowserNotification(`${user}: ${message}`);
-});
+// --- RECEIVE NOTIFICATION ---
+// Thông báo được xử lý bởi global-notification.js
+// Không cần listener ở đây để tránh duplicate notifications
 
-
-// --- 2. XỬ LÝ GỬI TIN NHẮN (GIỮ NGUYÊN) ---
-
-document.getElementById("sendButton").addEventListener("click", (event) => {
+// --- SEND MESSAGE ---
+document.getElementById("sendButton")?.addEventListener("click", (event) => {
     const message = document.getElementById("messageInput").value;
-
     if (!message || !currentGroupId) {
         console.warn("Message or Group ID is missing.");
         return;
     }
 
-    // Gọi phương thức SendGroupMessage trên Hub Server
-    // Các tham số: ID nhóm, ID người gửi, Tên người gửi, Tin nhắn
-    connection.invoke("SendGroupMessage", parseInt(currentGroupId), currentAccountId, currentUserName, message)
-        .then(() => {
-            // Xóa nội dung ô message sau khi gửi thành công
-            // Tin nhắn sẽ được hiển thị khi Hub phát sóng lại thông qua ReceiveGroupMessage
-            document.getElementById("messageInput").value = "";
-        })
-        .catch((err) => {
-            console.error("SendGroupMessage Error:", err.toString());
-        });
+    groupConnection.invoke("SendGroupMessage", currentGroupId, currentAccountId, currentUserName, message)
+        .then(() => { document.getElementById("messageInput").value = ""; })
+        .catch(err => console.error("SendGroupMessage Error:", err.toString()));
 
     event.preventDefault();
 });
+
+// --- ADD MEMBERS ---
 document.getElementById('btnAddMembersConfirm')?.addEventListener('click', function () {
     const emailsString = document.getElementById('newMemberEmailsInput').value.trim();
     const statusDiv = document.getElementById('addMemberStatus');
@@ -95,13 +75,13 @@ document.getElementById('btnAddMembersConfirm')?.addEventListener('click', funct
     statusDiv.style.color = 'blue';
 
     // Gửi yêu cầu AJAX
-    fetch(`/Chat/AddMembers?groupId=${groupId}`, { // Thêm groupId vào query string
+    fetch(`/Chat/AddMembers?groupId=${groupId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ // Gửi dữ liệu theo cấu trúc DTO (GroupName không cần, nhưng vẫn phải gửi list)
-            groupName: "", // Gửi rỗng để khớp với DTO
+        body: JSON.stringify({
+            groupName: "",
             memberEmails: memberEmails
         })
     })
@@ -114,14 +94,13 @@ document.getElementById('btnAddMembersConfirm')?.addEventListener('click', funct
                 // Xóa nội dung input và tự động đóng modal sau 2s
                 document.getElementById('newMemberEmailsInput').value = "";
                 setTimeout(() => {
-                    // Dùng API Bootstrap để đóng modal
                     const modalElement = document.getElementById('addMemberModal');
                     const modal = bootstrap.Modal.getInstance(modalElement);
                     if (modal) modal.hide();
                 }, 2000);
 
-                // Gửi thông báo qua SignalR (Tùy chọn: thông báo cho nhóm)
-                // connection.invoke("NotifyGroupOfNewMember", groupId, data.message);
+                // Gửi thông báo qua SignalR (Tùy chọn)
+                // groupConnection.invoke("NotifyGroupOfNewMember", groupId, data.message);
 
             } else {
                 statusDiv.textContent = `Lỗi: ${data.message}`;
@@ -134,29 +113,24 @@ document.getElementById('btnAddMembersConfirm')?.addEventListener('click', funct
             console.error('Error adding members:', error);
         });
 });
+
+// --- LEAVE GROUP ---
 document.getElementById('btnLeaveGroup')?.addEventListener('click', function () {
     const groupId = this.getAttribute('data-group-id');
-
     if (!confirm("Bạn có chắc chắn muốn rời nhóm này không?")) {
         return;
     }
 
-    // Gửi yêu cầu rời nhóm
     fetch('/Chat/LeaveGroup', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `groupId=${groupId}` // Gửi dữ liệu dưới dạng form data
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `groupId=${groupId}`
     })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 alert("Bạn đã rời nhóm thành công.");
-
-                // NGẮT KẾT NỐI VÀ CHUYỂN HƯỚNG:
-                connection.stop();
-                // Chuyển hướng về trang danh sách nhóm
+                groupConnection.stop();
                 window.location.href = '/Chat/GroupList';
             } else {
                 alert(`Lỗi: ${data.message}`);
@@ -167,50 +141,43 @@ document.getElementById('btnLeaveGroup')?.addEventListener('click', function () 
             alert('Lỗi kết nối khi cố gắng rời nhóm.');
         });
 });
-// --- 3. KẾT NỐI VÀ TẢI LỊCH SỬ (CẬP NHẬT) ---
 
-connection.start()
-    .then(() => {
+// --- START CONNECTION AND LOAD HISTORY ---
+groupConnection.start()
+    .then(async () => {
         console.log(`SignalR connected to Group Hub. Attempting to join Group ${currentGroupId}`);
-        const groupId = document.getElementById("groupIdHidden").value;
 
-        // BẬT NÚT GỬI SAU KHI KẾT NỐI THÀNH CÔNG
+        if (currentGroupId) {
+            try {
+                await groupConnection.invoke("JoinGroup", currentGroupId);
+            } catch (e) {
+                console.error("Join Group Error:", e.toString());
+            }
+        }
+
         document.getElementById("sendButton").disabled = false;
 
-        // Tham gia Group SignalR bằng Group ID
-        connection.invoke("JoinGroup", parseInt(currentGroupId))
-            .catch(err => console.error("Join Group Error:", err.toString()));
-
-        // TẢI LỊCH SỬ CHAT
-        connection.invoke("LoadHistory", parseInt(groupId))
+        // Load history
+        groupConnection.invoke("LoadHistory", currentGroupId)
             .then(history => {
                 const messagesList = document.getElementById("messagesList");
-                messagesList.innerHTML = ''; // Xóa bất kỳ placeholder nào
-
+                messagesList.innerHTML = '';
                 history.forEach(msg => {
                     const li = document.createElement("li");
-
-                    // Logic color: So sánh tên người gửi
                     const isCurrentUser = msg.senderName === currentUserName;
                     const senderNameHtml = `<span class="${isCurrentUser ? 'current-user-name' : 'other-user-name'}">[${msg.senderName}]</span>`;
-
-                    // Thêm thời gian vào hiển thị
                     const timeDisplay = msg.timestamp ? ` (${formatTime(msg.timestamp)})` : '';
-
                     li.className = "list-group-item";
-                    li.innerHTML = `${senderNameHtml}${timeDisplay}: ${msg.content}`;
-
+                    li.innerHTML = `${senderNameHtml}${timeDisplay}: ${escapeHtml(msg.content)}`;
                     messagesList.appendChild(li);
                 });
-                messagesList.scrollTop = messagesList.scrollHeight; // Cuộn xuống dưới
+                messagesList.scrollTop = messagesList.scrollHeight;
             })
             .catch(err => console.error("Load History Error:", err.toString()));
 
-        // Yêu cầu quyền thông báo trình duyệt nếu cần
+        // Request notification permission
         if (Notification.permission !== "granted" && Notification.permission !== "denied") {
             Notification.requestPermission();
         }
     })
-    .catch((err) => {
-        console.error("SignalR connection error:", err.toString());
-    });
+    .catch(err => console.error("SignalR connection error:", err.toString()));
