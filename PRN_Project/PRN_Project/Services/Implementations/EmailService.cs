@@ -67,5 +67,77 @@ namespace PRN_Project.Services.Implementations
                 throw;
             }
         }
+
+        public void SendAssignmentReminderEmail(string toEmail, string studentName, string assignmentTitle, DateTime dueDate)
+        {
+            string sender = _config["EmailSettings:SenderEmail"];
+            string appPassword = _config["EmailSettings:AppPassword"];
+            string host = _config["EmailSettings:Host"] ?? "smtp.gmail.com";
+            int port = int.Parse(_config["EmailSettings:Port"] ?? "587");
+            bool enableSSL = bool.Parse(_config["EmailSettings:EnableSSL"] ?? "true");
+
+            // Kiểm tra dữ liệu trước khi gửi
+            if (string.IsNullOrWhiteSpace(sender))
+                throw new Exception("Email người gửi (SenderEmail) không được để trống!");
+            if (string.IsNullOrWhiteSpace(toEmail))
+                throw new Exception("Email người nhận (toEmail) không được để trống!");
+
+            // Kiểm tra không gửi email cho chính sender (tránh bounce back và lỗi)
+            if (sender.Equals(toEmail, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new Exception($"Không thể gửi email cho chính sender email: {toEmail}");
+            }
+
+            //Tạo địa chỉ email gửi & nhận
+            var from = new MailAddress(sender, "PRN Project LMS");
+            var to = new MailAddress(toEmail);
+
+            //Tạo nội dung email
+            string subject = $"⏰ Nhắc nhở: Bài tập '{assignmentTitle}' sắp đến hạn!";
+            string body = $@"
+Xin chào {studentName},
+
+Bạn có một bài tập sắp đến hạn nộp:
+
+📝 Tên bài tập: {assignmentTitle}
+
+📅 Còn lại: 1 ngày
+
+Vui lòng hoàn thành và nộp bài trước thời hạn.
+
+Trân trọng,
+Hệ thống LMS
+";
+
+            try
+            {
+                //Tạo và gửi email
+                using (var message = new MailMessage())
+                {
+                    message.From = from;
+                    message.To.Add(to);
+                    message.Subject = subject;
+                    message.Body = body;
+                    message.IsBodyHtml = false;
+
+                    using (var smtp = new SmtpClient(host, port))
+                    {
+                        smtp.Credentials = new NetworkCredential(sender, appPassword);
+                        smtp.EnableSsl = enableSSL;
+                        smtp.Send(message);
+                    }
+                }
+            }
+            catch (SmtpException ex)
+            {
+                Console.WriteLine("SMTP ERROR khi gửi email thông báo assignment: " + ex.Message);
+                throw new Exception("Không gửi được email. Kiểm tra lại cấu hình SMTP hoặc App Password.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR khi gửi email thông báo assignment: " + ex.Message);
+                throw;
+            }
+        }
     }
 }

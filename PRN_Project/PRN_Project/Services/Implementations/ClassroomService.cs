@@ -34,13 +34,32 @@ namespace PRN_Project.Services.Implementations
             }
             else if (userRole.Equals("Student", StringComparison.OrdinalIgnoreCase))
             {
+                // Kiểm tra Account có tồn tại và là Student không
+                var account = await _context.Accounts
+                    .FirstOrDefaultAsync(a => a.AId == accountId && a.Role == RoleType.Student);
+                
+                if (account == null)
+                {
+                    return new List<Classroom>();
+                }
+
                 // Chuyển đổi AccountId sang StudentId
                 var student = await _context.Students
                     .FirstOrDefaultAsync(s => s.AId == accountId);
                 
+                // Nếu chưa có Student record, tự động tạo mới
                 if (student == null)
                 {
-                    return new List<Classroom>();
+                    student = new Student
+                    {
+                        AId = accountId,
+                        SName = account.Email.Split('@')[0], // Lấy tên từ email
+                        Gender = null,
+                        Dob = null
+                    };
+                    
+                    _context.Students.Add(student);
+                    await _context.SaveChangesAsync();
                 }
 
                 return await _classroomRepo.GetClassesByStudentIdAsync(student.SId);
@@ -50,11 +69,30 @@ namespace PRN_Project.Services.Implementations
 
         public async Task<bool> JoinClassAsync(int accountId, string classCode)
         {
+            // Kiểm tra Account có tồn tại và là Student không
+            var account = await _context.Accounts
+                .FirstOrDefaultAsync(a => a.AId == accountId && a.Role == RoleType.Student);
+            
+            if (account == null) return false;
+
             // Chuyển đổi AccountId sang StudentId
             var student = await _context.Students
                 .FirstOrDefaultAsync(s => s.AId == accountId);
             
-            if (student == null) return false;
+            // Nếu chưa có Student record, tự động tạo mới
+            if (student == null)
+            {
+                student = new Student
+                {
+                    AId = accountId,
+                    SName = account.Email.Split('@')[0], // Lấy tên từ email
+                    Gender = null,
+                    Dob = null
+                };
+                
+                _context.Students.Add(student);
+                await _context.SaveChangesAsync();
+            }
 
             var classroom = await _classroomRepo.GetClassByCodeAsync(classCode);
 

@@ -32,6 +32,7 @@ namespace PRN_Project.Models
         public DbSet<Post> Posts { get; set; }
         public DbSet<AssignmentSubmission> AssignmentSubmissions { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<AssignmentEmailNotification> AssignmentEmailNotifications { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -256,6 +257,24 @@ namespace PRN_Project.Models
                 .WithMany(a => a.Comments)
                 .HasForeignKey(c => c.Aid)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // AssignmentEmailNotification relationships
+            modelBuilder.Entity<AssignmentEmailNotification>()
+                .HasOne(n => n.Post)
+                .WithMany()
+                .HasForeignKey(n => n.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<AssignmentEmailNotification>()
+                .HasOne(n => n.Student)
+                .WithMany()
+                .HasForeignKey(n => n.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Unique constraint: mỗi học sinh chỉ nhận 1 email thông báo 1 ngày cho mỗi assignment
+            modelBuilder.Entity<AssignmentEmailNotification>()
+                .HasIndex(n => new { n.PostId, n.StudentId, n.NotificationType })
+                .IsUnique();
 
 
             // === SEED DỮ LIỆU TĨNH ===

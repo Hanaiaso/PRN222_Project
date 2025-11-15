@@ -53,8 +53,7 @@ namespace PRN_Project.Services
                 return false; 
             }
 
-
-            account.Email = model.Email;
+            // Không cập nhật Email - chỉ cho phép sửa Họ tên, ngày sinh, giới tính
 
             if (role == "Student" && account.Student != null)
             {
@@ -65,7 +64,7 @@ namespace PRN_Project.Services
             else if (role == "Teacher" && account.Teacher != null)
             {
                 account.Teacher.TName = model.FullName;
-                account.Teacher.Qualification = model.Qualification;
+                // Không cập nhật Qualification
             }
 
 

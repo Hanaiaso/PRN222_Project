@@ -25,11 +25,13 @@
                         @Html.AntiForgeryToken()
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
+                        <!-- Email chỉ hiển thị, không cho sửa -->
                         <div class="mb-3">
-                            <label asp-for="Email" class="form-label">Email <span class="text-danger">*</span></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control" value="@Model.Email" readonly style="background-color: #e9ecef;" />
+                            <small class="form-text text-muted">Email không thể thay đổi</small>
                         </div>
+                        <input type="hidden" asp-for="Email" />
 
                         <div class="mb-3">
                             <label asp-for="FullName" class="form-label">Họ và tên <span class="text-danger">*</span></label>
@@ -48,22 +50,14 @@
                             <div class="mb-3">
                                 <label asp-for="Gender" class="form-label">Giới tính</label>
                                 <select asp-for="Gender" class="form-select">
-                                    <option value="">-- Chọn giới tính --</option>
+                                    @if (string.IsNullOrEmpty(Model.Gender))
+                                    {
+                                        <option value="">-- Chọn giới tính --</option>
+                                    }
                                     <option value="Male">Nam</option>
                                     <option value="Female">Nữ</option>
-                                    <option value="Other">Khác</option>
                                 </select>
                                 <span asp-validation-for="Gender" class="text-danger"></span>
-                            </div>
-                        }
-
-                        <!-- Trường này chỉ dành cho Teacher -->
-                        @if (ViewBag.Role == "Teacher")
-                        {
-                            <div class="mb-3">
-                                <label asp-for="Qualification" class="form-label">Chuyên môn</label>
-                                <input asp-for="Qualification" class="form-control" placeholder="Ví dụ: Toán học, Vật lý, Hóa học..." />
-                                <span asp-validation-for="Qualification" class="text-danger"></span>
                             </div>
                         }
 

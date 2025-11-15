@@ -6,6 +6,7 @@
 <div class="post-form">
     <h5>📝 Đăng bài mới</h5>
     <form asp-controller="Post" asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
         <input type="hidden" name="classroomId" value="@classroomId" />
         
         <!-- Chọn loại bài đăng -->
@@ -28,7 +29,12 @@
         <!-- Hạn nộp (chỉ hiện khi chọn Bài tập) -->
         <div class="due-date-field" id="dueDateField" style="display: none;">
             <label>⏰ Hạn nộp:</label>
-            <input type="datetime-local" name="dueDate" id="dueDate" />
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <input type="date" id="dueDate" required style="flex: 1;" />
+                <input type="time" id="dueTime" required style="flex: 1;" step="1" />
+                <input type="hidden" name="dueDate" id="dueDateHidden" />
+            </div>
+            <small style="color: #666; font-size: 0.85rem;">Định dạng 24 giờ (VD: 14:30)</small>
         </div>
         
         <button type="submit" class="btn btn-primary">Đăng bài</button>
@@ -49,14 +55,37 @@
         // Hiển thị/ẩn trường hạn nộp
         const dueDateField = document.getElementById('dueDateField');
         const dueDateInput = document.getElementById('dueDate');
+        const dueTimeInput = document.getElementById('dueTime');
         if (type === 'Assignment') {
+            dueDateField.style.display = 'block';
             dueDateField.classList.add('show');
             dueDateInput.required = true;
+            dueTimeInput.required = true;
         } else {
+            dueDateField.style.display = 'none';
             dueDateField.classList.remove('show');
             dueDateInput.required = false;
+            dueTimeInput.required = false;
             dueDateInput.value = '';
+            dueTimeInput.value = '';
+            document.getElementById('dueDateHidden').value = '';
         }
     }
+
+    // Kết hợp date và time thành datetime-local format trước khi submit
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const postType = document.getElementById('postType').value;
+        if (postType === 'Assignment') {
+            const dateInput = document.getElementById('dueDate');
+            const timeInput = document.getElementById('dueTime');
+            const hiddenInput = document.getElementById('dueDateHidden');
+            
+            if (dateInput.value && timeInput.value) {
+                // Kết hợp date và time thành format: YYYY-MM-DDTHH:mm
+                const dateTimeValue = dateInput.value + 'T' + timeInput.value;
+                hiddenInput.value = dateTimeValue;
+            }
+        }
+    });
 </script>
 
