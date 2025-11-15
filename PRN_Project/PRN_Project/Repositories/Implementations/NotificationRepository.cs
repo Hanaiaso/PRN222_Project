@@ -70,5 +70,12 @@ namespace PRN_Project.Repositories.Implementations
         {
             return await _context.NotificationReceivers.FindAsync(nrId);
         }
+
+        public async Task<List<Account>> GetAllAccountsAsync()
+        {
+            return await _context.Accounts
+                .Where(a => a.Status) // chỉ lấy account đang active
+                .ToListAsync();
+        }
     }
 }

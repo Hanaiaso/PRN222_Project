@@ -27,23 +27,26 @@ namespace PRN_Project.Services.Implementations
             return await _repo.GetByIdAsync(id);
         }
 
-        public async Task CreateAsync(Notification notification, int[] receiverIds, int senderId)
+        public async Task CreateForAllAsync(Notification notification, int senderId)
         {
             notification.SentTime = DateTime.Now;
             notification.SenderId = senderId;
 
+            // Lấy danh sách tất cả tài khoản
+            var allUsers = await _repo.GetAllAccountsAsync();  // Chưa có method này -> thêm trong repo
+
             await _repo.AddAsync(notification);
 
-            foreach (var receiverId in receiverIds)
+            notification.Receivers = new List<NotificationReceiver>();
+
+            foreach (var user in allUsers)
             {
-                var nr = new NotificationReceiver
+                notification.Receivers.Add(new NotificationReceiver
                 {
                     NtId = notification.NtId,
-                    ReceiverId = receiverId,
+                    ReceiverId = user.AId,
                     IsRead = false
-                };
-                notification.Receivers ??= new List<NotificationReceiver>();
-                notification.Receivers.Add(nr);
+                });
             }
 
             await _repo.UpdateAsync(notification);
@@ -76,6 +79,14 @@ namespace PRN_Project.Services.Implementations
                 receiver.IsRead = true;
                 await _repo.UpdateAsync(receiver.Notification!);
             }
+        }
+        public async Task<List<Notification>> GetOtherNotificationsAsync(int excludeId)
+        {
+            var all = await _repo.GetAllAsync();
+            return all.Where(n => n.NtId != excludeId)
+                      .OrderByDescending(n => n.SentTime)
+                      .Take(5)
+                      .ToList();
         }
     }
 }

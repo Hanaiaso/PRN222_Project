@@ -51,7 +51,7 @@ namespace PRN_Project.Controllers
             return View(subject);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteConfirmed")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _subjectService.DeleteSubjectAsync(id);

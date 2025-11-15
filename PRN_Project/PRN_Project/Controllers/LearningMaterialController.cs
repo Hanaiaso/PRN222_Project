@@ -62,20 +62,24 @@ namespace PRN_Project.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var material = await _materialService.GetMaterialByIdAsync(id);
-            if (material == null) return NotFound();
+            if (material == null)
+            {
+                return NotFound();
+            };
             return View(material);
         }
         [Authorize(Roles = "Admin,Teacher")]
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var material = await _materialService.GetMaterialByIdAsync(id);
-            if (material != null)
+            if (material == null) 
             {
-                await _materialService.DeleteMaterialAsync(id);
-                return RedirectToAction("Index", new { subjectId = material.SubjectID });
-            }
-            return NotFound();
+                return NotFound();
+            };
+            var subjectId = material.SubjectID;
+            await _materialService.DeleteMaterialAsync(id);
+            return RedirectToAction("Index", new { subjectId });
         }
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> StudentIndex(int? subjectId)

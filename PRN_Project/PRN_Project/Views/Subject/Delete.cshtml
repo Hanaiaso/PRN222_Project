@@ -10,7 +10,7 @@
 </div>
 
 <form asp-action="DeleteConfirmed" method="post">
-    <input type="hidden" asp-for="SuId" />
+    <input type="hidden" name="id" value="@Model.SuId" />
     <button type="submit" class="btn btn-danger">Xóa</button>
     <a asp-action="Index" class="btn btn-secondary">Hủy</a>
 </form>

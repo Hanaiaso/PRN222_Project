@@ -26,11 +26,12 @@ namespace PRN_Project.Repositories.Implementations
         public async Task DeleteAsync(int id)
         {
             var subject = await _context.Subjects.FindAsync(id);
-            if (subject != null)
-            {
-                _context.Subjects.Remove(subject);
-                await _context.SaveChangesAsync();
-            }
+            if (subject == null)
+                return;
+
+            _context.Subjects.Remove(subject);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -6,10 +6,11 @@ namespace PRN_Project.Services.Interfaces
     {
         Task<List<Notification>> GetAllAsync();
         Task<Notification?> GetDetailsAsync(int id);
-        Task CreateAsync(Notification notification, int[] receiverIds, int senderId);
+        Task CreateForAllAsync(Notification notification, int senderId);
         Task UpdateAsync(Notification notification);
         Task DeleteAsync(int notificationId);
         Task<List<NotificationReceiver>> GetMyNotificationsAsync(int accountId);
         Task MarkAsReadAsync(int receiverId);
+        Task<List<Notification>> GetOtherNotificationsAsync(int excludeId);
     }
 }
