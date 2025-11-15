@@ -502,8 +502,7 @@
               "WhenOpened": "2025-11-12T01:58:47.04Z"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "$type": "Document",              "DocumentIndex": 16,
               "Title": "_SidebarStudent.cshtml",
               "DocumentMoniker": "D:\\PRU213\\PRN222_Project\\PRN_Project\\PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
               "RelativeDocumentMoniker": "PRN_Project\\Views\\Shared\\_SidebarStudent.cshtml",
