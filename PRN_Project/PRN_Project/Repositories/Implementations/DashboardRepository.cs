@@ -95,6 +95,7 @@ namespace PRN_Project.Repositories.Implementations
 
                 result.Add(new ClassroomStatisticViewModel
                 {
+                    ClassroomId = cls.ClassroomId,
                     ClassName = cls.ClassName,
                     ClassCode = cls.ClassCode,
                     TotalStudents = totalStudents,

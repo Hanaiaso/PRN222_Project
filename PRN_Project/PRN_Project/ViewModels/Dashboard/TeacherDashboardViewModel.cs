@@ -7,6 +7,7 @@
 
     public class ClassroomStatisticViewModel
     {
+        public int ClassroomId { get; set; }
         public string ClassName { get; set; }
         public string ClassCode { get; set; }
         public int TotalStudents { get; set; }
