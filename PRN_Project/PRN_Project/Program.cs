@@ -46,6 +46,12 @@ builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IMockExamRepository, MockExamRepository>();
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository >();
+builder.Services.AddScoped<ILearningMaterialRepository, LearningMaterialRepository>();
+builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
+builder.Services.AddScoped<ITeacherClassroomService, TeacherClassroomService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+
 
 // Services
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -53,10 +59,11 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IMockExamService, MockExamService>();
 builder.Services.AddScoped<IChatService, ChatService>();
-
+builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IExamRepository, ExamRepository>();
 builder.Services.AddScoped<IExamService, ExamService>();
-
+builder.Services.AddScoped<ILearningMaterialService, LearningMaterialService>();
+builder.Services.AddScoped<ISubjectService, SubjectService>();
 builder.Services.AddScoped<IRankingRepository, RankingRepository>();
 builder.Services.AddScoped<IRankingService, RankingService>();
 
@@ -68,6 +75,9 @@ builder.Services.AddScoped<IPostService, PostService>();
 
 builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
 builder.Services.AddScoped<ISubmissionService, SubmissionService>();
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+builder.Services.AddScoped<ITeacherClassroomRepository, TeacherClassroomRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 // ======= Đăng ký Background Services =======
 builder.Services.AddScoped<IAssignmentReminderService, AssignmentReminderService>();
@@ -132,7 +142,7 @@ app.UseAuthorization();
 app.MapHub<PRN_Project.Hubs.PrivateChatHub>("/privateChatHub");
 app.MapHub<CommunityChatHub>("/communityChatHub");
 app.MapHub<GroupChatHub>("/groupChatHub");
-
+app.MapHub<NotificationHub>("/notificationHub");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}"

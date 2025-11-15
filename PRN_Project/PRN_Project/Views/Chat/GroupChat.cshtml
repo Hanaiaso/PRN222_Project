@@ -16,6 +16,19 @@
         <span class="text-success fw-bold">ID Nhóm: @Model.GroupId</span>
     </div>
 </div>
+<div class="row p-1 align-items-center mb-3">
+    <div class="col-6">
+        <button id="btnLeaveGroup" class="btn btn-danger btn-sm" data-group-id="@Model.GroupId">
+            Rời Nhóm Chat
+        </button>
+    </div>
+    <div class="col-6">
+        <button id="btnOpenAddMemberModal" class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#addMemberModal">
+            Thêm Thành Viên
+        </button>
+    </div>
+</div>
+
 
 <div class="row p-1 mt-3">
     <div class="col-12">
@@ -38,6 +51,28 @@
         <input type="button" id="sendButton" value="Gửi Nhóm" class="btn btn-success w-100" disabled />
     </div>
 </div>
+<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addMemberModalLabel">Thêm Thành Viên Mới vào Nhóm @Model.Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="newMemberEmailsInput" class="form-label">Email thành viên (cách nhau bằng dấu phẩy):</label>
+                    <textarea class="form-control" id="newMemberEmailsInput" rows="3" placeholder="email3@example.com, email4@example.com"></textarea>
+                </div>
+                <div id="addMemberStatus" class="mt-2" style="font-weight: bold;"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" id="btnAddMembersConfirm">Thêm Thành Viên</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/js/groupChat.js"></script>

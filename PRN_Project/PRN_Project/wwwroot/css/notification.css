@@ -28,3 +28,20 @@
         transform: translateY(20px);
     }
 }
+
+.notification-controls {
+    margin-bottom: 15px;
+}
+
+.notification-controls .card {
+    border: 1px solid #dee2e6;
+}
+
+.notification-controls .card-header {
+    background-color: #f8f9fa;
+    font-weight: 500;
+}
+
+.notification-controls .btn {
+    transition: all 0.3s ease;
+}

@@ -5,45 +5,46 @@
     ViewBag.StudentName: Tên của người dùng hiện tại (dùng để hiển thị)
 *@
 @{
-	ViewData["Title"] = "Chat Cộng đồng";
+    ViewData["Title"] = "Chat Cộng đồng";
 }
 
 <div class="container">
-	<h2 class="text-center text-primary">💬 Kênh Chat Cộng Đồng Toàn Cầu</h2>
+    <h2 class="text-center text-primary">💬 Kênh Chat Cộng Đồng</h2>
 
-	<div class="row p-1 align-items-center mb-3">
-		<div class="col-2">**Người gửi**</div>
-		<div class="col-4">
-			<input type="text" id="userInput" value="@ViewBag.StudentName" readonly class="form-control" style="background-color: #f0f0f0;" />
-			<input type="hidden" id="studentIdHidden" value="@ViewBag.StudentId" />
-		</div>
-		<div class="col-6">
-			<span class="text-success">Đã kết nối</span>
-		</div>
-	</div>
+    <div class="row p-1 align-items-center mb-3">
+        <div class="col-1">Xin Chào</div>
+        <div class="col-5">
+            <input type="text" id="userInput" value="@ViewBag.StudentName" readonly class="form-control" style="background-color: #f0f0f0;" />
+            <input type="hidden" id="studentIdHidden" value="@ViewBag.StudentId" />
+        </div>
+        <div class="col-6">
+            <span class="text-success">Đã kết nối với kênh chat cộng đồng</span>
+        </div>
+    </div>
 
-	<div class="row p-1 mt-3">
-		<div class="col-12">
-			<h3>Lịch sử Chat</h3>
-		</div>
-	</div>
-	<div class="row p-1 mb-3">
-		<div class="col-12">
-			<ul id="messagesList" class="list-group p-2"
-				style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; background-color: #f9f9f9;">
-			</ul>
-		</div>
-	</div>
+    <div class="row p-1 mt-3">
+        <div class="col-12">
+            <h3>Lịch sử Chat</h3>
+        </div>
+    </div>
+    <div class="row p-1 mb-3">
+        <div class="col-12">
+            <ul id="messagesList" class="list-group p-2"
+                style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; background-color: #f9f9f9;">
+            </ul>
+        </div>
+    </div>
 
-	<div class="row p-1 align-items-center">
-		<div class="col-9">
-			<input type="text" class="w-100 form-control" id="messageInput" placeholder="Nhập tin nhắn cộng đồng..." />
-		</div>
-		<div class="col-3">
-			<input type="button" id="sendButton" value="Gửi Tin Nhắn" class="btn btn-success w-100" disabled />
-		</div>
-	</div>
+    <div class="row p-1 align-items-center">
+        <div class="col-9">
+            <input type="text" class="w-100 form-control" id="messageInput" placeholder="Nhập tin nhắn cộng đồng..." />
+        </div>
+        <div class="col-3">
+            <input type="button" id="sendButton" value="Gửi Tin Nhắn" class="btn btn-success w-100" disabled />
+        </div>
+    </div>
 </div>
+
 
 <script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/js/communityChat.js"></script>

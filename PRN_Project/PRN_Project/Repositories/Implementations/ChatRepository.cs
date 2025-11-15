@@ -133,5 +133,17 @@ namespace PRN_Project.Repositories.Implementations
                 .Select(gm => gm.Group)
                 .ToListAsync();
         }
+        public async Task RemoveMemberFromGroupAsync(int groupId, int accountId)
+        {
+            var member = await _context.GroupMembers
+                .FirstOrDefaultAsync(gm => gm.GroupId == groupId && gm.AccountId == accountId);
+
+            if (member != null)
+            {
+                _context.GroupMembers.Remove(member);
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }

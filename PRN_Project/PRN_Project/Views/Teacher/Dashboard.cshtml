@@ -1,2 +1,168 @@
-﻿<h2>👨‍🏫 Bảng điều khiển giảng viên</h2>
-<p>Quản lý bài thi, xem điểm và theo dõi tiến độ học sinh tại đây.</p>
+﻿@model PRN_Project.ViewModels.Dashboard.TeacherDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutTeacher.cshtml";
+    ViewData["Title"] = "Teacher Dashboard";
+}
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-primary"><i class="fas fa-chalkboard-teacher me-2"></i>Bảng Tin Giảng Viên</h2>
+            <p class="text-muted">Tổng quan hiệu suất và kết quả học tập của các lớp</p>
+        </div>
+        <div class="text-end">
+            <span class="badge bg-white text-primary border border-primary p-2 rounded-pill shadow-sm">
+                <i class="far fa-calendar-alt me-1"></i> @DateTime.Now.ToString("dd/MM/yyyy")
+            </span>
+        </div>
+    </div>
+
+    @if (Model.ClassStats == null || !Model.ClassStats.Any())
+    {
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 text-center">
+                <div class="card shadow-sm border-0 p-5">
+                    <div class="mb-3"><i class="fas fa-clipboard-list fa-4x text-muted opacity-25"></i></div>
+                    <h4>Chưa có dữ liệu lớp học</h4>
+                    <p class="text-muted">Hiện tại bạn chưa được phân công lớp nào.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @for (int i = 0; i < Model.ClassStats.Count; i++)
+            {
+                var item = Model.ClassStats[i];
+                var chartId = "gradeChart_" + i;
+
+                // LOGIC LAYOUT MỚI: col-md-6 (2 cột/hàng) -> col-xl-4 (3 cột/hàng trên màn hình to)
+                // Giúp biểu đồ không bị hẹp trên laptop thường
+                <div class="col-md-6 col-xl-4">
+
+                    <a asp-controller="Classroom" asp-action="Details" asp-route-id="@item.ClassroomId" class="text-decoration-none card-link-wrapper">
+
+                        <div class="card border-0 shadow-sm h-100 hover-effect">
+                            <div class="card-header bg-white border-bottom-0 pt-4 px-4">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h5 class="card-title fw-bold text-dark mb-1 text-truncate" style="max-width: 200px;" title="@item.ClassName">
+                                            @item.ClassName
+                                        </h5>
+                                        <span class="badge bg-light text-secondary border">@item.ClassCode</span>
+                                    </div>
+                                    <div class="icon-wrapper text-primary bg-primary bg-opacity-10 rounded-circle p-2">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body px-4">
+                                <div class="row text-center mb-4 g-2">
+                                    <div class="col-6">
+                                        <div class="p-2 bg-light rounded-3 border border-light">
+                                            <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.7rem;">Sĩ số</small>
+                                            <span class="h5 fw-bold text-primary mb-0">@item.TotalStudents</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-2 bg-light rounded-3 border border-light">
+                                            <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.7rem;">Tham gia</small>
+                                            <span class="h5 fw-bold text-success mb-0">@item.ParticipationRate%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="position-relative mx-auto" style="height: 220px; width: 100%; max-width: 220px;">
+                                    <canvas id="@chartId"></canvas>
+                                    <div class="position-absolute top-50 start-50 translate-middle text-center pointer-events-none">
+                                        <small class="text-muted d-block" style="font-size: 0.7rem;">Tổng bài</small>
+                                        <div class="fw-bold h4 mb-0 text-dark">@item.TotalSubmissions</div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 pt-3 border-top">
+                                    <div class="row g-1 small text-muted text-center">
+                                        <div class="col-3 border-end"><i class="fas fa-circle text-success"></i><br />A: <b>@item.GradeA</b></div>
+                                        <div class="col-3 border-end"><i class="fas fa-circle text-primary"></i><br />B: <b>@item.GradeB</b></div>
+                                        <div class="col-3 border-end"><i class="fas fa-circle text-warning"></i><br />C: <b>@item.GradeC</b></div>
+                                        <div class="col-3"><i class="fas fa-circle text-danger"></i><br />D: <b>@item.GradeD</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        @for (int i = 0; i < Model.ClassStats.Count; i++)
+        {
+            var item = Model.ClassStats[i];
+            var chartId = "gradeChart_" + i;
+
+            <text>
+                    (function() {
+                        const ctx = document.getElementById('@chartId').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Giỏi (A)', 'Khá (B)', 'Trung bình (C)', 'Yếu (D)'],
+                                datasets: [{
+                                    data: [@item.GradeA, @item.GradeB, @item.GradeC, @item.GradeD],
+                                    backgroundColor: ['#2ecc71', '#3498db', '#f1c40f', '#e74c3c'],
+                                    borderWidth: 0,
+                                    hoverOffset: 10
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '70%',
+                                plugins: { legend: { display: false } },
+                                layout: { padding: 10 }
+                            }
+                        });
+                    })();
+            </text>
+        }
+        });
+    </script>
+}
+
+<style>
+    /* Hiệu ứng hover cho Card Link */
+    .hover-effect {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .card-link-wrapper:hover .hover-effect {
+        transform: translateY(-8px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+        border-color: #0d6efd !important; /* Viền xanh khi hover */
+    }
+
+    /* Icon mũi tên sẽ hiện rõ khi hover */
+    .icon-wrapper {
+        transition: all 0.3s;
+    }
+
+    .card-link-wrapper:hover .icon-wrapper {
+        background-color: #0d6efd !important;
+        color: white !important;
+    }
+
+    .pointer-events-none {
+        pointer-events: none;
+    }
+</style>

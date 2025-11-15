@@ -1,21 +1,46 @@
-﻿@model PRN_Project.Models.Notification
+﻿@model PRN_Project.ViewModels.NotificationDetailViewModel
 
 @{
     ViewData["Title"] = "Chi tiết thông báo";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2>@Model.CurrentNotification.Title</h2>
 
-<div class="card mb-3">
-    <div class="card-header">
-        <strong>Tiêu đề:</strong> @Model.Title
-    </div>
-    <div class="card-body">
-        <p><strong>Người gửi:</strong> @Model.Sender?.Email</p>
-        <p><strong>Thời gian gửi:</strong> @Model.SentTime.ToString("dd/MM/yyyy HH:mm")</p>
-        <p><strong>Nội dung:</strong></p>
-        <p>@Model.Content</p>
-    </div>
+<div class="card p-3 mt-3">
+    <p><strong>Người gửi:</strong> @Model.CurrentNotification.Sender?.Email (@Model.CurrentNotification.Sender?.Role)</p>
+    <p><strong>Ngày gửi:</strong> @Model.CurrentNotification.SentTime.ToString("dd/MM/yyyy HH:mm")</p>
+    <p><strong>Nội dung:</strong></p>
+    <p>@Model.CurrentNotification.Content</p>
 </div>
 
-<a asp-action="MyNotifications" class="btn btn-secondary">Quay lại</a>
+<hr />
+
+<h3 class="mt-4">📌 Các thông báo khác</h3>
+
+@if (Model.OtherNotifications != null && Model.OtherNotifications.Any())
+{
+        <ul class="list-group">
+        @foreach (var item in Model.OtherNotifications)
+        {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>
+                            <strong>@item.Title</strong> <br />
+                            <small>@item.SentTime.ToString("dd/MM/yyyy HH:mm")</small>
+                        </span>
+
+                        <a asp-action="ViewNotification" asp-route-id="@item.NtId" class="btn btn-sm btn-primary">
+                            Xem
+                        </a>
+                    </li>
+        }
+        </ul>
+}
+else
+{
+        <p>Không có thông báo nào khác.</p>
+}
+
+<p class="mt-3">
+    <a asp-action="MyNotifications" class="btn btn-secondary">Quay lại</a>
+</p>
+

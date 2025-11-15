@@ -11,6 +11,6 @@ namespace PRN_Project.Services.Interfaces
 
         Task<List<MyExamRankViewModel>> GetStudentRankingAsync(int accountId);
 
-        Task<string> ExportRankingCsvAsync(int subjectId);
+        Task<string> ExportRankingCsvAsync(int examId);
     }
 }
