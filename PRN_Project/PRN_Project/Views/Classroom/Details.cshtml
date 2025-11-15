@@ -1,4 +1,7 @@
-﻿@{
+﻿@using PRN_Project.Models
+@model Classroom
+
+@{
     ViewData["Title"] = "Chi tiết Lớp học";
     Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 
@@ -44,24 +47,176 @@
             }
 
     .tab-content {
-        /* Nội dung của tab sẽ ở đây */
+        padding: 20px 0;
+    }
+
+    .assignment-card {
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .assignment-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        border-color: #007bff;
+    }
+
+    .assignment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .assignment-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+    }
+
+    .assignment-meta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .assignment-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .due-date {
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .due-date.overdue {
+        background-color: #fee;
+        color: #c33;
+    }
+
+    .due-date.due-soon {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .due-date.upcoming {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .submission-info {
+        display: flex;
+        gap: 20px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #f0f0f0;
+        font-size: 0.9rem;
+    }
+
+    .submission-count {
+        color: #007bff;
+        font-weight: 600;
+    }
+
+    .no-assignments {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+        font-size: 1.1rem;
+    }
+
+    .post-form {
+        background: #f8f9fa;
+        border: 2px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .post-form h5 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .post-type-toggle {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .post-type-btn {
+        flex: 1;
+        padding: 10px;
+        border: 2px solid #ddd;
+        background: white;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+    .post-type-btn.active {
+        background: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .post-form input[type="text"],
+    .post-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+
+    .post-form textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .due-date-field {
+        display: none;
+    }
+
+    .due-date-field.show {
+        display: block;
     }
 </style>
 
 <div class="class-banner">
-    <h1>FALL24_JPD123_T24</h1>
+    <h1>@Model.ClassName</h1>
+    <p style="margin: 10px 0 0 0; font-size: 1rem;">Giáo viên: @(Model.Teacher?.TName ?? "N/A")</p>
+    @if (User.IsInRole("Teacher"))
+    {
+        <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Mã lớp: @Model.ClassCode</p>
+    }
 </div>
 
 <nav class="class-tabs">
-    <a asp-action="Details" asp-route-id="@ViewBag.ClassId" asp-route-tab="stream"
+    <a asp-action="Details" asp-route-id="@Model.ClassroomId" asp-route-tab="stream"
        class="@(currentTab == "stream" ? "active" : "")">
         Luồng (Stream)
     </a>
-    <a asp-action="Details" asp-route-id="@ViewBag.ClassId" asp-route-tab="classwork"
+    <a asp-action="Details" asp-route-id="@Model.ClassroomId" asp-route-tab="classwork"
        class="@(currentTab == "classwork" ? "active" : "")">
         Bài tập (Classwork)
     </a>
-    <a asp-action="Details" asp-route-id="@ViewBag.ClassId" asp-route-tab="people"
+    <a asp-action="Details" asp-route-id="@Model.ClassroomId" asp-route-tab="people"
        class="@(currentTab == "people" ? "active" : "")">
         Mọi người (People)
     </a>
@@ -72,17 +227,90 @@
     @if (currentTab == "stream")
     {
         <h4>Luồng thông báo của lớp</h4>
-        <p>(Hiển thị ô đăng bài và danh sách các bài đã đăng...)</p>
+        
+        <!-- Form đăng bài - Chỉ hiển thị cho giáo viên -->
+        @if (User.IsInRole("Teacher"))
+        {
+            @await Html.PartialAsync("~/Views/Post/CreatePostForm.cshtml", Model.ClassroomId)
+        }
+
+        <!-- Danh sách bài đăng -->
+        @if (Model.Posts != null && Model.Posts.Any())
+        {
+            @await Html.PartialAsync("~/Views/Post/PostList.cshtml", Model.Posts)
+        }
+        else
+        {
+            <p style="text-align: center; padding: 40px; color: #999;">
+                📭 Chưa có bài đăng nào trong lớp này. Hãy đăng bài đầu tiên!
+            </p>
+        }
     }
     else if (currentTab == "classwork")
     {
-        <h4>Bài tập trên lớp</h4>
-        <p>(Liệt kê các bài tập từ Stream...)</p>
+        // Sử dụng Partial View để tách riêng logic hiển thị Classwork
+        @await Html.PartialAsync("~/Views/Classroom/ClassworkTab.cshtml", Model)
     }
     else if (currentTab == "people")
     {
-        <h4>Danh sách lớp</h4>
-        <p>(Danh sách giáo viên và học sinh...)</p>
+        <h4>👥 Danh sách lớp</h4>
+        <div style="margin-top: 20px;">
+            <div style="margin-bottom: 30px;">
+                <h5 style="color: #1976d2; margin-bottom: 15px;">👨‍🏫 Giáo viên</h5>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #1976d2;">
+                    <div style="font-weight: 600; font-size: 1.1rem; color: #333;">
+                        @(Model.Teacher?.TName ?? "N/A")
+                    </div>
+                    <div style="color: #666; font-size: 0.9rem; margin-top: 5px;">
+                        📧 @(Model.Teacher?.Account?.Email ?? "N/A")
+                    </div>
+                </div>
+            </div>
+            
+            @if (Model.Members != null && Model.Members.Any())
+            {
+                <div>
+                    <h5 style="color: #28a745; margin-bottom: 15px;">👨‍🎓 Học sinh (@Model.Members.Count)</h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                        @foreach (var member in Model.Members.OrderBy(m => m.Student?.SName))
+                        {
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; transition: all 0.3s;">
+                                <div style="font-weight: 600; font-size: 1rem; color: #333; margin-bottom: 8px;">
+                                    @if (User.IsInRole("Teacher") && member.Student != null)
+                                    {
+                                        <a href="@Url.Action("StudentDetail", "Classroom", new { studentId = member.Student.SId, classroomId = Model.ClassroomId })" 
+                                           style="color: #1976d2; text-decoration: none; cursor: pointer;"
+                                           onmouseover="this.style.textDecoration='underline'" 
+                                           onmouseout="this.style.textDecoration='none'">
+                                            👤 @(member.Student.SName ?? "N/A")
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span>👤 @(member.Student?.SName ?? "N/A")</span>
+                                    }
+                                </div>
+                                <div style="color: #666; font-size: 0.9rem;">
+                                    📅 Tham gia: @member.JoinDate.ToString("dd/MM/yyyy")
+                                </div>
+                                @if (member.Student?.Account != null)
+                                {
+                                    <div style="color: #666; font-size: 0.9rem; margin-top: 5px;">
+                                        📧 @member.Student.Account.Email
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="text-align: center; padding: 40px; color: #999;">
+                    <p>📭 Chưa có học sinh nào trong lớp này.</p>
+                </div>
+            }
+        </div>
     }
 
 </div>

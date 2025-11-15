@@ -1,0 +1,62 @@
+@model int
+@{
+    var classroomId = Model;
+}
+
+<div class="post-form">
+    <h5>📝 Đăng bài mới</h5>
+    <form asp-controller="Post" asp-action="Create" method="post">
+        <input type="hidden" name="classroomId" value="@classroomId" />
+        
+        <!-- Chọn loại bài đăng -->
+        <div class="post-type-toggle">
+            <div class="post-type-btn active" data-type="Announcement" onclick="selectPostType('Announcement')">
+                📢 Thông báo
+            </div>
+            <div class="post-type-btn" data-type="Assignment" onclick="selectPostType('Assignment')">
+                📚 Bài tập
+            </div>
+        </div>
+        <input type="hidden" name="postType" id="postType" value="Announcement" />
+        
+        <!-- Tiêu đề -->
+        <input type="text" name="title" placeholder="Nhập tiêu đề..." required />
+        
+        <!-- Nội dung -->
+        <textarea name="content" placeholder="Nhập nội dung..." required></textarea>
+        
+        <!-- Hạn nộp (chỉ hiện khi chọn Bài tập) -->
+        <div class="due-date-field" id="dueDateField" style="display: none;">
+            <label>⏰ Hạn nộp:</label>
+            <input type="datetime-local" name="dueDate" id="dueDate" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Đăng bài</button>
+    </form>
+</div>
+
+<script>
+    function selectPostType(type) {
+        // Cập nhật hidden input
+        document.getElementById('postType').value = type;
+        
+        // Cập nhật UI của các nút
+        document.querySelectorAll('.post-type-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.closest('.post-type-btn').classList.add('active');
+        
+        // Hiển thị/ẩn trường hạn nộp
+        const dueDateField = document.getElementById('dueDateField');
+        const dueDateInput = document.getElementById('dueDate');
+        if (type === 'Assignment') {
+            dueDateField.classList.add('show');
+            dueDateInput.required = true;
+        } else {
+            dueDateField.classList.remove('show');
+            dueDateInput.required = false;
+            dueDateInput.value = '';
+        }
+    }
+</script>
+

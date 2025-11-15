@@ -1,0 +1,117 @@
+@using PRN_Project.Models
+@model Post
+
+@{
+    var totalStudents = ViewBag.TotalStudents as int? ?? 0;
+    var submissionCount = Model.Submissions?.Count ?? 0;
+    var isOverdue = Model.DueDate.HasValue && Model.DueDate.Value < DateTime.Now;
+    var isDueSoon = Model.DueDate.HasValue && 
+                    Model.DueDate.Value >= DateTime.Now && 
+                    Model.DueDate.Value <= DateTime.Now.AddDays(3);
+}
+
+<div class="assignment-card">
+    <div class="assignment-header">
+        <div style="flex: 1;">
+            <h5 class="assignment-title">@Model.Title</h5>
+            <div class="assignment-meta">
+                <span class="assignment-meta-item">
+                    📅 Đăng: @Model.CreateTime.ToString("dd/MM/yyyy HH:mm")
+                </span>
+                <span class="assignment-meta-item">
+                    👤 Bởi: @(Model.Account?.Email ?? "N/A")
+                </span>
+            </div>
+        </div>
+        @if (Model.DueDate.HasValue)
+        {
+            <div class="due-date @(isOverdue ? "overdue" : isDueSoon ? "due-soon" : "upcoming")">
+                ⏰ Hạn nộp: @Model.DueDate.Value.ToString("dd/MM/yyyy HH:mm")
+                @if (isOverdue)
+                {
+                    <span style="display: block; font-size: 0.8rem; margin-top: 3px;">(Đã quá hạn)</span>
+                }
+            </div>
+        }
+    </div>
+    
+    <div style="margin-bottom: 15px; line-height: 1.6; color: #555;">
+        @Html.Raw(ConvertLinks(Model.Content))
+    </div>
+
+    <div class="submission-info">
+        @if (User.IsInRole("Teacher"))
+        {
+            <div style="width: 100%;">
+                <div style="margin-bottom: 15px;">
+                    <span class="submission-count">
+                        📊 Đã nộp: @submissionCount / @totalStudents học sinh
+                    </span>
+                </div>
+                
+                @if (Model.Submissions != null && Model.Submissions.Any())
+                {
+                    var submissionListViewData = new ViewDataDictionary(ViewData);
+                    submissionListViewData["PostId"] = Model.PostId;
+                    @await Html.PartialAsync("~/Views/Submission/SubmissionList.cshtml", Model.Submissions, submissionListViewData)
+                }
+                else
+                {
+                    <div style="text-align: center; padding: 20px; color: #999; font-size: 0.9rem;">
+                        📭 Chưa có học sinh nào nộp bài
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            var studentSubmissions = ViewBag.StudentSubmissions as Dictionary<int, AssignmentSubmission?> ?? new Dictionary<int, AssignmentSubmission?>();
+            var mySubmission = studentSubmissions.ContainsKey(Model.PostId) ? studentSubmissions[Model.PostId] : null;
+            var hasSubmitted = mySubmission != null;
+            
+            @if (hasSubmitted)
+            {
+                var canEdit = !Model.DueDate.HasValue || Model.DueDate.Value >= DateTime.Now;
+                var mySubmissionViewData = new ViewDataDictionary(ViewData);
+                mySubmissionViewData["PostId"] = Model.PostId;
+                mySubmissionViewData["CanEdit"] = canEdit;
+                @await Html.PartialAsync("~/Views/Submission/MySubmissionView.cshtml", mySubmission, mySubmissionViewData)
+            }
+            else
+            {
+                var submissionFormViewData = new ViewDataDictionary(ViewData);
+                submissionFormViewData["DueDate"] = Model.DueDate;
+                @await Html.PartialAsync("~/Views/Submission/SubmissionForm.cshtml", Model.PostId, submissionFormViewData)
+            }
+        }
+    </div>
+</div>
+
+@functions {
+    public string ConvertLinks(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return text;
+        var pattern = @"(https?://[^\s]+)";
+        return System.Text.RegularExpressions.Regex.Replace(
+            text,
+            pattern,
+            "<a href=\"$1\" target=\"_blank\" style=\"color:#0d6efd;\">$1</a>"
+        );
+    }
+}
+
+<script>
+    function toggleEditForm(postId) {
+        const view = document.getElementById('submissionView_' + postId);
+        const form = document.getElementById('editForm_' + postId);
+        
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+            view.style.display = 'none';
+        } else {
+            form.style.display = 'none';
+            view.style.display = 'block';
+        }
+    }
+</script>
+

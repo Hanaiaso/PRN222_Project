@@ -1,0 +1,49 @@
+@model int
+@{
+    var postId = Model;
+}
+
+<div style="width: 100%;">
+    <div style="margin-bottom: 10px;">
+        <span style="color: #dc3545; font-weight: 600;">
+            ⚠️ Chưa nộp bài
+        </span>
+    </div>
+    <form asp-controller="Submission" asp-action="Submit" method="post" style="margin-top: 15px;">
+        <input type="hidden" name="postId" value="@postId" />
+        <div style="margin-bottom: 10px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600; color: #333;">
+                📝 Nhập bài làm của bạn:
+            </label>
+            <textarea 
+                name="content" 
+                placeholder="Nhập nội dung bài làm của bạn ở đây..." 
+                required 
+                style="width: 100%; min-height: 120px; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-family: inherit; resize: vertical;"
+            ></textarea>
+        </div>
+        @{
+            var dueDate = ViewBag.DueDate as DateTime?;
+        }
+        @if (dueDate.HasValue)
+        {
+            var isOverdueForSubmit = dueDate.Value < DateTime.Now;
+            if (isOverdueForSubmit)
+            {
+                <div style="background: #fee; color: #c33; padding: 8px; border-radius: 6px; margin-bottom: 10px; font-size: 0.9rem;">
+                    ⚠️ Đã quá hạn nộp bài (@dueDate.Value.ToString("dd/MM/yyyy HH:mm"))
+                </div>
+            }
+            else
+            {
+                <div style="color: #666; font-size: 0.9rem; margin-bottom: 10px;">
+                    ⏰ Hạn nộp: @dueDate.Value.ToString("dd/MM/yyyy HH:mm")
+                </div>
+            }
+        }
+        <button type="submit" class="btn btn-success" style="padding: 10px 20px; font-weight: 600;">
+            📤 Nộp bài
+        </button>
+    </form>
+</div>
+
