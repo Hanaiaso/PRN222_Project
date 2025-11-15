@@ -16,7 +16,6 @@
             <th>Tiêu đề</th>
             <th>Người gửi</th>
             <th>Thời gian gửi</th>
-            <th>Số người nhận</th>
             <th>Hành động</th>
         </tr>
     </thead>
@@ -27,8 +26,6 @@
                 <td>@item.Title</td>
                 <td>@item.Sender?.Email</td>
                 <td>@item.SentTime.ToString("dd/MM/yyyy HH:mm")</td>
-                <td>@item.Receivers?.Count()</td> <!-- ✅ Giờ sẽ ra số đúng -->
-
                 <td>
                     <a asp-action="Details" asp-route-id="@item.NtId" class="btn btn-info btn-sm">Chi tiết</a>
                     <a asp-action="Edit" asp-route-id="@item.NtId" class="btn btn-warning btn-sm">Sửa</a>

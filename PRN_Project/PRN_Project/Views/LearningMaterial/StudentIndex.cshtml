@@ -11,9 +11,9 @@
     <label class="form-label">Chọn môn học:</label>
     <select name="subjectId" class="form-select" onchange="this.form.submit()">
         <option value="">-- Chọn môn học --</option>
-        @foreach (var s in subjects)
+        @foreach (var s in subjects )
         {
-            <option value="@s.SuId">
+                <option value="@s.SuId" selected="@(ViewBag.SelectedSubjectId == s.SuId)">
                 @s.SuName
             </option>
         }
