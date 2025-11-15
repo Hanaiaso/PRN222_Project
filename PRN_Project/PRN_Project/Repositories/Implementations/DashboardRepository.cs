@@ -36,7 +36,9 @@ namespace PRN_Project.Repositories.Implementations
                     SubjectName = e.Subject.SuName,
                     CreatedAt = e.CreatedAt,
                     TotalSubmissions = e.Submits.Count(),
-                    AverageScore = e.Submits.Any() ? e.Submits.Average(s => s.Score ?? 0) : 0
+                    AverageScore = e.Submits.Any()
+                        ? e.Submits.Average(s => s.Score ?? 0)
+                        : (double?)null
                 }).ToListAsync();
 
             return stats;

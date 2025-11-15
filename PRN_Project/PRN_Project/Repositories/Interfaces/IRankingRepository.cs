@@ -11,5 +11,6 @@ namespace PRN_Project.Repositories.Interfaces
         Task<List<Submit>> GetSubmitsByExamAsync(int examId);
         Task<Student?> GetStudentByAccountIdAsync(int accountId);
         Task<List<Submit>> GetSubmitsByStudentIdAsync(int studentId);
+        Task<Exam?> GetExamByIdAsync(int examId);
     }
 }

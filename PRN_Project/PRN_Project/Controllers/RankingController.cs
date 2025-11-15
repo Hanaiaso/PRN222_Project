@@ -45,11 +45,17 @@ namespace PRN_Project.Controllers
         }
 
         [Authorize(Roles = "Teacher,Admin")]
-        public async Task<IActionResult> ExportCsv(int subjectId)
+        public async Task<IActionResult> ExportCsv(int examId) // Đổi subjectId -> examId
         {
-            var csvData = await _rankingService.ExportRankingCsvAsync(subjectId);
-            var fileName = $"Ranking_Subject_{subjectId}.csv";
-            return File(Encoding.UTF8.GetBytes(csvData), "text/csv", fileName);
+            var csvData = await _rankingService.ExportRankingCsvAsync(examId);
+            var fileName = $"Ranking_Exam_{examId}.csv";
+
+            // Giữ nguyên phần sửa lỗi Font chữ tiếng Việt
+            var dataBytes = Encoding.UTF8.GetBytes(csvData);
+            var bom = Encoding.UTF8.GetPreamble();
+            var resultBytes = bom.Concat(dataBytes).ToArray();
+
+            return File(resultBytes, "text/csv", fileName);
         }
     }
 }
