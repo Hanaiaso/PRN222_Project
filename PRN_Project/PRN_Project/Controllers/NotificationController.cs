@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using PRN_Project.Hubs;
 using PRN_Project.Models;
+using PRN_Project.Services.Interfaces;
+using PRN_Project.ViewModels;
 using System.Security.Claims;
 
 namespace PRN_Project.Controllers
@@ -11,11 +13,11 @@ namespace PRN_Project.Controllers
     [Authorize] // Bắt buộc có JWT token
     public class NotificationController : Controller
     {
-        private readonly LmsDbContext _context;
+        private readonly INotificationService _service;
         private readonly IHubContext<NotificationHub> _hubContext;
-        public NotificationController(LmsDbContext context, IHubContext<NotificationHub> hubContext)
+        public NotificationController(INotificationService service, IHubContext<NotificationHub> hubContext)
         {
-            _context = context;
+            _service = service;
             _hubContext = hubContext;
         }
 
@@ -27,32 +29,20 @@ namespace PRN_Project.Controllers
             User.FindFirstValue(ClaimTypes.Role) ?? string.Empty;
 
         private bool IsAdmin() => CurrentRole == "Admin";
-        private bool IsTeacher() => CurrentRole == "Teacher";
-        private bool IsStudent() => CurrentRole == "Student";
 
         // ===== Danh sách tất cả thông báo (Admin-only) =====
         [Authorize(Roles = "Admin")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var notifications = _context.Notifications
-                .Include(n => n.Sender)
-                .Include(n => n.Receivers)
-                    .ThenInclude(r => r.Receiver)
-                .OrderByDescending(n => n.SentTime)
-                .ToList();
-
+            var notifications = await _service.GetAllAsync();
             return View(notifications);
         }
 
         // ===== Xem chi tiết =====
         [Authorize(Roles = "Admin")]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var notification = _context.Notifications
-                .Include(n => n.Sender)
-                .Include(n => n.Receivers)
-                    .ThenInclude(r => r.Receiver)
-                .FirstOrDefault(n => n.NtId == id);
+            var notification = await _service.GetDetailsAsync(id);
 
             if (notification == null)
                 return NotFound();
@@ -65,46 +55,18 @@ namespace PRN_Project.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Receivers = _context.Accounts
-                .Where(a => a.Role == RoleType.Student && a.Status)
-                .ToList();
-
             return View();
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Notification notification, int[] selectedReceivers)
+        public async Task<IActionResult> Create(Notification notification)
         {
             if (!ModelState.IsValid)
-            {
-                ViewBag.Receivers = _context.Accounts
-                    .Where(a => a.Role == RoleType.Student && a.Status)
-                    .ToList();
                 return View(notification);
-            }
- 
-            notification.SentTime = DateTime.Now;
-            notification.SenderId = CurrentAccountId;
 
-            _context.Notifications.Add(notification);
-            await _context.SaveChangesAsync();
-
-            foreach (var receiverId in selectedReceivers)
-            {
-                var nr = new NotificationReceiver
-                {
-                    NtId = notification.NtId,
-                    ReceiverId = receiverId,
-                    IsRead = false
-                };
-                Console.WriteLine(nr);
-                _context.NotificationReceivers.Add(nr);
-            }
-
-            await _context.SaveChangesAsync();
-            await _hubContext.Clients.All.SendAsync("ReceiveNotification", $"📢 Thông báo mới: {notification.Title}");
+            await _service.CreateForAllAsync(notification, CurrentAccountId);
 
             return RedirectToAction(nameof(Index));
         }
@@ -112,9 +74,9 @@ namespace PRN_Project.Controllers
         // ===== Chỉnh sửa =====
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var notification = _context.Notifications.Find(id);
+            var notification = await _service.GetDetailsAsync(id);
             if (notification == null)
                 return NotFound();
 
@@ -124,32 +86,21 @@ namespace PRN_Project.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Notification notification)
+        public async Task<IActionResult> Edit(Notification notification)
         {
             if (!ModelState.IsValid)
                 return View(notification);
 
-            var existing = _context.Notifications.AsNoTracking().FirstOrDefault(n => n.NtId == notification.NtId);
-            if (existing == null)
-                return NotFound();
-
-            notification.SenderId = existing.SenderId;
-            notification.SentTime = existing.SentTime;
-
-            _context.Update(notification);
-            _context.SaveChanges();
+            await _service.UpdateAsync(notification);
             return RedirectToAction(nameof(Index));
         }
 
         // ===== Xóa =====
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var notification = _context.Notifications
-                .Include(n => n.Sender)
-                .FirstOrDefault(n => n.NtId == id);
-
+            var notification = await _service.GetDetailsAsync(id);
             if (notification == null)
                 return NotFound();
 
@@ -159,78 +110,52 @@ namespace PRN_Project.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("DeleteConfirmed")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int NtId)
+        public async Task<IActionResult> DeleteConfirmed(int NtId)
         {
-            var notification = _context.Notifications
-                .Include(n => n.Receivers)
-                .FirstOrDefault(n => n.NtId == NtId);
-
-            if (notification == null)
-                return NotFound();
-
-            if (notification.Receivers != null)
-                _context.NotificationReceivers.RemoveRange(notification.Receivers);
-
-            _context.Notifications.Remove(notification);
-            _context.SaveChanges();
-
+            await _service.DeleteAsync(NtId);
             return RedirectToAction(nameof(Index));
         }
 
         // ===== Danh sách thông báo cho người nhận =====
         [Authorize(Roles = "Student,Teacher,Admin")]
-        public IActionResult MyNotifications()
+        public async Task<IActionResult> MyNotifications()
         {
-            var accountId = CurrentAccountId;
-
-            var notifications = _context.NotificationReceivers
-                .Include(nr => nr.Notification)
-                    .ThenInclude(n => n.Sender)
-                .Where(nr => nr.ReceiverId == accountId)
-                .OrderByDescending(nr => nr.Notification.SentTime)
-                .ToList();
-
-            return View(notifications);
+            var list = await _service.GetMyNotificationsAsync(CurrentAccountId);
+            return View(list.OrderByDescending(x => x.Notification!.SentTime).ToList());
         }
 
         // ===== Đánh dấu đã đọc =====
         [Authorize(Roles = "Student,Teacher,Admin")]
-        public IActionResult MarkAsRead(int id)
+        public async Task<IActionResult> MarkAsRead(int id)
         {
-            var receiver = _context.NotificationReceivers.Find(id);
-            if (receiver == null)
-                return NotFound();
-
-            receiver.IsRead = true;
-            _context.SaveChanges();
-
+            await _service.MarkAsReadAsync(id);
             return RedirectToAction(nameof(MyNotifications));
         }
 
         // ===== Xem chi tiết thông báo =====
         [Authorize(Roles = "Student,Teacher,Admin")]
-        public IActionResult ViewNotification(int id)
+        public async Task<IActionResult> ViewNotification(int id)
         {
-            var notification = _context.Notifications
-                .Include(n => n.Sender)
-                .Include(n => n.Receivers)
-                    .ThenInclude(r => r.Receiver)
-                .FirstOrDefault(n => n.NtId == id);
+            var notification = await _service.GetDetailsAsync(id);
 
             if (notification == null)
                 return NotFound();
 
-            var accountId = CurrentAccountId;
-            var receiver = _context.NotificationReceivers
-                .FirstOrDefault(r => r.NtId == id && r.ReceiverId == accountId);
+            var otherNotifications = await _service.GetOtherNotificationsAsync(id);
+
+            var vm = new NotificationDetailViewModel
+            {
+                CurrentNotification = notification,
+                OtherNotifications = otherNotifications
+            };
+
+            var myList = await _service.GetMyNotificationsAsync(CurrentAccountId);
+            var receiver = myList.FirstOrDefault(r => r.NtId == id);
 
             if (receiver != null && !receiver.IsRead)
-            {
-                receiver.IsRead = true;
-                _context.SaveChanges();
-            }
+                await _service.MarkAsReadAsync(receiver.NrId);
 
-            return View(notification);
+            return View(vm);
         }
     }
 }
