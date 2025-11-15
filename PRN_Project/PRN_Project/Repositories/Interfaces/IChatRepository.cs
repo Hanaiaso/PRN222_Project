@@ -20,5 +20,6 @@ namespace PRN_Project.Repositories.Interfaces
         Task<ChatGroup?> GetGroupByIdAsync(int groupId);
         Task<List<ChatMessage2>> LoadGroupChatHistoryAsync(int groupId);
         Task<List<ChatGroup>> GetGroupsByAccountIdAsync(int accountId);
+        Task RemoveMemberFromGroupAsync(int groupId, int accountId);
     }
 }

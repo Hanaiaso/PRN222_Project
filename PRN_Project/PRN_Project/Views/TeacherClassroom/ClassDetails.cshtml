@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PRN_Project.Models.ClassroomMember>
+
+@{
+    ViewData["Title"] = "Danh sách học sinh";
+}
+
+<h2>Lớp: @ViewBag.ClassroomName</h2>
+<p>
+    <a asp-action="Class" class="btn btn-outline-secondary btn-sm">
+        &larr; Quay lại danh sách lớp
+    </a>
+</p>
+
+<h4>Học sinh trong lớp</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID Học sinh</th>
+            <th>Tên học sinh</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Student.SId</td>
+                <td>@member.Student.SName</td>
+                <td>
+                    <a asp-action="StudentSubmissions"
+                       asp-route-studentId="@member.Sid"
+                       asp-route-classroomId="@ViewBag.ClassroomId"
+                       class="btn btn-info btn-sm">
+                        Xem bài nộp
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

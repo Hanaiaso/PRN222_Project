@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PRN_Project.Models.Submit>
+
+@{
+    ViewData["Title"] = "Bài nộp của " + ViewBag.StudentName;
+}
+
+<h2>Bài nộp của: @ViewBag.StudentName</h2>
+<p>
+    <a asp-action="ClassDetails" asp-route-classroomId="@ViewBag.ClassroomId" class="btn btn-outline-secondary btn-sm">
+        &larr; Quay lại danh sách lớp
+    </a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Bài thi</th>
+            <th>Ngày nộp</th>
+            <th>Điểm số</th>
+            <th>Nhận xét</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sub in Model)
+        {
+            <tr>
+                <td>@sub.Exam.EName</td>
+                <td>@sub.SubmitTime.ToString("dd/MM/yyyy HH:mm")</td>
+                <td><strong>@sub.Score</strong></td>
+                <td>@(string.IsNullOrEmpty(sub.Comment) ? "—" : sub.Comment)</td>
+                <td>
+                    <a asp-action="EditComment"
+                       asp-route-submitId="@sub.SbId"
+                       asp-route-classroomId="@ViewBag.ClassroomId"
+                       class="btn btn-secondary btn-sm">
+                        Thêm/Sửa nhận xét
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

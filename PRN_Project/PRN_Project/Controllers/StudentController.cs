@@ -1,53 +1,73 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PRN_Project.Models;
+using PRN_Project.Services.Interfaces; // THAY ĐỔI
+// Bỏ using DbContext, EFCore, ViewModels, Json
 
 namespace PRN_Project.Controllers
 {
     [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
-        private readonly LmsDbContext _context;
+        // === THAY ĐỔI 1: Inject Service ===
+        private readonly IStudentService _studentService;
 
-        public StudentController(LmsDbContext context)
+        public StudentController(IStudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
-            // Lấy accountId từ session
             var aid = HttpContext.Session.GetInt32("accountId");
             if (aid == null)
             {
-                // Nếu chưa đăng nhập hoặc session hết hạn
                 return RedirectToAction("Login", "Account");
             }
 
-            // Tìm student theo AccountId
-            var student = _context.Students.FirstOrDefault(s => s.AId == aid);
+            // === THAY ĐỔI 2: Gọi Service ===
+            var student = await _studentService.GetStudentByAccountIdAsync(aid.Value);
             if (student == null)
             {
-                // Nếu không tìm thấy student
                 return RedirectToAction("Error", "Home");
             }
-            
-            // Lưu SId vào Session
+
+            // Controller vẫn quản lý Session
             HttpContext.Session.SetInt32("studentId", student.SId);
             HttpContext.Session.SetString("studentName", student.SName);
 
             // Truyền thông tin ra View
             ViewData["Title"] = "Trang chủ học sinh";
             ViewData["Student"] = student;
-            ViewBag.StudentId = student.SId; // Dùng ViewBag để truyền ID
-            ViewBag.StudentName = student.SName; // Dùng ViewBag để truyền Tên
+            ViewBag.StudentId = student.SId;
+            ViewBag.StudentName = student.SName;
             return View();
         }
 
+
+        public async Task<IActionResult> StudentProgress()
+        {
+            int? studentId = HttpContext.Session.GetInt32("studentId");
+            if (studentId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // === THAY ĐỔI 3: Gọi Service ===
+            // Toàn bộ logic tính toán đã được chuyển đi
+            // Service trả về ViewModel đã hoàn thiện
+            var viewModel = await _studentService.GetStudentProgressReportAsync(studentId.Value);
+
+            if (viewModel == null)
+            {
+                return NotFound($"Không tìm thấy học sinh với ID = {studentId}");
+            }
+
+            return View(viewModel);
+        }
+
+        // Các action đơn giản này có thể giữ nguyên
         public IActionResult Exams() => View();
-
         public IActionResult Results() => View();
-
         public IActionResult Profile() => View();
     }
 }
