@@ -2,27 +2,32 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
+using PRN_Project.Repositories.Interfaces;
 
 namespace PRN_Project.Controllers
 {
+
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private readonly IDashboardRepository _dashboardRepo;
         public IActionResult Index()
         {
             return RedirectToAction("Dashboard");
         }
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
-            ViewData["Title"] = "Trang chủ học sinh";
-            return View();
+            // Lấy số liệu thống kê
+            var model = await _dashboardRepo.GetAdminDashboardStatsAsync();
+            return View(model);
         }
 
         private readonly LmsDbContext _context;
 
-        public AdminController(LmsDbContext context)
+        public AdminController(LmsDbContext context, IDashboardRepository dashboardRepo)
         {
             _context = context;
+            _dashboardRepo = dashboardRepo;
         }
 
         // GET: Admin/TeacherAccounts

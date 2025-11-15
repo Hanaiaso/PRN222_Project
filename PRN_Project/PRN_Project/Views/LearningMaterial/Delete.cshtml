@@ -1,0 +1,16 @@
+﻿@model PRN_Project.Models.LearningMaterial
+@{
+    ViewBag.Title = "Xóa tài liệu";
+}
+
+<h2>Xóa tài liệu</h2>
+
+<div class="alert alert-warning">
+    Bạn có chắc muốn xóa tài liệu: <strong>@Model.Title</strong>?
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.MaterialID" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" asp-route-subjectId="@Model.SubjectID" class="btn btn-secondary">Hủy</a>
+</form>

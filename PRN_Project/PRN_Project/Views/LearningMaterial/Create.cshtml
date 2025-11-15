@@ -1,0 +1,38 @@
+﻿@model PRN_Project.Models.LearningMaterial
+@{
+    ViewBag.Title = "Thêm tài liệu";
+}
+
+<h2>Thêm tài liệu</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="SubjectID" />
+
+    <div class="mb-3">
+        <label class="form-label">Tiêu đề</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Mô tả</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Chọn file</label>
+        <input type="file" name="file" class="form-control" required />
+        <span class="text-danger">
+            @Html.ValidationMessage("File")
+        </span>
+        <p class="text-info">
+             Chỉ được phép upload các file: <strong>PDF, DOC, DOCX, ZIP</strong>.
+        </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a asp-action="Index" asp-route-subjectId="@Model.SubjectID" class="btn btn-secondary">Hủy</a>
+</form>
+
+

@@ -18,17 +18,6 @@
 		<span asp-validation-for="Content" class="text-danger"></span>
 	</div>
 
-	<div class="form-group mt-3">
-		<label>Người nhận</label>
-		@if (ViewBag.Receivers as List<PRN_Project.Models.Account> != null)
-		{
-			@foreach (var receiver in ViewBag.Receivers as List<PRN_Project.Models.Account>)
-			{
-				<input type="checkbox" name="selectedReceivers" value="@receiver.AId" /> @receiver.Email <br/>
-			}
-		}
-	</div>
-
 	<div class="form-group mt-4">
 		<input type="submit" value="Gửi thông báo" class="btn btn-primary" />
 		<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

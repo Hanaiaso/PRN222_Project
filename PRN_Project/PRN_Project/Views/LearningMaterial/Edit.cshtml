@@ -1,0 +1,36 @@
+﻿@model PRN_Project.Models.LearningMaterial
+@{
+    ViewBag.Title = "Sửa tài liệu";
+}
+
+<h2>Sửa tài liệu</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="MaterialID" />
+    <input type="hidden" asp-for="SubjectID" />
+
+    <div class="mb-3">
+        <label class="form-label">Tiêu đề</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Mô tả</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Thay file mới (nếu muốn)</label>
+        <input type="file" name="file" class="form-control" />
+        @if (!string.IsNullOrEmpty(Model.FilePath))
+        {
+                <p>File hiện tại: <a href="@Model.FilePath" target="_blank">Xem</a></p>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a asp-action="Index" asp-route-subjectId="@Model.SubjectID" class="btn btn-secondary">Hủy</a>
+</form>
+

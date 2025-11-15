@@ -1,0 +1,19 @@
+﻿@model PRN_Project.Models.Subject
+@{
+    ViewBag.Title = "Sửa môn học";
+}
+
+<h2>Sửa môn học</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="SuId" />
+    <div class="mb-3">
+        <label class="form-label">Tên môn học</label>
+        <input asp-for="SuName" class="form-control" />
+        <span asp-validation-for="SuName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
+
