@@ -1,16 +1,4 @@
 ﻿@model IEnumerable<PRN_Project.Models.Submit>
-
-@{
-    ViewData["Title"] = "Bài nộp của " + ViewBag.StudentName;
-}
-
-<h2>Bài nộp của: @ViewBag.StudentName</h2>
-<p>
-    <a asp-action="ClassDetails" asp-route-classroomId="@ViewBag.ClassroomId" class="btn btn-outline-secondary btn-sm">
-        &larr; Quay lại danh sách lớp
-    </a>
-</p>
-
 <table class="table table-striped">
     <thead>
         <tr>
@@ -30,11 +18,20 @@
                 <td><strong>@sub.Score</strong></td>
                 <td>@(string.IsNullOrEmpty(sub.Comment) ? "—" : sub.Comment)</td>
                 <td>
+                    <a asp-action="SubmissionDetails"
+                       asp-route-submitId="@sub.SbId"
+                       asp-route-studentId="@sub.SId"
+                       asp-route-classroomId="@ViewBag.ClassroomId"
+                       class="btn btn-info btn-sm" title="Xem chi tiết">
+                        <i class="fas fa-eye"></i> Chi tiết
+                    </a>
+
                     <a asp-action="EditComment"
                        asp-route-submitId="@sub.SbId"
                        asp-route-classroomId="@ViewBag.ClassroomId"
-                       class="btn btn-secondary btn-sm">
-                        Thêm/Sửa nhận xét
+                       class="btn btn-secondary btn-sm" title="Thêm nhận xét">
+                        <i class="fas fa-comment"></i>
+                        Nhận xét
                     </a>
                 </td>
             </tr>

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PRN_Project.Models;
+using PRN_Project.Repositories.Interfaces;
+using PRN_Project.Services.Interfaces;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -11,10 +13,12 @@ namespace PRN_Project.Controllers
     public class TeacherClassroomController : Controller
     {
         private readonly LmsDbContext _context;
+        private readonly ITeacherClassroomService _service;
 
-        public TeacherClassroomController(LmsDbContext context)
+        public TeacherClassroomController(LmsDbContext context,ITeacherClassroomService service)
         {
             _context = context;
+            _service = service;
         }
 
         // --- 1. HIỂN THỊ LỚP CỦA GIÁO VIÊN ---
@@ -107,6 +111,19 @@ namespace PRN_Project.Controllers
             // Chuyển hướng quay lại trang DS bài nộp của học sinh
             return RedirectToAction("StudentSubmissions",
                 new { studentId = submission.SId, classroomId = classroomId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SubmissionDetails(int submitId, int studentId, int classroomId)
+        {
+            var viewModel = await _service.GetSubmissionDetailsAsync(submitId);
+            if (viewModel == null) return NotFound();
+
+            // Truyền các ID này để cho nút "Quay lại"
+            ViewBag.StudentId = studentId;
+            ViewBag.ClassroomId = classroomId;
+
+            return View(viewModel);
         }
     }
 }

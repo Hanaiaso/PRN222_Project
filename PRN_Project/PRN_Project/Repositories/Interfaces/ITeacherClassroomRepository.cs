@@ -23,5 +23,7 @@ namespace PRN_Project.Repositories.Interfaces
         Task<Submit> GetSubmissionByIdAsync(int submitId); // Lấy bản ghi để update
         void UpdateSubmission(Submit submission); // Chỉ update, không save
         Task<int> SaveChangesAsync(); // Hàm save riêng
+
+        Task<Submit> GetSubmissionWithDetailsAsync(int submitId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PRN_Project.Models;
+using PRN_Project.ViewModels.Submission;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -25,5 +26,6 @@ namespace PRN_Project.Services.Interfaces
         Task<StudentSubmissionsDTO> GetStudentSubmissionsAsync(int studentId);
         Task<Submit> GetSubmissionForEditAsync(int submitId);
         Task<Submit> UpdateSubmissionCommentAsync(int submitId, string comment);
+        Task<SubmissionDetailViewModel> GetSubmissionDetailsAsync(int submitId);
     }
 }
