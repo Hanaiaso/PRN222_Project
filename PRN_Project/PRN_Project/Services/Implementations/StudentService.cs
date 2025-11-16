@@ -30,16 +30,14 @@ namespace PRN_Project.Services.Implementations
         public async Task<StudentProgressViewModel> GetStudentProgressReportAsync(int studentId)
         {
             var student = await _studentRepo.GetStudentByIdAsync(studentId);
-            if (student == null)
-            {
-                return null; // Hoặc ném một Exception
-            }
+            if (student == null) return null;
 
             var rawSubmissions = await _studentRepo.GetSubmissionsWithDetailsAsync(studentId);
 
-            // === TOÀN BỘ LOGIC TÍNH TOÁN CỦA BẠN ĐƯỢC CHUYỂN VÀO ĐÂY ===
+            // 1. Tạo danh sách phẳng (flat list) các bài nộp
             var submissions = rawSubmissions.Select(s =>
             {
+                // Logic tính toán số câu hỏi và câu đúng
                 int questionCount = 0;
                 List<ExamQuestionViewModel> examQuestions = null;
                 if (!string.IsNullOrEmpty(s.Exam.ExamContent))
@@ -60,12 +58,11 @@ namespace PRN_Project.Services.Implementations
                     {
                         var studentAnswers = JsonSerializer.Deserialize<List<StudentAnswerViewModel>>(
                             s.Content, _jsonOptions);
-
                         if (studentAnswers != null)
                         {
                             foreach (var studentAnswer in studentAnswers)
                             {
-                                int questionIndex = studentAnswer.QuestionIndex - 1;
+                                int questionIndex = studentAnswer.QuestionIndex ;
                                 if (questionIndex >= 0 && questionIndex < examQuestions.Count)
                                 {
                                     if (studentAnswer.ChosenAnswer == examQuestions[questionIndex].CorrectAnswer)
@@ -78,7 +75,6 @@ namespace PRN_Project.Services.Implementations
                     }
                     catch (JsonException) { /* Bỏ qua */ }
                 }
-
                 TimeSpan? examDuration = s.Exam.EndTime - s.Exam.StartTime;
 
                 return new StudentSubmissionViewModel
@@ -90,23 +86,52 @@ namespace PRN_Project.Services.Implementations
                     NumberOfQuestions = questionCount,
                     CorrectAnswers = correctCount,
                     ExamDuration = examDuration,
-                    TeacherComment = s.Comment // <-- Đừng quên thêm cả comment
+                    TeacherComment = s.Comment
                 };
             }).ToList();
-            // === KẾT THÚC LOGIC ===
 
-            // Lắp ráp ViewModel cuối cùng
+            // 2. Nhóm danh sách phẳng theo Môn học (cho Bảng và Biểu đồ cột)
+            var groupedProgress = submissions
+                .GroupBy(s => s.SubjectName)
+                .Select(g => new SubjectProgressViewModel
+                {
+                    SubjectName = g.Key,
+                    Submissions = g.OrderBy(s => s.SubmitTime).ToList(),
+                    SubjectExamsTaken = g.Count(),
+                    SubjectAverageScore = g.Average(s => s.Score)
+                })
+                .OrderBy(sp => sp.SubjectName)
+                .ToList();
+
+            // 3. Tạo dữ liệu cho Biểu đồ đường (Line Chart) có thể lọc
+            var lineChartDatasets = new Dictionary<string, object>();
+            
+            // 3b. Thêm từng môn học (đã được sắp xếp)
+            foreach (var subject in groupedProgress)
+            {
+                lineChartDatasets[subject.SubjectName] = new
+                {
+                    labels = subject.Submissions.Select(s => $"{s.ExamName} ({s.SubmitTime:dd/MM})"),
+                    data = subject.Submissions.Select(s => s.Score)
+                };
+            }
+
+            // 4. Lắp ráp ViewModel chính
             var viewModel = new StudentProgressViewModel
             {
                 StudentId = student.SId,
                 StudentName = student.SName,
-                Submissions = submissions,
+                SubjectProgressList = groupedProgress,
                 TotalExamsTaken = submissions.Count,
-                AverageScore = submissions.Any() ? submissions.Average(s => s.Score) : (double?)null
-            };
+                AverageScore = submissions.Any() ? submissions.Average(s => s.Score) : (double?)null,
 
-            viewModel.ChartLabels = JsonSerializer.Serialize(submissions.Select(s => $"{s.ExamName} ({s.SubmitTime:dd/MM})"));
-            viewModel.ChartData = JsonSerializer.Serialize(submissions.Select(s => s.Score));
+                // Dữ liệu biểu đồ cột
+                BarChartLabels = JsonSerializer.Serialize(groupedProgress.Select(g => g.SubjectName)),
+                BarChartData = JsonSerializer.Serialize(groupedProgress.Select(g => g.SubjectAverageScore)),
+
+                // Dữ liệu biểu đồ đường
+                LineChartDataJson = JsonSerializer.Serialize(lineChartDatasets)
+            };
 
             return viewModel;
         }

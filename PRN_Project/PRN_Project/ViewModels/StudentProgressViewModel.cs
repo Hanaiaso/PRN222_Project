@@ -14,6 +14,15 @@
         // Dữ liệu cho biểu đồ (JSON strings)
         public string ChartLabels { get; set; }
         public string ChartData { get; set; }
+
+        public List<SubjectProgressViewModel> SubjectProgressList { get; set; }
+
+
+        // === THÊM 2 DÒNG NÀY ===
+        // Dữ liệu cho biểu đồ cột (so sánh)
+        public string BarChartLabels { get; set; } // Tên các môn học
+        public string BarChartData { get; set; }
+        public string LineChartDataJson { get; set; }
     }
 
 

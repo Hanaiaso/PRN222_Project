@@ -90,5 +90,15 @@ namespace PRN_Project.Repositories.Implementations
         {
             return await _context.SaveChangesAsync();
         }
+
+        public async Task<Submit> GetSubmissionWithDetailsAsync(int submitId)
+        {
+            // Lấy 1 bài nộp, kèm theo Student và Exam (để lấy nội dung câu hỏi)
+            return await _context.Submits
+                .Include(s => s.Student)
+                .Include(s => s.Exam)
+                .AsNoTracking() // Dùng AsNoTracking vì chỉ để đọc
+                .FirstOrDefaultAsync(s => s.SbId == submitId);
+        }
     }
 }

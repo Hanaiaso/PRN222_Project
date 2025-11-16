@@ -5,7 +5,6 @@
 }
 
 <h2>Báo cáo tiến độ: <strong>@Model.StudentName</strong></h2>
-
 <div class="row mb-4">
     <div class="col-md-4">
         <div class="card">
@@ -18,7 +17,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Điểm trung bình</h5>
+                <h5 class="card-title">Điểm trung bình (Tổng)</h5>
                 <p class="card-text fs-3">
                     @(Model.AverageScore?.ToString("F2") ?? "Chưa có điểm")
                 </p>
@@ -29,60 +28,88 @@
 
 <hr />
 
-<h3>So sánh tiến bộ (Điểm số qua các bài thi)</h3>
+<h3>📊 Thống kê điểm trung bình theo môn</h3>
+<div style="width: 90%; max-width: 800px; margin-bottom: 30px;">
+    <canvas id="subjectBarChart"></canvas>
+</div>
+
+<hr />
+
+<div class="d-flex justify-content-between align-items-center">
+    <h3>📈 So sánh tiến bộ</h3>
+
+    <div class="col-4">
+        <label for="subjectChartFilter" class="form-label small">Chọn môn học</label>
+        <select id="subjectChartFilter" class="form-select form-select-sm">
+        </select>
+    </div>
+</div>
 <div style="width: 90%; max-width: 800px; margin-bottom: 30px;">
     <canvas id="progressChart"></canvas>
 </div>
 
-<h3>Chi tiết các bài đã nộp</h3>
+<hr />
 
-@if (!Model.Submissions.Any())
+<h3>Chi tiết kết quả theo môn học</h3>
+@if (!Model.SubjectProgressList.Any())
 {
     <p>Học sinh này chưa nộp bài thi nào.</p>
 }
 else
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Môn học</th>
-                <th>Tên bài thi</th>
-                <th>Kết quả (Đúng/Tổng)</th>
-                <th>Thời lượng (phút)</th>
-                <th>Ngày nộp</th>
-                <th>Điểm số</th>
-                <th>Nhận xét của GV</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var submission in Model.Submissions)
-            {
-                <tr>
-                    <td>@submission.SubjectName</td>
-                    <td>@submission.ExamName</td>
-                    <td>
-                        <strong>@submission.CorrectAnswers / @submission.NumberOfQuestions</strong>
-                    </td>
-                    <td>
-                        @(submission.ExamDuration?.TotalMinutes.ToString() ?? "N/A")
-                    </td>
-                    <td>@submission.SubmitTime.ToString("dd/MM/yyyy HH:mm")</td>
-                    <td><strong>@submission.Score</strong></td>
+    @foreach (var subjectProgress in Model.SubjectProgressList)
+    {
+        <h4 class="mt-4" style="border-bottom: 2px solid #007bff; padding-bottom: 5px;">
+            Môn học: <strong>@subjectProgress.SubjectName</strong>
+        </h4>
 
-                    <td>
-                        @if (string.IsNullOrEmpty(submission.TeacherComment))
+        <div class="card mb-3 shadow-sm">
+            <div class="card-header bg-light">
+                <strong>Điểm trung bình môn: @subjectProgress.SubjectAverageScore?.ToString("F2")</strong>
+                <span class="text-muted ms-3">(Tổng số bài: @subjectProgress.SubjectExamsTaken)</span>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tên bài thi</th>
+                            <th>Kết quả (Đúng/Tổng)</th>
+                            <th>Thời lượng (phút)</th>
+                            <th>Ngày nộp</th>
+                            <th>Điểm số</th>
+                            <th>Nhận xét của GV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var submission in subjectProgress.Submissions)
                         {
-                            <span class="text-muted">—</span>
+                            <tr>
+                                <td>@submission.ExamName</td>
+                                <td>
+                                    <strong>@submission.CorrectAnswers / @submission.NumberOfQuestions</strong>
+                                </td>
+                                <td>
+                                    @submission.ExamDuration?.TotalMinutes
+                                </td>
+                                <td>@submission.SubmitTime.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td><strong>@submission.Score</strong></td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(submission.TeacherComment))
+                                    {
+                                        <span class="text-muted">—</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="font-style: italic;">@submission.TeacherComment</span>
+                                    }
+                                </td>
+                            </tr>
                         }
-                        else
-                        {
-                            <span style="font-style: italic;">@submission.TeacherComment</span>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
 }
 
 
@@ -90,32 +117,99 @@ else
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
+        const barCtx = document.getElementById('subjectBarChart').getContext('2d');
+
+        // SỬA LỖI: Thêm '?? "[]"' để tránh lỗi khi Model null
+        const barLabels = @(Html.Raw(Model.BarChartLabels ?? "[]"));
+        const barData = @(Html.Raw(Model.BarChartData ?? "[]"));
+
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: barLabels,
+                datasets: [{
+                    label: 'Điểm trung bình',
+                    data: barData,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, max: 10 } },
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+
+    <script>
+        // SỬA LỖI: Thêm '?? "{}"' để tránh lỗi khi Model null
+        const allLineChartData = @(Html.Raw(Model.LineChartDataJson ?? "{}"));
+
+        const dropdown = document.getElementById('subjectChartFilter');
         const ctx = document.getElementById('progressChart').getContext('2d');
 
-        // Lấy dữ liệu từ Model mà Controller đã truyền sang
-        const labels = @Html.Raw(Model.ChartLabels);
-        const data = @Html.Raw(Model.ChartData);
+        const subjectKeys = Object.keys(allLineChartData);
 
-        new Chart(ctx, {
-            type: 'line', // Biểu đồ đường để thấy "tiến bộ"
+        let defaultLabels = [];
+        let defaultDataPoints = [];
+
+        // Lấy dữ liệu mặc định (là môn học ĐẦU TIÊN, nếu có)
+        if (subjectKeys.length > 0) {
+            const defaultSubjectName = subjectKeys[0];
+            const defaultData = allLineChartData[defaultSubjectName];
+            defaultLabels = defaultData.labels;
+            defaultDataPoints = defaultData.data;
+        }
+
+        // Khởi tạo chart
+        const lineChart = new Chart(ctx, {
+            type: 'line',
             data: {
-                labels: labels,
+                labels: defaultLabels,
                 datasets: [{
                     label: 'Điểm số',
-                    data: data,
+                    data: defaultDataPoints,
                     fill: false,
                     borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 10 // Giả sử thang điểm 10
-                    }
-                }
+                scales: { y: { beginAtZero: true, max: 10 } }
             }
+        });
+
+        // Đổ dữ liệu vào Dropdown
+        subjectKeys.forEach(subjectName => {
+            const option = document.createElement('option');
+            option.value = subjectName;
+            option.text = subjectName;
+            dropdown.appendChild(option);
+        });
+
+        // Thêm Event Listener cho Dropdown
+        dropdown.addEventListener('change', (e) => {
+            const selectedSubject = e.target.value;
+            const newData = allLineChartData[selectedSubject];
+
+            lineChart.data.labels = newData.labels;
+            lineChart.data.datasets[0].data = newData.data;
+            lineChart.update();
         });
     </script>
 }

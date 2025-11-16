@@ -1,0 +1,96 @@
+﻿@model PRN_Project.ViewModels.Submission.SubmissionDetailViewModel
+
+@{
+    ViewData["Title"] = "Chi tiết bài nộp";
+}
+
+<style>
+    .correct-answer {
+        color: green;
+        font-weight: bold;
+    }
+
+    .incorrect-answer {
+        color: red;
+        font-weight: bold;
+        text-decoration: line-through;
+    }
+</style>
+
+<h2>Chi tiết bài nộp</h2>
+
+<p>
+    <a asp-action="StudentSubmissions"
+       asp-route-studentId="@ViewBag.StudentId"
+       asp-route-classroomId="@ViewBag.ClassroomId"
+       class="btn btn-outline-secondary btn-sm">
+        &larr; Quay lại danh sách bài nộp
+    </a>
+</p>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>@Model.ExamName</strong>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Học sinh</dt>
+            <dd class="col-sm-9">@Model.StudentName</dd>
+
+            <dt class="col-sm-3">Tổng điểm</dt>
+            <dd class="col-sm-9"><strong>@Model.Score</strong></dd>
+
+            <dt class="col-sm-3">Kết quả</dt>
+            <dd class="col-sm-9">@Model.CorrectCount / @Model.TotalQuestions</dd>
+        </dl>
+    </div>
+</div>
+
+<h3>Chi tiết câu trả lời</h3>
+
+@foreach (var q in Model.Questions)
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            <strong>Câu @q.Index:</strong> @q.QuestionText
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                @foreach (var option in q.Options)
+                {
+                    string classStyle = "";
+                    string icon = "";
+
+                    if (option == q.CorrectAnswer)
+                    {
+                        // Đây là đáp án đúng
+                        classStyle = "list-group-item-success";
+                        icon = " ✔️ (Đáp án đúng)";
+                    }
+                    else if (option == q.StudentAnswer)
+                    {
+                        // Đây là đáp án sai mà HS chọn
+                        classStyle = "list-group-item-danger";
+                        icon = " ❌ (Học sinh chọn)";
+                    }
+
+                    <li class="list-group-item @classStyle">
+                        @option @Html.Raw(icon)
+                    </li>
+                }
+            </ul>
+
+            @* <hr />
+            <p>
+                Học sinh chọn: 
+                <span class="@(q.IsCorrect ? "correct-answer" : "incorrect-answer")">
+                    @q.StudentAnswer
+                </span>
+            </p>
+            @if (!q.IsCorrect)
+            {
+                <p>Đáp án đúng: <span class="correct-answer">@q.CorrectAnswer</span></p>
+            } *@
+        </div>
+    </div>
+}
