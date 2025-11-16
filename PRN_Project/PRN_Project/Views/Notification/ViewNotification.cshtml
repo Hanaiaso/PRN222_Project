@@ -6,11 +6,11 @@
 
 <h2>@Model.CurrentNotification.Title</h2>
 
-<div class="card p-3 mt-3">
+<div class="card p-3 mt-4">
     <p><strong>Người gửi:</strong> @Model.CurrentNotification.Sender?.Email (@Model.CurrentNotification.Sender?.Role)</p>
     <p><strong>Ngày gửi:</strong> @Model.CurrentNotification.SentTime.ToString("dd/MM/yyyy HH:mm")</p>
     <p><strong>Nội dung:</strong></p>
-    <p>@Model.CurrentNotification.Content</p>
+    <p class="content-box">@Model.CurrentNotification.Content</p>
 </div>
 
 <hr />
@@ -44,3 +44,11 @@ else
     <a asp-action="MyNotifications" class="btn btn-secondary">Quay lại</a>
 </p>
 
+<style>
+    .content-box {
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-width: 100%;
+    }  
+}
+</style>

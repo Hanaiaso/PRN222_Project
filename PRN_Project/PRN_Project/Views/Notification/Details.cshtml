@@ -10,9 +10,17 @@
     <p><strong>Người gửi:</strong> @Model.Sender?.Email (@Model.Sender?.Role)</p>
     <p><strong>Ngày gửi:</strong> @Model.SentTime.ToString("dd/MM/yyyy HH:mm")</p>
     <p><strong>Nội dung:</strong></p>
-    <p>@Model.Content</p>
+    <p class="content-box">@Model.Content</p>
 </div>
 <br/>
 <p>
     <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
 </p>
+<style>
+    .content-box {
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-width: 100%;
+    }
+}
+</style>

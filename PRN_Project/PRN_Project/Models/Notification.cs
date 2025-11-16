@@ -8,8 +8,9 @@ namespace PRN_Project.Models
         public int NtId { get; set; }
 
         [MaxLength(200)]
+        [Required]
         public string? Title { get; set; }
-
+        [Required]
         public string? Content { get; set; }
 
         public DateTime SentTime { get; set; }
