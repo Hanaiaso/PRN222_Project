@@ -11,7 +11,12 @@ namespace PRN_Project.Repositories.Implementations
         private readonly LmsDbContext _context;
         public SubjectRepository(LmsDbContext context) => _context = context;
 
-        public async Task<List<Subject>> GetAllAsync() => await _context.Subjects.ToListAsync();
+        public async Task<List<Subject>> GetAllAsync()
+        {
+            return await _context.Subjects
+                .AsNoTracking()
+                .ToListAsync();
+        }
         public async Task<Subject?> GetByIdAsync(int id) => await _context.Subjects.FindAsync(id);
         public async Task AddAsync(Subject subject)
         {

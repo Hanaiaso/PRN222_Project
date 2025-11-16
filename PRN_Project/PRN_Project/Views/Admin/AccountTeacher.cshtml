@@ -3,17 +3,17 @@
 
 <h2>Teacher Accounts</h2>
 <p>
-    <a asp-action="Create" class="btn btn-primary">➕ Add New Teacher</a>
+    <a asp-action="CreateTeacher" class="btn btn-primary">➕ Tạo tài khoản giáo viên mới</a>
 </p>
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Teacher Name</th>
+            <th>Tên giáo viên</th>
             <th>Email</th>
             <th>Qualification</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
@@ -23,11 +23,42 @@
                 <td>@t.TName</td>
                 <td>@t.Account.Email</td>
                 <td>@t.Qualification</td>
-                <td>@(t.Account.Status ? "Active" : "Inactive")</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@t.TId" class="btn btn-sm btn-warning">Edit</a>
-                    <a asp-action="Details" asp-route-id="@t.TId" class="btn btn-sm btn-info">Details</a>
-                    <a asp-action="Delete" asp-route-id="@t.TId" class="btn btn-sm btn-danger">Delete</a>
+                    @if (t.Account.Status)
+                    {
+                        <span class="badge bg-success">Hoạt động</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Bị khóa</span>
+                    }
+                </td>
+
+                <td>
+                    <a asp-controller="Admin" asp-action="TeacherDetails" asp-route-id="@t.TId" class="btn btn-info btn-sm">
+                        Chi tiết
+                    </a>
+                    <a asp-controller="Admin" asp-action="EditTeacher" asp-route-id="@t.TId" class="btn btn-warning btn-sm">
+                        Sửa
+                    </a>
+
+                    <form asp-controller="Admin" asp-action="ToggleTeacherStatus" method="post" style="display:inline;">
+                        <input type="hidden" name="accountId" value="@t.Account.AId" />
+                        @Html.AntiForgeryToken()
+
+                        @if (t.Account.Status)
+                        {
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Khóa
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-success btn-sm">
+                                Mở khóa
+                            </button>
+                        }
+                    </form>
                 </td>
             </tr>
         }

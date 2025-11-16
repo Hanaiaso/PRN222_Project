@@ -42,5 +42,16 @@ namespace PRN_Project.Repositories.Implementations
         {
             _context.Teachers.Remove(teacher);
         }
+
+
+        // === THÊM HÀM MỚI NÀY ===
+        public async Task<Teacher> GetByIdWithIncludesAsync(int teacherId)
+        {
+            // Lấy 1 giáo viên, kèm tài khoản và các môn học họ đang dạy
+            return await _context.Teachers
+                .Include(t => t.Account)
+                .Include(t => t.TeacherSubjects) // Rất quan trọng
+                .FirstOrDefaultAsync(t => t.TId == teacherId);
+        }
     }
 }

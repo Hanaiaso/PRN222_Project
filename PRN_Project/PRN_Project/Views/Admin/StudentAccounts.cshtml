@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PRN_Project.Models.Account>
+
+@{
+    ViewData["Title"] = "Quản lý tài khoản học sinh";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>
+    <a asp-action="CreateStudent" class="btn btn-success">Tạo tài khoản học sinh mới</a>
+</p>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Tên học sinh</th>
+            <th>Email</th>
+            <th>Trạng thái</th>
+            <th style="width: 250px;">Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var acc in Model)
+        {
+            <tr>
+                <td>@(acc.Student?.SName ?? "N/A")</td>
+                <td>@acc.Email</td>
+                <td>
+                    @if (acc.Status)
+                    {
+                        <span class="badge bg-success">Hoạt động</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Bị khóa</span>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Admin" asp-action="StudentDetails"
+                       asp-route-studentId="@acc.Student?.SId"
+                       class="btn btn-info btn-sm">
+                        Chi tiết
+                    </a>
+
+                    <a asp-controller="Admin" asp-action="EditStudent"
+                       asp-route-studentId="@acc.Student?.SId"
+                       class="btn btn-warning btn-sm">
+                        Sửa
+                    </a>
+
+                    <form asp-controller="Admin" asp-action="ToggleAccountStatus" method="post" style="display:inline;">
+                        <input type="hidden" name="accountId" value="@acc.AId" />
+                        @Html.AntiForgeryToken()
+
+                        @if (acc.Status)
+                        {
+                            <button type="submit" class="btn btn-warning btn-sm">Khóa</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-success btn-sm">Mở khóa</button>
+                        }
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -36,6 +36,14 @@ namespace PRN_Project.Repositories.Implementations
                 .FirstOrDefaultAsync(s => s.SId == studentId);
         }
 
+        public async Task<Student> GetStudentWithAccountDetailsAsync(int studentId)
+        {
+            return await _context.Students
+                .Include(s => s.Account)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.SId == studentId);
+        }
+
         public async Task<List<Submit>> GetSubmissionsWithDetailsAsync(int studentId)
         {
             // Lấy tất cả bài nộp và dữ liệu liên quan
@@ -46,6 +54,18 @@ namespace PRN_Project.Repositories.Implementations
                     .ThenInclude(e => e.Subject)
                 .OrderBy(s => s.SubmitTime)
                 .ToListAsync();
+        }
+        public async Task<Student> GetStudentWithAccountForEditAsync(int studentId)
+        {
+            // Gần giống hàm cũ, nhưng BỎ AsNoTracking()
+            // để Entity Framework theo dõi các thay đổi
+            return await _context.Students
+                .Include(s => s.Account)
+                .FirstOrDefaultAsync(s => s.SId == studentId);
+        }
+        public async Task AddStudentAsync(Student student)
+        {
+            await _context.Students.AddAsync(student);
         }
     }
 }
