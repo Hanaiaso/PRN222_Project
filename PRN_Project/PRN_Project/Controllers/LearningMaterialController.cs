@@ -14,20 +14,20 @@ namespace PRN_Project.Controllers
             _materialService = materialService;
             _subjectService = subjectService;
         } 
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index(int subjectId)
         {
             ViewBag.SubjectId = subjectId;
             var materials = await _materialService.GetMaterialsBySubjectIdAsync(subjectId);
             return View(materials);
         }
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(int subjectId)
         {
             ViewBag.SubjectId = subjectId;
             return View(new LearningMaterial { SubjectID = subjectId });
         }
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(LearningMaterial material, IFormFile file)
         {
@@ -62,14 +62,14 @@ namespace PRN_Project.Controllers
             }
             return View(material);
         }
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var material = await _materialService.GetMaterialByIdAsync(id);
             if (material == null) return NotFound();
             return View(material);
         }
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(int id, LearningMaterial material, IFormFile? file)
         {
@@ -112,7 +112,7 @@ namespace PRN_Project.Controllers
             }
             return View(material);
         }
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var material = await _materialService.GetMaterialByIdAsync(id);
@@ -122,7 +122,7 @@ namespace PRN_Project.Controllers
             };
             return View(material);
         }
-        [Authorize(Roles = "Admin,Teacher")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -142,7 +142,7 @@ namespace PRN_Project.Controllers
             await _materialService.DeleteMaterialAsync(id);
             return RedirectToAction("Index", new { subjectId });
         }
-        [Authorize(Roles = "Student")]
+        [Authorize(Roles = "Student,Teacher")]
         public async Task<IActionResult> StudentIndex(int? subjectId)
         {
             // Lấy danh sách môn học để hiển thị dropdown

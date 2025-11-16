@@ -141,7 +141,7 @@ namespace PRN_Project.Controllers
             if (notification == null)
                 return NotFound();
 
-            var otherNotifications = await _service.GetOtherNotificationsAsync(id);
+            var otherNotifications = await _service.GetOtherNotificationsAsync(id, CurrentAccountId);
 
             var vm = new NotificationDetailViewModel
             {

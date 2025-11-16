@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.Identity.Client;
 using PRN_Project.Hubs;
 using PRN_Project.Models;
 using PRN_Project.Repositories.Interfaces;
@@ -88,12 +89,14 @@ namespace PRN_Project.Services.Implementations
                 await _repo.UpdateAsync(receiver.Notification!);
             }
         }
-        public async Task<List<Notification>> GetOtherNotificationsAsync(int excludeId)
+        public async Task<List<Notification>> GetOtherNotificationsAsync(int excludeId, int currentAccountId)
         {
-            var all = await _repo.GetAllAsync();
+            var all = await _repo.GetReceiversByAccountIdAsync(currentAccountId);
+
             return all.Where(n => n.NtId != excludeId)
-                      .OrderByDescending(n => n.SentTime)
+                      .OrderByDescending(n => n.Notification.SentTime)
                       .Take(5)
+                      .Select(n => n.Notification)
                       .ToList();
         }
     }

@@ -11,6 +11,6 @@ namespace PRN_Project.Services.Interfaces
         Task DeleteAsync(int notificationId);
         Task<List<NotificationReceiver>> GetMyNotificationsAsync(int accountId);
         Task MarkAsReadAsync(int receiverId);
-        Task<List<Notification>> GetOtherNotificationsAsync(int excludeId);
+        Task<List<Notification>> GetOtherNotificationsAsync(int excludeId, int CurrentAccountId);
     }
 }
