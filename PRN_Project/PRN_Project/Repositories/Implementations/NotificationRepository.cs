@@ -5,6 +5,7 @@ using PRN_Project.Services.Interfaces;
 using System.Security.Claims;
 using PRN_Project.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace PRN_Project.Repositories.Implementations
 {
@@ -76,6 +77,15 @@ namespace PRN_Project.Repositories.Implementations
             return await _context.Accounts
                 .Where(a => a.Status) // chỉ lấy account đang active
                 .ToListAsync();
+        }
+
+        public async Task AddReceiversAsync(List<NotificationReceiver> receivers)
+        {
+            if (receivers != null && receivers.Any())
+            {
+                _context.NotificationReceivers.AddRange(receivers);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

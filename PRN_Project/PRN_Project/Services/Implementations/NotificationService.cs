@@ -34,15 +34,16 @@ namespace PRN_Project.Services.Implementations
             notification.SenderId = senderId;
 
             // Lấy danh sách tất cả tài khoản
-            var allUsers = await _repo.GetAllAccountsAsync();  // Chưa có method này -> thêm trong repo
+            var allUsers = await _repo.GetAllAccountsAsync();
 
+            // Lưu notification trước để có NtId
             await _repo.AddAsync(notification);
 
-            notification.Receivers = new List<NotificationReceiver>();
-
+            // Tạo danh sách receivers
+            var receivers = new List<NotificationReceiver>();
             foreach (var user in allUsers)
             {
-                notification.Receivers.Add(new NotificationReceiver
+                receivers.Add(new NotificationReceiver
                 {
                     NtId = notification.NtId,
                     ReceiverId = user.AId,
@@ -50,8 +51,10 @@ namespace PRN_Project.Services.Implementations
                 });
             }
 
-            await _repo.UpdateAsync(notification);
+            // Thêm receivers trực tiếp vào DbContext
+            await _repo.AddReceiversAsync(receivers);
 
+            // Gửi SignalR notification
             await _hubContext.Clients.All.SendAsync(
                 "ReceiveNotification",
                 new

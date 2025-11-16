@@ -15,8 +15,15 @@ namespace PRN_Project.Repositories.Implementations
 
         public async Task AddPostAsync(Post newPost)
         {
-            _context.Posts.Add(newPost);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Posts.Add(newPost);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lưu bài đăng: {ex.Message}", ex);
+            }
         }
 
         public async Task<Post?> GetPostByIdAsync(int postId)

@@ -12,5 +12,6 @@ namespace PRN_Project.Repositories.Interfaces
         Task<List<Account>> GetAllAccountsAsync();
         Task<List<NotificationReceiver>> GetReceiversByAccountIdAsync(int accountId);
         Task<NotificationReceiver?> GetReceiverByIdAsync(int nrId);
+        Task AddReceiversAsync(List<NotificationReceiver> receivers);
     }
 }

@@ -30,8 +30,8 @@
         <div class="due-date-field" id="dueDateField" style="display: none;">
             <label>⏰ Hạn nộp:</label>
             <div style="display: flex; gap: 10px; align-items: center;">
-                <input type="date" id="dueDate" required style="flex: 1;" />
-                <input type="time" id="dueTime" required style="flex: 1;" step="1" />
+                <input type="date" id="dueDate" style="flex: 1;" />
+                <input type="time" id="dueTime" style="flex: 1;" step="1" />
                 <input type="hidden" name="dueDate" id="dueDateHidden" />
             </div>
             <small style="color: #666; font-size: 0.85rem;">Định dạng 24 giờ (VD: 14:30)</small>
@@ -75,16 +75,32 @@
     // Kết hợp date và time thành datetime-local format trước khi submit
     document.querySelector('form').addEventListener('submit', function(e) {
         const postType = document.getElementById('postType').value;
+        const dateInput = document.getElementById('dueDate');
+        const timeInput = document.getElementById('dueTime');
+        const hiddenInput = document.getElementById('dueDateHidden');
+        
         if (postType === 'Assignment') {
-            const dateInput = document.getElementById('dueDate');
-            const timeInput = document.getElementById('dueTime');
-            const hiddenInput = document.getElementById('dueDateHidden');
+            // Đảm bảo các input có required
+            dateInput.required = true;
+            timeInput.required = true;
             
-            if (dateInput.value && timeInput.value) {
-                // Kết hợp date và time thành format: YYYY-MM-DDTHH:mm
-                const dateTimeValue = dateInput.value + 'T' + timeInput.value;
-                hiddenInput.value = dateTimeValue;
+            // Kiểm tra nếu thiếu date hoặc time
+            if (!dateInput.value || !timeInput.value) {
+                e.preventDefault();
+                alert('Vui lòng nhập đầy đủ ngày và giờ hạn nộp cho bài tập!');
+                return false;
             }
+            
+            // Kết hợp date và time thành format: YYYY-MM-DDTHH:mm
+            const dateTimeValue = dateInput.value + 'T' + timeInput.value;
+            hiddenInput.value = dateTimeValue;
+        } else {
+            // Nếu là Announcement, đảm bảo dueDate là rỗng và không required
+            dateInput.required = false;
+            timeInput.required = false;
+            hiddenInput.value = '';
+            dateInput.value = '';
+            timeInput.value = '';
         }
     });
 </script>
