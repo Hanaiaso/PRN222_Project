@@ -1,0 +1,69 @@
+﻿@model PRN_Project.ViewModels.TeacherEditViewModel
+
+@{
+    ViewData["Title"] = "Chỉnh sửa tài khoản giáo viên";
+}
+
+<h2>Chỉnh sửa: @Model.TName</h2>
+<hr />
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="EditTeacher" asp-route-id="@Model.TeacherId" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="TeacherId" />
+
+            <h4>Thông tin giáo viên</h4>
+            <div class="mb-3">
+                <label asp-for="TName" class="form-label">Tên giáo viên</label>
+                <input asp-for="TName" class="form-control" />
+                <span asp-validation-for="TName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Qualification" class="form-label">Trình độ</label>
+                <input asp-for="Qualification" class="form-control" />
+            </div>
+
+            <hr />
+            <h4>Thông tin tài khoản</h4>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Mật khẩu mới</label>
+                <input name="password" type="password" class="form-control"
+                       placeholder="Để trống nếu không muốn thay đổi" />
+                <small class="form-text text-muted">Phải có ít nhất 8 ký tự nếu nhập.</small>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="Status" type="checkbox" class="form-check-input" />
+                <label asp-for="Status" class="form-check-label">Hoạt động (Đã kích hoạt)</label>
+            </div>
+
+            <hr />
+            <h4>Phân công môn học</h4>
+            <div class="mb-3">
+                <label asp-for="SelectedSubjectIds" class="form-label">Chọn các môn học</label>
+                <select asp-for="SelectedSubjectIds" asp-items="@Model.AllSubjects"
+                        class="form-control" multiple="multiple" style="height: 200px;">
+                </select>
+                <small class="form-text text-muted">Giữ Ctrl (hoặc Cmd) để chọn nhiều môn.</small>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                <a asp-action="TeacherAccount" class="btn btn-link">Hủy</a>
+            </div>
+        </form>
+    </div>
+</div>

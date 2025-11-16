@@ -1,0 +1,46 @@
+﻿@model PRN_Project.Models.Student
+
+@{
+    ViewData["Title"] = "Chi tiết học sinh";
+}
+
+<h2>Chi tiết học sinh: @Model.SName</h2>
+
+<div class="card">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">ID Học sinh</dt>
+            <dd class="col-sm-9">@Model.SId</dd>
+
+            <dt class="col-sm-3">Tên</dt>
+            <dd class="col-sm-9">@Model.SName</dd>
+
+            <dt class="col-sm-3">Giới tính</dt>
+            <dd class="col-sm-9">@Model.Gender</dd>
+
+            <dt class="col-sm-3">Ngày sinh</dt>
+            <dd class="col-sm-9">@Model.Dob?.ToShortDateString()</dd>
+
+            <hr class="my-3" />
+
+            <dt class="col-sm-3">Email (Tài khoản)</dt>
+            <dd class="col-sm-9">@Model.Account.Email</dd>
+
+            <dt class="col-sm-3">Trạng thái TK</dt>
+            <dd class="col-sm-9">
+                @if (Model.Account.Status)
+                {
+                    <span class="badge bg-success">Hoạt động</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Bị khóa</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-controller="Admin" asp-action="StudentAccounts" class="btn btn-secondary">&larr; Quay lại danh sách</a>
+</div>

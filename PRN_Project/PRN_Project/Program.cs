@@ -51,6 +51,10 @@ builder.Services.AddScoped<ILearningMaterialRepository, LearningMaterialReposito
 builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
 builder.Services.AddScoped<ITeacherClassroomService, TeacherClassroomService>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<ITeacherSubjectRepository, TeacherSubjectRepository>();
+
+
 
 
 // Services
@@ -78,6 +82,8 @@ builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 builder.Services.AddScoped<ITeacherClassroomRepository, TeacherClassroomRepository>();
 builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ITeacherManagementService, TeacherManagementService>();
+builder.Services.AddScoped<IStudentManagementService, StudentManagementService>();
 
 // ======= Đăng ký Background Services =======
 builder.Services.AddScoped<IAssignmentReminderService, AssignmentReminderService>();
